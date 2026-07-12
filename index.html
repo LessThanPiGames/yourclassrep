@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Inter, sans-serif;
@@ -15,19 +20,44 @@
       color: #1f1f1f;
     }
 
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 2px solid #1f1f1f;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-family: "Press Start 2P", monospace;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: #1f1f1f;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
     .container {
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 1000px;
+      margin: auto;
       padding: 40px 20px;
     }
 
     h1, h2 {
       font-family: "Press Start 2P", monospace;
       line-height: 1.4;
+      text-align: center;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 10px;
     }
 
@@ -37,143 +67,259 @@
     }
 
     .tagline {
-      font-size: 18px;
-      margin-top: 10px;
-      opacity: 0.85;
+      font-size: 20px;
+      margin-top: 20px;
+      opacity: .9;
     }
 
     .stats {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
+      gap: 25px;
       flex-wrap: wrap;
-      font-weight: 600;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border: 2px solid #1f1f1f;
-      margin-top: 30px;
-    }
-
-    .section {
-      margin-top: 60px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .box {
-      background: white;
-      border: 2px solid #1f1f1f;
-      padding: 15px;
-    }
-
-    .cta {
-      text-align: center;
-      margin-top: 50px;
-      padding: 40px;
-      background: #1f1f1f;
-      color: white;
-    }
-
-    input {
-      padding: 10px;
-      width: 250px;
-      max-width: 90%;
-      margin-top: 10px;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      cursor: pointer;
-      background: #ffcc00;
-      border: none;
+      margin: 30px 0;
       font-weight: bold;
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 12px;
-      opacity: 0.7;
+    input[type=email] {
+      padding: 12px;
+      width: 300px;
+      max-width: 90%;
+      font-size:16px;
+      margin-top:15px;
     }
+
+    button,
+    .button {
+      display:inline-block;
+      padding:14px 26px;
+      margin-top:15px;
+      background:#ffcc00;
+      color:black;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      font-weight:bold;
+      font-size:16px;
+    }
+
+    .card {
+      background:white;
+      border:2px solid #1f1f1f;
+      padding:30px;
+      margin-top:50px;
+    }
+
+    .section {
+      margin-top:70px;
+    }
+
+    .gallery {
+      display:flex;
+      overflow-x:auto;
+      gap:20px;
+      padding:20px 0;
+      scroll-snap-type:x mandatory;
+    }
+
+    .gallery img{
+      height:320px;
+      border:2px solid #1f1f1f;
+      background:white;
+      scroll-snap-align:center;
+      flex-shrink:0;
+    }
+
+    .gallery::-webkit-scrollbar{
+      height:12px;
+    }
+
+    .gallery::-webkit-scrollbar-thumb{
+      background:#999;
+    }
+
+    .cta{
+      margin-top:80px;
+      background:#1f1f1f;
+      color:white;
+      text-align:center;
+      padding:60px 20px;
+    }
+
+    .footer{
+      text-align:center;
+      padding:30px;
+      font-size:12px;
+      opacity:.7;
+    }
+
   </style>
 </head>
 
 <body>
 
+<nav>
+
+<div class="logo">
+YOUR CLASS REP
+</div>
+
+<div>
+<a href="#gallery">Gallery</a>
+<a href="https://www.thegamecrafter.com/games/your-class-rep:-the-card-game" target="_blank">The Game Crafter</a>
+<a href="#signup">Join the Class</a>
+</div>
+
+</nav>
+
 <div class="container">
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>YOUR CLASS REP</h1>
-    <p class="tagline">
-      A fast-paced classroom election card game where every student has a unique ability.
-    </p>
+<div class="hero">
 
-    <div class="stats">
-      <div>👥 2 Players</div>
-      <div>⏱ 15 Minutes</div>
-      <div>🎂 Ages 8+</div>
-    </div>
-  </div>
+<h1>YOUR CLASS REP</h1>
 
-  <!-- WHY IT EXISTS -->
-  <div class="card">
-    <h2>WHY YOU’LL LIKE IT</h2>
-    <p>
-      Bluff. Strategize. Outvote your opponent using a team of uniquely powerful students.
-      Every round is fast, tense, and different.
-    </p>
-  </div>
+<p class="tagline">
+A fast-paced classroom election where every student has a unique ability.
+</p>
 
-  <!-- HOW IT WORKS -->
-  <div class="section">
-    <h2>HOW IT WORKS</h2>
+<div class="stats">
+<div>👥 2–6 Players</div>
+<div>⏱ 1–2 Minutes</div>
+<div>🎂 Ages 8+</div>
+</div>
 
-    <div class="grid">
-      <div class="box">1. Choose a card</div>
-      <div class="box">2. Reveal simultaneously</div>
-      <div class="box">3. Use abilities</div>
-      <div class="box">4. Earn Votes to win</div>
-    </div>
-  </div>
+<form action="https://app.kit.com/forms/9642522/subscriptions" method="post">
 
-  <!-- GALLERY PLACEHOLDER -->
-  <div class="section">
-    <h2>THE GAME</h2>
+<input
+type="email"
+name="email_address"
+placeholder="Enter your email"
+required>
 
-    <div class="grid">
-      <div class="box">Card Art Placeholder</div>
-      <div class="box">Gameplay Photo Placeholder</div>
-      <div class="box">Box Mockup Placeholder</div>
-    </div>
-  </div>
+<br>
+
+<button type="submit">
+Join the Class
+</button>
+
+</form>
+
+<br>
+
+<a
+class="button"
+href="https://www.thegamecrafter.com/games/your-class-rep:-the-card-game"
+target="_blank">
+
+View on The Game Crafter
+
+</a>
 
 </div>
 
-<!-- CTA -->
-<div class="cta">
-  <h2>JOIN THE CLASS</h2>
-  <p>Get updates when the Crowd Sale launches.</p>
+<div class="card">
+
+<h2>WHY YOU'LL LIKE IT</h2>
+
+<p>
+
+Your Class Rep is all about reading your opponents, making clever predictions, and pulling off surprising plays. Every student has a unique ability, so every round creates new opportunities to bluff, adapt, and outsmart the competition.
+
+Games are quick enough for "just one more round," yet packed with meaningful decisions from start to finish.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<div class="card">
+
+<h2>HOW IT FEELS</h2>
+
+<p>
+
+Choose your student in secret.
+
+Reveal together.
+
+Watch abilities collide in unexpected ways.
+
+Celebrate your victories, laugh at the surprises, and race to earn the most votes before the election is over.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="section" id="gallery">
+
+<h2>GAME GALLERY</h2>
+
+<div class="gallery">
+
+<img src="images/Action Shots/TCG-YCR-ActionShots1.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots2.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots3.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots4.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots5.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots6.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots7.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots8.png" alt="">
+<img src="images/Action Shots/TCG-YCR-ActionShots9.png" alt="">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="cta" id="signup">
+
+<h2>JOIN THE CLASS</h2>
+
+<p>
+
+Be the first to hear when the Crowd Sale launches, get behind-the-scenes updates, and see new cards before anyone else.
+
+</p>
 
 <form action="https://app.kit.com/forms/9642522/subscriptions" method="post">
-  <input type="email" name="email_address" placeholder="Email address" required>
-  <input type="text" name="fields[first_name]" placeholder="Your name">
-  <button type="submit">Join the Class</button>
+
+<input
+type="email"
+name="email_address"
+placeholder="Enter your email"
+required>
+
+<br>
+
+<button type="submit">
+
+Join the Class
+
+</button>
+
 </form>
+
+<br>
+
+<a
+class="button"
+href="https://www.thegamecrafter.com/games/your-class-rep:-the-card-game"
+target="_blank">
+
+View on The Game Crafter
+
+</a>
 
 </div>
 
 <div class="footer">
-  Built by LessThanPi • Coming soon on The Game Crafter
+
+Built by LessThanPi • Coming soon on The Game Crafter
+
 </div>
 
 </body>
