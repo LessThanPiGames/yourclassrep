@@ -3,11 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Class Rep</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Your Class Rep | The Card Game</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
   <style>
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray: #c8c8c8;
+      --light-gray: #e8e8e8;
+      --dark-gray: #555555;
+      --red: #b44c4c;
+    }
+
+    .how-to-play strong.red {
+      color: var(--red);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -15,142 +33,869 @@
 
     body {
       margin: 0;
-      font-family: Inter, sans-serif;
-      background: #f5f2e8;
-      color: #1f1f1f;
+      background: var(--white);
+      color: var(--black);
+      font-family: "VT323", monospace;
+      font-size: 22px;
+      image-rendering: pixelated;
     }
+
+    a {
+      color: inherit;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     nav {
       position: sticky;
       top: 0;
-      background: white;
-      border-bottom: 2px solid #1f1f1f;
-      padding: 18px 30px;
+      z-index: 100;
+
+      background: var(--black);
+      color: var(--white);
+
+      border-bottom: 4px solid var(--red);
+
+      padding: 14px 30px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 100;
+
+      gap: 20px;
     }
 
     nav .logo {
       font-family: "Press Start 2P", monospace;
-      font-size: 14px;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
     nav a {
-      color: #1f1f1f;
+      color: var(--white);
       text-decoration: none;
-      font-weight: bold;
-      margin-left: 20px;
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
     }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    /* =========================
+       GENERAL
+    ========================= */
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 0 20px;
     }
 
-    h1, h2 {
+    h1,
+    h2,
+    h3 {
       font-family: "Press Start 2P", monospace;
-      line-height: 1.4;
-      text-align: center;
+      line-height: 1.6;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
+      font-size: 32px;
+      margin: 0;
     }
+
+    h2 {
+      font-size: 18px;
+      margin: 0 0 25px;
+    }
+
+    h3 {
+      font-size: 11px;
+      margin: 0 0 15px;
+    }
+
+    p {
+      line-height: 1.4;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .button {
+      display: inline-block;
+
+      padding: 17px 25px;
+
+      background: var(--red);
+      color: var(--white);
+
+      border: 4px solid var(--black);
+
+      box-shadow: 6px 6px 0 var(--black);
+
+      text-decoration: none;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 10px;
+
+      transition: transform 0.05s, box-shadow 0.05s;
+    }
+
+    .button:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .button:active {
+      transform: translate(6px, 6px);
+      box-shadow: 0 0 0 var(--black);
+    }
+
+    .button.secondary {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .button.secondary:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
+      margin: 45px auto 80px;
+
+      background: var(--gray);
+
+      border: 6px solid var(--black);
+
+      box-shadow: 10px 10px 0 var(--black);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .hero-header {
+      background: var(--black);
+      color: var(--white);
+
+      padding: 14px 20px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+    }
+
+    .hero-header span {
+      color: var(--red);
+    }
+
+    .hero-image {
+      width: 100%;
+      display: block;
+
+      max-height: 620px;
+      object-fit: cover;
+
+      border-bottom: 6px solid var(--black);
+    }
+
+    .hero-content {
       text-align: center;
-      padding: 60px 20px;
+      padding: 45px 30px 50px;
     }
 
-    .tagline {
-      font-size: 20px;
-      margin-top: 20px;
-      opacity: .9;
+    .hero-content h1 {
+      max-width: 850px;
+      margin: 0 auto 25px;
     }
 
-    .stats {
+    .hero-tagline {
+      max-width: 700px;
+
+      margin: 0 auto 30px;
+
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+
+      flex-wrap: wrap;
+
+      margin-top: 30px;
+    }
+
+    .hero-meta {
+      margin-top: 30px;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+
       display: flex;
       justify-content: center;
       gap: 25px;
       flex-wrap: wrap;
-      margin: 30px 0;
-      font-weight: bold;
     }
 
-    input[type=email] {
-      padding: 12px;
-      width: 300px;
-      max-width: 90%;
-      font-size:16px;
-      margin-top:15px;
+    .hero-meta span::before {
+      content: "■";
+      color: var(--red);
+      margin-right: 8px;
     }
 
-    button,
-    .button {
-      display:inline-block;
-      padding:14px 26px;
-      margin-top:15px;
-      background:#ffcc00;
-      color:black;
-      text-decoration:none;
-      border:none;
-      cursor:pointer;
-      font-weight:bold;
-      font-size:16px;
-    }
-
-    .card {
-      background:white;
-      border:2px solid #1f1f1f;
-      padding:30px;
-      margin-top:50px;
-    }
+    /* =========================
+       SECTION
+    ========================= */
 
     .section {
-      margin-top:70px;
+      margin: 100px auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      margin-bottom: 35px;
+    }
+
+    .section-header::before,
+    .section-header::after {
+      content: "";
+
+      height: 4px;
+
+      background: var(--black);
+
+      flex: 1;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .section-intro {
+      max-width: 750px;
+      margin: 0 auto 40px;
+
+      text-align: center;
+
+      font-size: 25px;
+    }
+
+    /* =========================
+       THREE STEPS
+    ========================= */
+
+    .steps {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .step {
+      border: 5px solid var(--black);
+
+      padding: 30px 25px;
+
+      background: var(--white);
+
+      box-shadow: 6px 6px 0 var(--black);
+
+      position: relative;
+    }
+
+    .step-number {
+      font-family: "Press Start 2P", monospace;
+      font-size: 10px;
+
+      color: var(--red);
+
+      margin-bottom: 25px;
+    }
+
+    .step p {
+      margin-bottom: 0;
+    }
+
+    /* =========================
+       HOOK SECTION
+    ========================= */
+
+    .hook {
+      background: var(--black);
+      color: var(--white);
+
+      border: 6px solid var(--black);
+
+      padding: 55px 35px;
+
+      text-align: center;
+
+      box-shadow: 10px 10px 0 var(--red);
+    }
+
+    .hook h2 {
+      color: var(--white);
+    }
+
+    .hook p {
+      max-width: 750px;
+
+      margin: auto;
+
+      font-size: 27px;
+    }
+
+    .hook .red {
+      color: var(--red);
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .feature {
+      border: 4px solid var(--black);
+
+      padding: 28px;
+
+      background: var(--gray);
+    }
+
+    .feature h3 {
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      margin: 0;
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery-wrapper {
+      position: relative;
     }
 
     .gallery {
-      display:flex;
-      overflow-x:auto;
-      gap:20px;
-      padding:20px 0;
-      scroll-snap-type:x mandatory;
+      display: flex;
+
+      overflow-x: auto;
+
+      gap: 20px;
+
+      padding: 10px 10px 30px;
+
+      scroll-snap-type: x mandatory;
     }
 
-    .gallery img{
-      height:320px;
-      border:2px solid #1f1f1f;
-      background:white;
-      scroll-snap-align:center;
-      flex-shrink:0;
+    .gallery img {
+      height: 350px;
+
+      border: 5px solid var(--black);
+
+      background: var(--gray);
+
+      scroll-snap-align: center;
+
+      flex-shrink: 0;
+
+      image-rendering: pixelated;
+
+      box-shadow: 6px 6px 0 var(--black);
+
+      transition: border-color 0.1s;
+
+      cursor: pointer;
     }
 
-    .gallery::-webkit-scrollbar{
-      height:12px;
+    .gallery img:hover {
+      border-color: var(--red);
     }
 
-    .gallery::-webkit-scrollbar-thumb{
-      background:#999;
+    .gallery::-webkit-scrollbar {
+      height: 14px;
     }
 
-    .cta{
-      margin-top:80px;
-      background:#1f1f1f;
-      color:white;
-      text-align:center;
-      padding:60px 20px;
+    .gallery::-webkit-scrollbar-track {
+      background: var(--gray);
+      border: 3px solid var(--black);
     }
 
-    .footer{
-      text-align:center;
-      padding:30px;
-      font-size:12px;
-      opacity:.7;
+    .gallery::-webkit-scrollbar-thumb {
+      background: var(--red);
+      border: 2px solid var(--black);
+    }
+
+    /* =========================
+       LIGHTBOX
+    ========================= */
+
+    .lightbox {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 1000;
+
+      background: rgba(0, 0, 0, 0.92);
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      cursor: pointer;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
+
+      width: auto;
+      height: auto;
+
+      border: 5px solid var(--white);
+
+      box-shadow: 8px 8px 0 var(--red);
+
+      image-rendering: pixelated;
+
+      object-fit: contain;
+
+      cursor: default;
+    }
+
+    .lightbox-close {
+      position: absolute;
+
+      top: 20px;
+      right: 25px;
+
+      color: var(--white);
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 18px;
+
+      cursor: pointer;
+
+      z-index: 1001;
+    }
+
+    .lightbox-close:hover {
+      color: var(--red);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 55px;
+      height: 70px;
+
+      background: var(--black);
+      color: var(--white);
+
+      border: 4px solid var(--white);
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 18px;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      z-index: 1001;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--red);
+    }
+
+    .lightbox-prev {
+      left: 25px;
+    }
+
+    .lightbox-next {
+      right: 25px;
+    }
+
+    /* =========================
+       HOW TO PLAY
+    ========================= */
+
+    .how-to-play {
+      border: 5px solid var(--black);
+
+      background: var(--gray);
+
+      box-shadow: 8px 8px 0 var(--black);
+
+      padding: 40px;
+    }
+
+    .round {
+      display: grid;
+
+      grid-template-columns: 80px 1fr;
+
+      gap: 25px;
+
+      padding: 25px 0;
+
+      border-bottom: 3px solid var(--black);
+    }
+
+    .round:last-child {
+      border-bottom: none;
+    }
+
+    .round-number {
+      font-family: "Press Start 2P", monospace;
+
+      color: var(--red);
+
+      font-size: 10px;
+
+      padding-top: 5px;
+    }
+
+    .round h3 {
+      margin-bottom: 8px;
+    }
+
+    .round p {
+      margin: 0;
+    }
+
+    /* =========================
+       MAILING LIST
+    ========================= */
+
+    .signup {
+      background: var(--gray);
+
+      border: 6px solid var(--black);
+
+      box-shadow: 10px 10px 0 var(--black);
+
+      padding: 55px 30px;
+
+      text-align: center;
+    }
+
+    .signup p {
+      max-width: 650px;
+
+      margin: 0 auto 25px;
+
+      font-size: 25px;
+    }
+
+    .signup-form {
+      display: flex;
+
+      justify-content: center;
+
+      align-items: stretch;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+    input[type=email] {
+      width: 320px;
+      max-width: 100%;
+
+      padding: 14px;
+
+      background: var(--white);
+
+      border: 4px solid var(--black);
+
+      color: var(--black);
+
+      font-family: "VT323", monospace;
+      font-size: 22px;
+
+      outline: none;
+    }
+
+    input[type=email]:focus {
+      border-color: var(--red);
+    }
+
+    input[type=email]::placeholder {
+      color: var(--dark-gray);
+    }
+
+    .signup-form .button {
+      margin: 0;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       FINAL CTA
+    ========================= */
+
+    .final-cta {
+      background: var(--black);
+
+      color: var(--white);
+
+      text-align: center;
+
+      padding: 90px 20px;
+
+      border-top: 6px solid var(--red);
+
+      margin-top: 110px;
+    }
+
+    .final-cta h2 {
+      font-size: 22px;
+
+      margin-bottom: 20px;
+    }
+
+    .final-cta p {
+      max-width: 600px;
+
+      margin: 0 auto 35px;
+
+      font-size: 25px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      background: var(--black);
+
+      color: var(--gray);
+
+      text-align: center;
+
+      padding: 30px;
+
+      font-size: 18px;
+
+      border-top: 1px solid var(--dark-gray);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 750px) {
+
+      body {
+        font-size: 20px;
+      }
+
+      nav {
+        padding: 15px;
+      }
+
+      nav .logo {
+        font-size: 9px;
+      }
+
+      nav .nav-links {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 7px;
+      }
+
+      nav a.gallery-link {
+        display: none;
+      }
+
+      .hero {
+        margin-top: 25px;
+        box-shadow: 6px 6px 0 var(--black);
+      }
+
+      .hero-header {
+        font-size: 7px;
+      }
+
+      .hero-image {
+        max-height: none;
+      }
+
+      .hero-content {
+        padding: 35px 18px 40px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      h2 {
+        font-size: 14px;
+      }
+
+      .hero-tagline {
+        font-size: 23px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .button {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .hero-meta {
+        font-size: 7px;
+      }
+
+      .section {
+        margin: 75px auto;
+      }
+
+      .section-header h2 {
+        white-space: normal;
+      }
+
+      .steps,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hook {
+        padding: 40px 20px;
+        box-shadow: 6px 6px 0 var(--red);
+      }
+
+      .hook p {
+        font-size: 24px;
+      }
+
+      .gallery img {
+        height: 280px;
+      }
+
+      .how-to-play {
+        padding: 25px 20px;
+      }
+
+      .round {
+        grid-template-columns: 55px 1fr;
+        gap: 15px;
+      }
+
+      .signup {
+        padding: 40px 20px;
+        box-shadow: 6px 6px 0 var(--black);
+      }
+
+      .signup-form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input[type=email],
+      .signup-form .button {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .final-cta {
+        padding: 70px 20px;
+      }
+
+      .final-cta h2 {
+        font-size: 16px;
+      }
+
+      .lightbox {
+        padding: 15px;
+      }
+
+      .lightbox img {
+        max-width: 92vw;
+        max-height: 85vh;
+
+        border-width: 4px;
+
+        box-shadow: 5px 5px 0 var(--red);
+      }
+
+      .lightbox-close {
+        top: 15px;
+        right: 18px;
+        font-size: 14px;
+      }
+
+      .lightbox-nav {
+        width: 45px;
+        height: 55px;
+        font-size: 14px;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
+
     }
 
   </style>
@@ -158,169 +903,726 @@
 
 <body>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
 
-<div class="logo">
-YOUR CLASS REP: THE CARD GAME
-</div>
+  <div class="logo">
+    YOUR CLASS REP
+  </div>
 
-<div>
-<a href="#gallery">Gallery</a>
-<a href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank">The Game Crafter</a>
-<a href="#signup">Join the Class</a>
-</div>
+  <div class="nav-links">
+
+    <a href="#how-to-play">
+      HOW TO PLAY
+    </a>
+
+    <a class="gallery-link" href="#gallery">
+      GALLERY
+    </a>
+
+    <a
+      href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
+      target="_blank"
+      rel="noopener noreferrer">
+      BUY
+    </a>
+
+  </div>
 
 </nav>
 
+
+<!-- =========================
+     HERO
+========================= -->
+
 <div class="container">
 
-<div class="hero">
+  <section class="hero">
 
-<h1>YOUR CLASS REP: THE CARD GAME</h1>
+    <div class="hero-header">
+      <span>PLAYER 1</span>
+      <span>VS</span>
+      <span>PLAYER 2</span>
+    </div>
 
-<p class="tagline">
-A fast-paced classroom election where every student has a unique ability.
-</p>
+    <img
+      class="hero-image"
+      src="images/Action Shots/YCR-Hero-2.png"
+      alt="Your Class Rep card game">
 
-<div class="stats">
-<div>👥 2–6 Players</div>
-<div>⏱ 1–2 Minutes</div>
-<div>🎂 Ages 8+</div>
+    <div class="hero-content">
+
+      <h1>
+        THE ELECTION<br>
+        IS ON.
+      </h1>
+
+      <p class="hero-tagline">
+        A fast-paced card game where you and your opponent battle to become
+        Class Rep.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a
+          class="button"
+          href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
+          target="_blank"
+          rel="noopener noreferrer">
+          GET THE GAME
+        </a>
+
+        <a
+          class="button secondary"
+          href="#signup">
+          JOIN THE CLASS
+        </a>
+
+      </div>
+
+      <div class="hero-meta">
+
+        <span>2 PLAYERS</span>
+        <span>QUICK GAMES</span>
+        <span>STRATEGY</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       THE PITCH
+  ========================= -->
+
+  <section class="section">
+
+    <div class="section-header">
+      <h2>RUN. SCHEME. WIN.</h2>
+    </div>
+
+    <p class="section-intro">
+      Everyone wants to be Class Rep. Read your opponent, choose the right
+      student, and collect enough votes to win the election.
+    </p>
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">
+          01
+        </div>
+
+        <h3>
+          PICK YOUR CARD
+        </h3>
+
+        <p>
+          Choose a student in secret. Every card brings something different
+          to the election.
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+          02
+        </div>
+
+        <h3>
+          REVEAL
+        </h3>
+
+        <p>
+          Reveal your choices together and see which student's Influence
+          takes the round.
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+          03
+        </div>
+
+        <h3>
+          TAKE THE VOTES
+        </h3>
+
+        <p>
+          Win rounds, collect Votes, and finish the election with the most
+          support.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       HOOK
+  ========================= -->
+
+  <section class="section">
+
+    <div class="hook">
+
+      <h2>
+        EVERYONE HAS AN AGENDA.
+      </h2>
+
+      <p>
+        Every card brings three things to the election:
+        <strong class="red">Influence</strong>,
+        an <strong class="red">Ability</strong>, and
+        <strong class="red">Votes</strong>.
+      </p>
+
+      <p>
+        <strong class="red">Influence</strong> determines who comes out on top
+        each round. <strong class="red">Abilities</strong> give you ways to
+        change what happens. <strong class="red">Votes</strong> are what
+        ultimately decide who becomes Class Rep.
+      </p>
+
+      <p>
+        The trick is knowing which card to play, and when.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FEATURES
+  ========================= -->
+
+  <section class="section">
+
+    <div class="section-header">
+      <h2>THE CLASSROOM</h2>
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+
+        <h3>
+          2 PLAYERS
+        </h3>
+
+        <p>
+          Go head-to-head in a direct battle for the classroom.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <h3>
+          QUICK TO PLAY
+        </h3>
+
+        <p>
+          A complete election takes only a few rounds, making it easy to
+          play again and again.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <h3>
+          EVERY CARD MATTERS
+        </h3>
+
+        <p>
+          Every card has a unique ability that can completely change a
+          round.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <h3>
+          PICK YOUR MOMENT
+        </h3>
+
+        <p>
+          Strong cards are valuable. Knowing when to play them is where the
+          strategy comes in.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GALLERY
+  ========================= -->
+
+  <section class="section" id="gallery">
+
+    <div class="section-header">
+      <h2>GAME GALLERY</h2>
+    </div>
+
+    <p class="section-intro">
+      See the election in action.
+    </p>
+
+    <div class="gallery">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots1.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots2.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots3.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots4.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots5.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots6.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots7.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots8.png"
+        alt="Your Class Rep gameplay">
+
+      <img
+        src="images/Action Shots/TCG-YCR-ActionShots9.png"
+        alt="Your Class Rep gameplay">
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       HOW TO PLAY
+  ========================= -->
+
+  <section class="section" id="how-to-play">
+
+    <div class="section-header">
+      <h2>HOW TO PLAY</h2>
+    </div>
+
+    <div class="how-to-play">
+
+      <div class="round">
+
+        <div class="round-number">
+          01
+        </div>
+
+        <div>
+          <h3>
+            CHOOSE
+          </h3>
+
+          <p>
+            Both players secretly choose one card.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="round">
+
+        <div class="round-number">
+          02
+        </div>
+
+        <div>
+          <h3>
+            REVEAL
+          </h3>
+
+          <p>
+            Reveal your cards at the same time.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="round">
+
+        <div class="round-number">
+          03
+        </div>
+
+        <div>
+          <h3>
+            RESOLVE
+          </h3>
+
+          <p>
+            Apply <strong class="red">Influential Abilities</strong> and
+            compare <strong class="red">Influence</strong>. If abilities
+            conflict, the higher Influence takes precedence.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="round">
+
+        <div class="round-number">
+          04
+        </div>
+
+        <div>
+          <h3>
+            WIN
+          </h3>
+
+          <p>
+            Winning and tied cards remain face up. Losing cards are placed
+            face down.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="round">
+
+        <div class="round-number">
+          05
+        </div>
+
+        <div>
+          <h3>
+            REPEAT
+          </h3>
+
+          <p>
+            Repeat steps 1–4 six times. You'll have one card remaining
+            in your hand.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="round">
+
+        <div class="round-number">
+          06
+        </div>
+
+        <div>
+          <h3>
+            BECOME CLASS REP
+          </h3>
+
+          <p>
+            Resolve the <strong class="red">Votes</strong> and
+            <strong class="red">Voter Abilities</strong> of the face-up
+            cards. The player with the most Votes wins the election.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAILING LIST
+  ========================= -->
+
+  <section class="section" id="signup">
+
+    <div class="signup">
+
+      <h2>
+        GET ON THE LIST
+      </h2>
+
+      <p>
+        Get updates on Your Class Rep, new cards, releases, and what's
+        happening behind the scenes.
+      </p>
+
+      <form
+        class="signup-form"
+        action="https://app.kit.com/forms/9642522/subscriptions"
+        method="post">
+
+        <input
+          type="email"
+          name="email_address"
+          placeholder="ENTER YOUR EMAIL"
+          required>
+
+        <button
+          class="button"
+          type="submit">
+          JOIN THE CLASS
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
 </div>
 
-<form action="https://app.kit.com/forms/9642522/subscriptions" method="post">
 
-<input
-type="email"
-name="email_address"
-placeholder="Enter your email"
-required>
+<!-- =========================
+     FINAL CTA
+========================= -->
 
-<br>
+<section class="final-cta">
 
-<button type="submit">
-Join the Class
-</button>
+  <h2>
+    CLASS IS IN SESSION.
+  </h2>
 
-</form>
+  <p>
+    Six rounds. Two players. One Class Rep.
+  </p>
 
-<br>
+  <a
+    class="button"
+    href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
+    target="_blank"
+    rel="noopener noreferrer">
+    GET YOUR CLASS REP
+  </a>
 
-<a
-class="button"
-href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
-target="_blank">
+</section>
 
-View on The Game Crafter
 
-</a>
+<!-- =========================
+     FOOTER
+========================= -->
 
-</div>
+<footer class="footer">
 
-<div class="card">
+  BUILT BY LESSTHANPI
 
-<h2>WHY YOU'LL LIKE IT</h2>
+  <br><br>
 
-<p>
+  YOUR CLASS REP • THE CARD GAME
 
-Your Class Rep is all about reading your opponents, making clever predictions, and pulling off surprising plays. Every student has a unique ability, so every round creates new opportunities to bluff, adapt, and outsmart the competition.
+</footer>
 
-Games are quick enough for "just one more round," yet packed with meaningful decisions from start to finish.
 
-</p>
+<!-- =========================
+     LIGHTBOX
+========================= -->
 
-</div>
+<div class="lightbox" id="lightbox">
 
-<div class="section">
+  <div class="lightbox-close" id="lightbox-close">
+    X
+  </div>
 
-<div class="card">
+  <button
+    class="lightbox-nav lightbox-prev"
+    id="lightbox-prev"
+    aria-label="Previous image">
+    &lt;
+  </button>
 
-<h2>HOW IT FEELS</h2>
+  <img
+    id="lightbox-image"
+    src=""
+    alt="">
 
-<p>
-
-Choose your student in secret.
-
-Reveal together.
-
-Watch abilities collide in unexpected ways.
-
-Celebrate your victories, laugh at the surprises, and race to earn the most votes before the election is over.
-
-</p>
-
-</div>
-
-</div>
-
-<div class="section" id="gallery">
-
-<h2>GAME GALLERY</h2>
-
-<div class="gallery">
-
-<img src="images/Action Shots/TCG-YCR-ActionShots1.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots2.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots3.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots4.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots5.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots6.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots7.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots8.png" alt="">
-<img src="images/Action Shots/TCG-YCR-ActionShots9.png" alt="">
+  <button
+    class="lightbox-nav lightbox-next"
+    id="lightbox-next"
+    aria-label="Next image">
+    &gt;
+  </button>
 
 </div>
 
-</div>
 
-</div>
+<!-- =========================
+     LIGHTBOX SCRIPT
+========================= -->
 
-<div class="cta" id="signup">
+<script>
 
-<h2>JOIN THE CLASS</h2>
+  const galleryImages = Array.from(
+    document.querySelectorAll(".gallery img")
+  );
 
-<p>
+  const lightbox = document.getElementById("lightbox");
 
-Be the first to hear when the Crowd Sale launches, get behind-the-scenes updates, and see new cards before anyone else.
+  const lightboxImage =
+    document.getElementById("lightbox-image");
 
-</p>
+  const lightboxClose =
+    document.getElementById("lightbox-close");
 
-<form action="https://app.kit.com/forms/9642522/subscriptions" method="post">
+  const lightboxPrev =
+    document.getElementById("lightbox-prev");
 
-<input
-type="email"
-name="email_address"
-placeholder="Enter your email"
-required>
+  const lightboxNext =
+    document.getElementById("lightbox-next");
 
-<br>
+  let currentImageIndex = 0;
 
-<button type="submit">
 
-Join the Class
+  function showImage(index) {
 
-</button>
+    currentImageIndex =
+      (index + galleryImages.length) %
+      galleryImages.length;
 
-</form>
+    const image =
+      galleryImages[currentImageIndex];
 
-<br>
+    lightboxImage.src = image.src;
 
-<a
-class="button"
-href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
-target="_blank">
+    lightboxImage.alt = image.alt;
 
-View on The Game Crafter
+  }
 
-</a>
 
-</div>
+  function openLightbox(index) {
 
-<div class="footer">
+    showImage(index);
 
-Built by LessThanPi • Coming soon on The Game Crafter
+    lightbox.classList.add("active");
 
-</div>
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  function closeLightbox() {
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  function showPreviousImage() {
+
+    showImage(currentImageIndex - 1);
+
+  }
+
+
+  function showNextImage() {
+
+    showImage(currentImageIndex + 1);
+
+  }
+
+
+  galleryImages.forEach((image, index) => {
+
+    image.addEventListener("click", () => {
+
+      openLightbox(index);
+
+    });
+
+  });
+
+
+  lightboxPrev.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    showPreviousImage();
+
+  });
+
+
+  lightboxNext.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    showNextImage();
+
+  });
+
+
+  lightbox.addEventListener("click", (event) => {
+
+    if (
+      event.target === lightbox ||
+      event.target === lightboxClose
+    ) {
+
+      closeLightbox();
+
+    }
+
+  });
+
+
+  document.addEventListener("keydown", (event) => {
+
+    if (!lightbox.classList.contains("active")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+
+      closeLightbox();
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+      showPreviousImage();
+
+    }
+
+    if (event.key === "ArrowRight") {
+
+      showNextImage();
+
+    }
+
+  });
+
+</script>
 
 </body>
 </html>
