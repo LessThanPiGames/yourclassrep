@@ -4,7 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Your Class Rep | The Card Game</title>
+  <title>Your Class Rep | Card Games, Comics &amp; More</title>
+  <meta name="description" content="Meet Your Class Rep, a growing entertainment brand starting with Your Class Rep: The Card Game, a fast-paced two-player classroom election card game. Join the Game Crafter crowd sale starting October 31, 2026.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://yourclassrep.com/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Your Class Rep">
+  <meta property="og:title" content="Your Class Rep | Card Games, Comics &amp; More">
+  <meta property="og:description" content="A growing entertainment brand starting with Your Class Rep: The Card Game. Join the crowd sale on October 31, 2026.">
+  <meta property="og:url" content="https://yourclassrep.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "Your Class Rep",
+    "url": "https://yourclassrep.com/",
+    "description": "A growing entertainment brand featuring school-life characters, games, comic strips, and creative products.",
+    "sameAs": ["https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"]
+  }
+  </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
@@ -898,6 +920,74 @@
 
     }
 
+
+    /* CROWD SALE COUNTDOWN */
+    .crowdsale-panel {
+      margin: 0 auto 34px;
+      max-width: 850px;
+      padding: 26px 22px 30px;
+      background: var(--black);
+      color: var(--white);
+      border: 5px solid var(--red);
+      box-shadow: 7px 7px 0 var(--black);
+    }
+    .crowdsale-kicker {
+      margin: 0 0 15px;
+      color: #ff7777;
+      font-family: "Press Start 2P", monospace;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .crowdsale-panel h2 {
+      margin: 0 0 20px;
+      font-size: clamp(16px, 2.4vw, 24px);
+      line-height: 1.7;
+    }
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 auto 24px;
+      max-width: 650px;
+    }
+    .countdown-unit {
+      padding: 15px 6px 12px;
+      background: #292929;
+      border: 2px solid #777;
+    }
+    .countdown-value {
+      display: block;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(18px, 3.6vw, 34px);
+      line-height: 1.5;
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-label {
+      display: block;
+      color: #ff7777;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(7px, 1vw, 10px);
+      margin-top: 8px;
+    }
+    .crowdsale-panel .button {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 22px 26px;
+      font-size: clamp(10px, 1.5vw, 15px);
+      line-height: 1.8;
+    }
+    .crowdsale-note { margin: 18px 0 0; font-size: 21px; }
+    .brand-intro { max-width: 850px; margin: 0 auto 24px; }
+    .brand-intro strong { color: var(--red); }
+    @media (max-width: 520px) {
+      .crowdsale-panel { padding: 20px 12px 24px; }
+      .countdown { gap: 5px; }
+      .countdown-unit { padding: 10px 2px; }
+      .crowdsale-panel .button { width: 100%; padding: 17px 10px; }
+    }
+
   </style>
 </head>
 
@@ -956,6 +1046,19 @@
 
     <div class="hero-content">
 
+      <div class="crowdsale-panel" aria-labelledby="crowdsale-title">
+        <p class="crowdsale-kicker">THE CROWD SALE IS COMING</p>
+        <h2 id="crowdsale-title">YOUR CLASS REP: THE CARD GAME</h2>
+        <div class="countdown" id="crowdsale-countdown" role="timer" aria-label="Time until the Your Class Rep crowd sale begins">
+          <div class="countdown-unit"><span class="countdown-value" id="countdown-days">--</span><span class="countdown-label">DAYS</span></div>
+          <div class="countdown-unit"><span class="countdown-value" id="countdown-hours">--</span><span class="countdown-label">HOURS</span></div>
+          <div class="countdown-unit"><span class="countdown-value" id="countdown-minutes">--</span><span class="countdown-label">MINUTES</span></div>
+          <div class="countdown-unit"><span class="countdown-value" id="countdown-seconds">--</span><span class="countdown-label">SECONDS</span></div>
+        </div>
+        <a class="button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
+        <p class="crowdsale-note" id="crowdsale-status">Launching October 31, 2026 at 12:00 AM Eastern Time.</p>
+      </div>
+
       <h1>
         THE ELECTION<br>
         IS ON.
@@ -965,6 +1068,8 @@
         A fast-paced card game where you and your opponent battle to become
         Class Rep.
       </p>
+
+      <p class="brand-intro">Your Class Rep is a growing entertainment brand built around school-life characters, games, comic strips, and creative products. Our first release is <strong>Your Class Rep: The Card Game</strong>, a quick, strategic two-player classroom election game.</p>
 
       <div class="hero-buttons">
 
@@ -1439,7 +1544,7 @@
 
   <br><br>
 
-  YOUR CLASS REP • THE CARD GAME
+  YOUR CLASS REP • GAMES, COMICS & MORE
 
 </footer>
 
@@ -1622,6 +1727,39 @@
 
   });
 
+</script>
+
+
+<script>
+  (() => {
+    // Midnight at the start of October 31, 2026 in US Eastern Time.
+    const launchTime = new Date('2026-10-31T00:00:00-04:00').getTime();
+    const fields = {
+      days: document.getElementById('countdown-days'),
+      hours: document.getElementById('countdown-hours'),
+      minutes: document.getElementById('countdown-minutes'),
+      seconds: document.getElementById('countdown-seconds')
+    };
+    const status = document.getElementById('crowdsale-status');
+    const title = document.getElementById('crowdsale-title');
+    const pad = value => String(value).padStart(2, '0');
+    function updateCountdown() {
+      const remaining = launchTime - Date.now();
+      if (remaining <= 0) {
+        Object.values(fields).forEach(field => field.textContent = '00');
+        title.textContent = 'THE CROWD SALE IS LIVE!';
+        status.textContent = 'The Your Class Rep crowd sale has started. Visit the sale page to join in!';
+        return;
+      }
+      const seconds = Math.floor(remaining / 1000);
+      fields.days.textContent = String(Math.floor(seconds / 86400));
+      fields.hours.textContent = pad(Math.floor((seconds % 86400) / 3600));
+      fields.minutes.textContent = pad(Math.floor((seconds % 3600) / 60));
+      fields.seconds.textContent = pad(seconds % 60);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  })();
 </script>
 
 </body>
