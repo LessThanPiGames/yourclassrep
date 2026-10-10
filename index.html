@@ -1,1766 +1,378 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Your Class Rep | Card Games, Comics &amp; More</title>
-  <meta name="description" content="Meet Your Class Rep, a growing entertainment brand starting with Your Class Rep: The Card Game, a fast-paced two-player classroom election card game. Join the Game Crafter crowd sale starting October 31, 2026.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Class Rep | A Card Game for Two Players</title>
+  <meta name="description" content="Meet Your Class Rep, a fast-paced two-player card game. Compare Influence, secure the votes, and become Your Class Rep.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://yourclassrep.com/">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/Assets/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/Assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Your Class Rep">
-  <meta property="og:title" content="Your Class Rep | Card Games, Comics &amp; More">
-  <meta property="og:description" content="A growing entertainment brand starting with Your Class Rep: The Card Game. Join the crowd sale on October 31, 2026.">
+  <meta property="og:title" content="Your Class Rep | A Card Game for Two Players">
+  <meta property="og:description" content="Compare Influence, secure the votes, and become Your Class Rep.">
   <meta property="og:url" content="https://yourclassrep.com/">
+  <meta property="og:image" content="https://yourclassrep.com/images/Assets/Box-Transparent.png">
+  <meta property="og:image:alt" content="Your Class Rep card game box">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Brand",
-    "name": "Your Class Rep",
-    "url": "https://yourclassrep.com/",
-    "description": "A growing entertainment brand featuring school-life characters, games, comic strips, and creative products.",
-    "sameAs": ["https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"]
-  }
-  </script>
-
+  <meta name="twitter:image" content="https://yourclassrep.com/images/Assets/Box-Transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-
   <style>
-
-    :root {
-      --black: #000000;
-      --white: #ffffff;
-      --gray: #c8c8c8;
-      --light-gray: #e8e8e8;
-      --dark-gray: #555555;
-      --red: #b44c4c;
+    :root { --black:#0d0d0d; --white:#f2f2f2; --light-gray:#999; --dark-gray:#4d4d4d; --red:#b44c4c; --ink:var(--black); --paper:var(--white); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:90px; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:22px "VT323",monospace; }
+    a { color:inherit; }
+    h1,h2,h3,.pixel { font-family:"Press Start 2P",monospace; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(23px,3.2vw,38px); line-height:1.5; }
+    h2 { margin:0; font-size:clamp(16px,2.2vw,22px); line-height:1.6; }
+    h3 { margin:0; font-size:11px; line-height:1.7; }
+    p { line-height:1.35; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin-inline:auto; }
+    .topbar { position:sticky; top:0; z-index:20; background:var(--black); color:var(--white); border-bottom:4px solid var(--red); }
+    .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
+    .brand { position:absolute; z-index:2; left:0; top:-8px; display:block; }
+    .brand img { display:block; width:220px; height:auto; max-width:none; object-fit:initial; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(12px,2vw,25px); }
+    .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
+    .navlinks a:hover { color:#ff8b8b; }
+    .navlinks .sale-nav { padding:13px 16px; background:var(--red); border:2px solid var(--white); box-shadow:4px 4px 0 var(--dark-gray); }
+    .hero { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); align-items:center; gap:34px; padding-block:38px 52px; }
+    .hero-copy { padding:12px 0; }
+    .hero-copy .subhead { margin:18px 0 24px; font-size:27px; }
+    .hero-video { position:relative; width:100%; aspect-ratio:16/9; border:4px solid var(--black); border-radius:18px; background:#222; }
+    .hero-video iframe,.short-video iframe { display:block; width:100%; height:100%; border:0; }
+    .countdown-card { padding:15px; background:var(--red); color:var(--white); border:3px solid var(--black); border-radius:14px; box-shadow:5px 5px 0 var(--black); }
+    .countdown-title { margin:0 0 11px; font:8px "Press Start 2P",monospace; line-height:1.8; }
+    .hero .countdown-title { margin-bottom:14px; font-size:10px; text-align:center; }
+    .countdown { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+    .count-unit { padding:8px 4px; background:var(--black); text-align:center; }
+    .count-value { display:block; font:clamp(11px,1.4vw,17px) "Press Start 2P",monospace; line-height:1.7; font-variant-numeric:tabular-nums; }
+    .count-label { display:block; margin-top:4px; font:6px "Press Start 2P",monospace; }
+    .button { display:inline-flex; justify-content:center; align-items:center; min-height:50px; padding:12px 18px; background:var(--red); color:var(--white); border:3px solid var(--black); border-radius:12px; box-shadow:5px 5px 0 var(--black); text-decoration:none; font:9px "Press Start 2P",monospace; line-height:1.8; }
+    .button:hover { background:var(--black); }
+    .hero .countdown-card { margin-top:20px; box-shadow:6px 6px 0 var(--black); }
+    .hero .button { width:100%; margin-top:13px; }
+    .band { padding:54px 0; border-block:3px solid var(--black); }
+    .band-paper { background:var(--white); }
+    .band-dark { color:var(--white); background:var(--black); }
+    .section-title { display:flex; gap:18px; align-items:center; justify-content:center; margin-bottom:22px; text-align:center; }
+    .section-title h2 { font-size:clamp(18px,2.7vw,28px); }
+    .section-title::before,.section-title::after { content:""; flex:none; width:75px; height:80px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
+    .section-intro { max-width:720px; margin:0 auto 30px; text-align:center; font-size:25px; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .step { min-height:180px; padding:20px; border:3px solid var(--black); border-radius:16px; background:var(--white); }
+    .step-num { display:grid; place-items:center; width:34px; height:34px; margin-bottom:15px; color:var(--white); background:var(--black); border-radius:50%; font:11px "Press Start 2P",monospace; }
+    .step p { margin-bottom:0; }
+    .character-sprinkle { position:absolute; z-index:1; width:108px; height:140px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .hero-video { position:relative; }
+    .hero-sprinkle-left,.hero-sprinkle-right { width:216px; height:280px; bottom:-65px; z-index:2; }
+    .hero-sprinkle-left { left:25px; transform:translateX(-50%); }
+    .hero-sprinkle-right { right:30px; transform:translateX(50%); }
+    .featured-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:15px; background:var(--white); border:3px solid var(--black); border-radius:18px; }
+    .featured { display:block; padding:12px; color:var(--black); background:var(--white); text-align:center; text-decoration:none; }
+    .featured:hover img,.featured:focus-visible img { box-shadow:0 0 0 3px var(--red); border-radius:14px; }
+    .featured img { display:block; width:216px; height:280px; margin:auto; object-fit:contain; image-rendering:pixelated; background:var(--white); }
+    .featured h3 { margin:10px 0 5px; color:var(--black); }
+    .featured p { margin:0; color:var(--dark-gray); }
+    .center { text-align:center; }
+    .section-action { margin-top:26px; }
+    .shorts-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:760px; margin:auto; }
+    .short-video { width:100%; aspect-ratio:9/16; max-height:680px; border:3px solid var(--black); border-radius:18px; background:var(--black); overflow:hidden; }
+    .facts { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:26px; }
+    .facts span { padding:10px 13px; border:2px solid var(--black); background:var(--white); font:8px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .sale-block { position:relative; display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-areas:"intro intro intro" "timer art points"; align-items:center; gap:26px; padding:30px; border:0; border-radius:24px; }
+    .sale-block-intro { grid-area:intro; text-align:center; }
+    .sale-block-intro h2 { margin-bottom:14px; font-size:clamp(23px,3vw,34px); }
+    .sale-block-intro p { max-width:760px; margin:0 auto; font-size:25px; }
+    .sale-countdown { grid-area:timer; width:100%; padding:22px 18px; border:3px solid var(--white); border-radius:18px; background:var(--red); color:var(--white); }
+    .sale-countdown .countdown-title { margin:0 0 16px; color:var(--white); font-size:14px; text-align:center; }
+    .sale-countdown .countdown { gap:14px; }
+    .sale-countdown .count-unit { position:relative; padding:0; background:transparent; }
+    .sale-countdown .count-value { padding:15px 4px; border-radius:8px; background:var(--white); color:var(--black); font-size:clamp(12px,1.5vw,18px); }
+    .sale-countdown .count-label { margin-top:8px; color:var(--black); font-size:7px; }
+    .sale-art-wrap { position:relative; grid-area:art; display:flex; min-height:340px; align-items:center; justify-content:center; }
+    .sale-box { display:block; width:100%; max-width:280px; max-height:360px; margin:auto; object-fit:contain; }
+    .sale-cta-group { grid-area:timer; display:flex; width:100%; flex-direction:column; justify-content:center; gap:20px; }
+    .sale-section-button { position:static; width:100%; min-height:82px; padding:18px 22px; border:4px solid var(--white); border-radius:18px; box-shadow:5px 5px 0 var(--black); font-size:11px; }
+    .sale-points { grid-area:points; margin:0; padding:0; list-style:none; font-size:24px; }
+    .sale-points li { position:relative; margin:12px 0; padding-left:36px; }
+    .sale-points li::before { content:"✓"; position:absolute; left:0; top:50%; display:grid; width:25px; height:25px; place-items:center; transform:translateY(-50%); color:var(--white); background:var(--red); border-radius:6px; font:11px "Press Start 2P",monospace; }
+    .sale-character-left,.sale-character-right { position:absolute; bottom:-25px; width:216px; height:280px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .sale-character-left { left:-165px; }
+    .sale-character-right { right:-165px; }
+    .discord-box { position:relative; overflow:hidden; padding:32px 230px; text-align:center; border:3px solid var(--black); border-radius:18px; background:var(--light-gray); }
+    .discord-box .section-title { margin-bottom:0; }
+    .discord-mascot { position:absolute; top:50%; width:216px; height:280px; transform:translateY(-50%); object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .discord-mascot.left { left:0; }
+    .discord-mascot.right { right:0; }
+    .discord-sparkle { position:absolute; width:42px; height:45px; object-fit:contain; pointer-events:none; }
+    .discord-sparkle.l1 { top:6px; left:12px; }
+    .discord-sparkle.l2 { top:50px; left:155px; }
+    .discord-sparkle.l3 { top:50%; left:8px; }
+    .discord-sparkle.l4 { bottom:8px; left:95px; }
+    .discord-sparkle.l5 { bottom:42px; left:180px; }
+    .discord-sparkle.r1 { top:8px; right:18px; }
+    .discord-sparkle.r2 { top:55px; right:150px; }
+    .discord-sparkle.r3 { top:50%; right:8px; }
+    .discord-sparkle.r4 { bottom:8px; right:95px; }
+    .discord-sparkle.r5 { bottom:45px; right:175px; }
+    .discord-box p { max-width:640px; margin:15px auto 22px; font-size:25px; }
+    footer { padding:26px 15px; color:var(--white); background:var(--black); text-align:center; border-top:4px solid var(--red); }
+    footer a { color:var(--white); }
+    .legal { display:block; max-width:900px; margin:20px auto 0; color:#c4c4c4; font-size:17px; }
+    .youtube-fallback { position:relative; display:flex; width:100%; height:100%; align-items:center; justify-content:center; overflow:hidden; color:var(--white); background:var(--black); text-decoration:none; text-align:center; }
+    .youtube-fallback img { position:absolute; width:52%; height:85%; object-fit:contain; opacity:.42; }
+    .youtube-fallback span { position:relative; padding:14px 18px; background:var(--red); border:3px solid var(--white); font:9px/1.8 "Press Start 2P",monospace; }
+    .maker-logo { display:block; width:min(210px,58vw); height:auto; margin:0 auto 18px; }
+    .hero-copy { position:relative; }
+    .hero-copy::after { content:""; position:absolute; width:31px; height:31px; right:-9px; top:-14px; background:center/contain no-repeat url("images/Assets/Stars/4pointStarL.png"); }
+    @media(max-width:800px) {
+      .nav { display:block; padding-block:12px; }
+      .brand img { width:220px; }
+      .navlinks { justify-content:flex-end; flex-wrap:wrap; gap:10px 14px; margin-left:0; padding:70px 0 3px; }
+      .navlinks a { font-size:7px; }
+      .hero { grid-template-columns:1fr; gap:20px; padding-top:27px; }
+      .hero-copy { max-width:560px; }
+      .hero-copy .subhead { margin:12px 0 15px; }
+      .hero .countdown-card { max-width:430px; }
+      .hero .button { max-width:430px; }
+      .featured img { width:162px; height:210px; }
+      .character-sprinkle { width:108px; height:140px; }
+      .hero-sprinkle-left,.hero-sprinkle-right { width:162px; height:210px; bottom:-50px; }
+      .sale-block { grid-template-columns:1fr 1fr; grid-template-areas:"intro intro" "timer points" "art art"; }
+      .sale-art-wrap { min-height:300px; }
+      .sale-section-button { left:0; width:100%; }
+      .sale-character-left,.sale-character-right { width:162px; height:210px; }
+      .sale-character-left { left:-135px; }
+      .sale-character-right { right:-135px; }
+      .discord-box { padding-inline:170px; }
+      .discord-mascot { width:162px; height:210px; }
+      .discord-sparkle { width:30px; height:32px; }
+    }
+    @media(max-width:560px) {
+      body { font-size:20px; }
+      .wrap { width:min(100% - 28px,1160px); }
+      .nav { display:block; }
+      .brand { top:-6px; }
+      .brand img { width:220px; height:auto; }
+      .navlinks { justify-content:flex-start; margin-left:0; padding:78px 0 3px; }
+      .navlinks a { font-size:6px; }
+      .navlinks .sale-nav { padding:9px; }
+      .hero { padding-block:24px 34px; }
+      .hero-copy .subhead { font-size:23px; }
+      .countdown-card { padding:11px 8px; }
+      .count-value { font-size:10px; }
+      .count-label { font-size:5px; }
+      .band { padding:40px 0; }
+      .steps { grid-template-columns:1fr; }
+      .step { min-height:0; }
+      .featured-grid { grid-template-columns:repeat(2,1fr); gap:5px; padding:8px; }
+      .featured { padding:8px 4px; }
+      .featured img { width:108px; height:140px; }
+      .featured h3 { font-size:8px; }
+      .shorts-grid { grid-template-columns:1fr; max-width:360px; }
+      .sale-block { grid-template-columns:1fr; grid-template-areas:"intro" "timer" "art" "points"; padding:20px 14px 30px; text-align:center; }
+      .sale-block-intro p { font-size:22px; }
+      .sale-countdown { max-width:380px; justify-self:center; padding:18px 10px; }
+      .sale-countdown .countdown { gap:8px; }
+      .sale-countdown .countdown-title { font-size:11px; }
+      .sale-countdown .count-value { font-size:12px; }
+      .sale-countdown .count-label { font-size:6px; }
+      .sale-art-wrap { min-height:260px; padding-bottom:40px; }
+      .sale-box { max-width:210px; max-height:260px; }
+      .sale-section-button { bottom:5px; left:0; width:100%; min-height:68px; font-size:8px; }
+      .sale-points { text-align:left; justify-self:center; }
+      .sale-character-left,.sale-character-right { bottom:-12px; width:54px; height:70px; }
+      .sale-character-left { left:-5px; }
+      .sale-character-right { right:-5px; }
+      .facts { gap:8px; }
+      .facts span { font-size:7px; }
+      .character-sprinkle { width:54px; height:70px; }
+      .hero-sprinkle-left,.hero-sprinkle-right { width:108px; height:140px; bottom:-34px; }
+      .hero-sprinkle-left { left:-12px; }
+      .hero-sprinkle-right { right:-12px; }
+      .discord-box { padding:26px 55px; }
+      .discord-mascot { width:54px; height:70px; }
+      .discord-mascot.left { left:-5px; }
+      .discord-mascot.right { right:-5px; }
+      .discord-sparkle { width:24px; height:26px; }
+      .discord-sparkle.l2 { left:34px; }
+      .discord-sparkle.l4 { left:28px; }
+      .discord-sparkle.l5 { left:38px; }
+      .discord-sparkle.r2 { right:34px; }
+      .discord-sparkle.r4 { right:28px; }
+      .discord-sparkle.r5 { right:38px; }
     }
-
-    .how-to-play strong.red {
-      color: var(--red);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--white);
-      color: var(--black);
-      font-family: "VT323", monospace;
-      font-size: 22px;
-      image-rendering: pixelated;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-
-      background: var(--black);
-      color: var(--white);
-
-      border-bottom: 4px solid var(--red);
-
-      padding: 14px 30px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 20px;
-    }
-
-    nav .logo {
-      font-family: "Press Start 2P", monospace;
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    nav .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-family: "Press Start 2P", monospace;
-      font-size: 9px;
-    }
-
-    nav a:hover {
-      color: var(--red);
-    }
-
-    /* =========================
-       GENERAL
-    ========================= */
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 20px;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Press Start 2P", monospace;
-      line-height: 1.6;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin: 0;
-    }
-
-    h2 {
-      font-size: 18px;
-      margin: 0 0 25px;
-    }
-
-    h3 {
-      font-size: 11px;
-      margin: 0 0 15px;
-    }
-
-    p {
-      line-height: 1.4;
-    }
-
-    /* =========================
-       BUTTONS
-    ========================= */
-
-    .button {
-      display: inline-block;
-
-      padding: 17px 25px;
-
-      background: var(--red);
-      color: var(--white);
-
-      border: 4px solid var(--black);
-
-      box-shadow: 6px 6px 0 var(--black);
-
-      text-decoration: none;
-
-      font-family: "Press Start 2P", monospace;
-      font-size: 10px;
-
-      transition: transform 0.05s, box-shadow 0.05s;
-    }
-
-    .button:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .button:active {
-      transform: translate(6px, 6px);
-      box-shadow: 0 0 0 var(--black);
-    }
-
-    .button.secondary {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    .button.secondary:hover {
-      background: var(--red);
-      color: var(--white);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      margin: 45px auto 80px;
-
-      background: var(--gray);
-
-      border: 6px solid var(--black);
-
-      box-shadow: 10px 10px 0 var(--black);
-
-      position: relative;
-
-      overflow: hidden;
-    }
-
-    .hero-header {
-      background: var(--black);
-      color: var(--white);
-
-      padding: 14px 20px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      font-family: "Press Start 2P", monospace;
-      font-size: 9px;
-    }
-
-    .hero-header span {
-      color: var(--red);
-    }
-
-    .hero-image {
-      width: 100%;
-      display: block;
-
-      max-height: 620px;
-      object-fit: cover;
-
-      border-bottom: 6px solid var(--black);
-    }
-
-    .hero-content {
-      text-align: center;
-      padding: 45px 30px 50px;
-    }
-
-    .hero-content h1 {
-      max-width: 850px;
-      margin: 0 auto 25px;
-    }
-
-    .hero-tagline {
-      max-width: 700px;
-
-      margin: 0 auto 30px;
-
-      font-size: 28px;
-      line-height: 1.2;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-
-      flex-wrap: wrap;
-
-      margin-top: 30px;
-    }
-
-    .hero-meta {
-      margin-top: 30px;
-
-      font-family: "Press Start 2P", monospace;
-      font-size: 8px;
-
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta span::before {
-      content: "■";
-      color: var(--red);
-      margin-right: 8px;
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-      margin: 100px auto;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-
-      margin-bottom: 35px;
-    }
-
-    .section-header::before,
-    .section-header::after {
-      content: "";
-
-      height: 4px;
-
-      background: var(--black);
-
-      flex: 1;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .section-intro {
-      max-width: 750px;
-      margin: 0 auto 40px;
-
-      text-align: center;
-
-      font-size: 25px;
-    }
-
-    /* =========================
-       THREE STEPS
-    ========================= */
-
-    .steps {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 20px;
-    }
-
-    .step {
-      border: 5px solid var(--black);
-
-      padding: 30px 25px;
-
-      background: var(--white);
-
-      box-shadow: 6px 6px 0 var(--black);
-
-      position: relative;
-    }
-
-    .step-number {
-      font-family: "Press Start 2P", monospace;
-      font-size: 10px;
-
-      color: var(--red);
-
-      margin-bottom: 25px;
-    }
-
-    .step p {
-      margin-bottom: 0;
-    }
-
-    /* =========================
-       HOOK SECTION
-    ========================= */
-
-    .hook {
-      background: var(--black);
-      color: var(--white);
-
-      border: 6px solid var(--black);
-
-      padding: 55px 35px;
-
-      text-align: center;
-
-      box-shadow: 10px 10px 0 var(--red);
-    }
-
-    .hook h2 {
-      color: var(--white);
-    }
-
-    .hook p {
-      max-width: 750px;
-
-      margin: auto;
-
-      font-size: 27px;
-    }
-
-    .hook .red {
-      color: var(--red);
-    }
-
-    /* =========================
-       FEATURES
-    ========================= */
-
-    .features {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 20px;
-    }
-
-    .feature {
-      border: 4px solid var(--black);
-
-      padding: 28px;
-
-      background: var(--gray);
-    }
-
-    .feature h3 {
-      margin-bottom: 12px;
-    }
-
-    .feature p {
-      margin: 0;
-    }
-
-    /* =========================
-       GALLERY
-    ========================= */
-
-    .gallery-wrapper {
-      position: relative;
-    }
-
-    .gallery {
-      display: flex;
-
-      overflow-x: auto;
-
-      gap: 20px;
-
-      padding: 10px 10px 30px;
-
-      scroll-snap-type: x mandatory;
-    }
-
-    .gallery img {
-      height: 350px;
-
-      border: 5px solid var(--black);
-
-      background: var(--gray);
-
-      scroll-snap-align: center;
-
-      flex-shrink: 0;
-
-      image-rendering: pixelated;
-
-      box-shadow: 6px 6px 0 var(--black);
-
-      transition: border-color 0.1s;
-
-      cursor: pointer;
-    }
-
-    .gallery img:hover {
-      border-color: var(--red);
-    }
-
-    .gallery::-webkit-scrollbar {
-      height: 14px;
-    }
-
-    .gallery::-webkit-scrollbar-track {
-      background: var(--gray);
-      border: 3px solid var(--black);
-    }
-
-    .gallery::-webkit-scrollbar-thumb {
-      background: var(--red);
-      border: 2px solid var(--black);
-    }
-
-    /* =========================
-       LIGHTBOX
-    ========================= */
-
-    .lightbox {
-      display: none;
-
-      position: fixed;
-      inset: 0;
-
-      z-index: 1000;
-
-      background: rgba(0, 0, 0, 0.92);
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 30px;
-
-      cursor: pointer;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 95vw;
-      max-height: 90vh;
-
-      width: auto;
-      height: auto;
-
-      border: 5px solid var(--white);
-
-      box-shadow: 8px 8px 0 var(--red);
-
-      image-rendering: pixelated;
-
-      object-fit: contain;
-
-      cursor: default;
-    }
-
-    .lightbox-close {
-      position: absolute;
-
-      top: 20px;
-      right: 25px;
-
-      color: var(--white);
-
-      font-family: "Press Start 2P", monospace;
-      font-size: 18px;
-
-      cursor: pointer;
-
-      z-index: 1001;
-    }
-
-    .lightbox-close:hover {
-      color: var(--red);
-    }
-
-    .lightbox-nav {
-      position: absolute;
-
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      width: 55px;
-      height: 70px;
-
-      background: var(--black);
-      color: var(--white);
-
-      border: 4px solid var(--white);
-
-      font-family: "Press Start 2P", monospace;
-      font-size: 18px;
-
-      cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      z-index: 1001;
-    }
-
-    .lightbox-nav:hover {
-      background: var(--red);
-    }
-
-    .lightbox-prev {
-      left: 25px;
-    }
-
-    .lightbox-next {
-      right: 25px;
-    }
-
-    /* =========================
-       HOW TO PLAY
-    ========================= */
-
-    .how-to-play {
-      border: 5px solid var(--black);
-
-      background: var(--gray);
-
-      box-shadow: 8px 8px 0 var(--black);
-
-      padding: 40px;
-    }
-
-    .round {
-      display: grid;
-
-      grid-template-columns: 80px 1fr;
-
-      gap: 25px;
-
-      padding: 25px 0;
-
-      border-bottom: 3px solid var(--black);
-    }
-
-    .round:last-child {
-      border-bottom: none;
-    }
-
-    .round-number {
-      font-family: "Press Start 2P", monospace;
-
-      color: var(--red);
-
-      font-size: 10px;
-
-      padding-top: 5px;
-    }
-
-    .round h3 {
-      margin-bottom: 8px;
-    }
-
-    .round p {
-      margin: 0;
-    }
-
-    /* =========================
-       MAILING LIST
-    ========================= */
-
-    .signup {
-      background: var(--gray);
-
-      border: 6px solid var(--black);
-
-      box-shadow: 10px 10px 0 var(--black);
-
-      padding: 55px 30px;
-
-      text-align: center;
-    }
-
-    .signup p {
-      max-width: 650px;
-
-      margin: 0 auto 25px;
-
-      font-size: 25px;
-    }
-
-    .signup-form {
-      display: flex;
-
-      justify-content: center;
-
-      align-items: stretch;
-
-      gap: 10px;
-
-      flex-wrap: wrap;
-    }
-
-    input[type=email] {
-      width: 320px;
-      max-width: 100%;
-
-      padding: 14px;
-
-      background: var(--white);
-
-      border: 4px solid var(--black);
-
-      color: var(--black);
-
-      font-family: "VT323", monospace;
-      font-size: 22px;
-
-      outline: none;
-    }
-
-    input[type=email]:focus {
-      border-color: var(--red);
-    }
-
-    input[type=email]::placeholder {
-      color: var(--dark-gray);
-    }
-
-    .signup-form .button {
-      margin: 0;
-
-      cursor: pointer;
-    }
-
-    /* =========================
-       FINAL CTA
-    ========================= */
-
-    .final-cta {
-      background: var(--black);
-
-      color: var(--white);
-
-      text-align: center;
-
-      padding: 90px 20px;
-
-      border-top: 6px solid var(--red);
-
-      margin-top: 110px;
-    }
-
-    .final-cta h2 {
-      font-size: 22px;
-
-      margin-bottom: 20px;
-    }
-
-    .final-cta p {
-      max-width: 600px;
-
-      margin: 0 auto 35px;
-
-      font-size: 25px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-      background: var(--black);
-
-      color: var(--gray);
-
-      text-align: center;
-
-      padding: 30px;
-
-      font-size: 18px;
-
-      border-top: 1px solid var(--dark-gray);
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 750px) {
-
-      body {
-        font-size: 20px;
-      }
-
-      nav {
-        padding: 15px;
-      }
-
-      nav .logo {
-        font-size: 9px;
-      }
-
-      nav .nav-links {
-        gap: 12px;
-      }
-
-      nav a {
-        font-size: 7px;
-      }
-
-      nav a.gallery-link {
-        display: none;
-      }
-
-      .hero {
-        margin-top: 25px;
-        box-shadow: 6px 6px 0 var(--black);
-      }
-
-      .hero-header {
-        font-size: 7px;
-      }
-
-      .hero-image {
-        max-height: none;
-      }
-
-      .hero-content {
-        padding: 35px 18px 40px;
-      }
-
-      h1 {
-        font-size: 20px;
-      }
-
-      h2 {
-        font-size: 14px;
-      }
-
-      .hero-tagline {
-        font-size: 23px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-buttons .button {
-        width: 100%;
-        max-width: 320px;
-      }
-
-      .hero-meta {
-        font-size: 7px;
-      }
-
-      .section {
-        margin: 75px auto;
-      }
-
-      .section-header h2 {
-        white-space: normal;
-      }
-
-      .steps,
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .hook {
-        padding: 40px 20px;
-        box-shadow: 6px 6px 0 var(--red);
-      }
-
-      .hook p {
-        font-size: 24px;
-      }
-
-      .gallery img {
-        height: 280px;
-      }
-
-      .how-to-play {
-        padding: 25px 20px;
-      }
-
-      .round {
-        grid-template-columns: 55px 1fr;
-        gap: 15px;
-      }
-
-      .signup {
-        padding: 40px 20px;
-        box-shadow: 6px 6px 0 var(--black);
-      }
-
-      .signup-form {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      input[type=email],
-      .signup-form .button {
-        width: 100%;
-        max-width: 350px;
-      }
-
-      .final-cta {
-        padding: 70px 20px;
-      }
-
-      .final-cta h2 {
-        font-size: 16px;
-      }
-
-      .lightbox {
-        padding: 15px;
-      }
-
-      .lightbox img {
-        max-width: 92vw;
-        max-height: 85vh;
-
-        border-width: 4px;
-
-        box-shadow: 5px 5px 0 var(--red);
-      }
-
-      .lightbox-close {
-        top: 15px;
-        right: 18px;
-        font-size: 14px;
-      }
-
-      .lightbox-nav {
-        width: 45px;
-        height: 55px;
-        font-size: 14px;
-      }
-
-      .lightbox-prev {
-        left: 10px;
-      }
-
-      .lightbox-next {
-        right: 10px;
-      }
-
-    }
-
-
-    /* CROWD SALE COUNTDOWN */
-    .crowdsale-panel {
-      margin: 0 auto 34px;
-      max-width: 850px;
-      padding: 26px 22px 30px;
-      background: var(--black);
-      color: var(--white);
-      border: 5px solid var(--red);
-      box-shadow: 7px 7px 0 var(--black);
-    }
-    .crowdsale-kicker {
-      margin: 0 0 15px;
-      color: #ff7777;
-      font-family: "Press Start 2P", monospace;
-      font-size: 11px;
-      line-height: 1.8;
-    }
-    .crowdsale-panel h2 {
-      margin: 0 0 20px;
-      font-size: clamp(16px, 2.4vw, 24px);
-      line-height: 1.7;
-    }
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin: 0 auto 24px;
-      max-width: 650px;
-    }
-    .countdown-unit {
-      padding: 15px 6px 12px;
-      background: #292929;
-      border: 2px solid #777;
-    }
-    .countdown-value {
-      display: block;
-      font-family: "Press Start 2P", monospace;
-      font-size: clamp(18px, 3.6vw, 34px);
-      line-height: 1.5;
-      font-variant-numeric: tabular-nums;
-    }
-    .countdown-label {
-      display: block;
-      color: #ff7777;
-      font-family: "Press Start 2P", monospace;
-      font-size: clamp(7px, 1vw, 10px);
-      margin-top: 8px;
-    }
-    .crowdsale-panel .button {
-      display: block;
-      width: fit-content;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 22px 26px;
-      font-size: clamp(10px, 1.5vw, 15px);
-      line-height: 1.8;
-    }
-    .crowdsale-note { margin: 18px 0 0; font-size: 21px; }
-    .brand-intro { max-width: 850px; margin: 0 auto 24px; }
-    .brand-intro strong { color: var(--red); }
-    @media (max-width: 520px) {
-      .crowdsale-panel { padding: 20px 12px 24px; }
-      .countdown { gap: 5px; }
-      .countdown-unit { padding: 10px 2px; }
-      .crowdsale-panel .button { width: 100%; padding: 17px 10px; }
-    }
-
   </style>
 </head>
-
 <body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
+      <div class="navlinks">
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="#how-it-works">RULES</a>
+        <a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a>
+        <a href="#videos">VIDEOS</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
+      </div>
+    </nav>
+  </header>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav>
-
-  <div class="logo">
-    YOUR CLASS REP
-  </div>
-
-  <div class="nav-links">
-
-    <a href="#how-to-play">
-      HOW TO PLAY
-    </a>
-
-    <a class="gallery-link" href="#gallery">
-      GALLERY
-    </a>
-
-    <a
-      href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
-      target="_blank"
-      rel="noopener noreferrer">
-      BUY
-    </a>
-
-  </div>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<div class="container">
-
-  <section class="hero">
-
-    <div class="hero-header">
-      <span>PLAYER 1</span>
-      <span>VS</span>
-      <span>PLAYER 2</span>
+  <main>
+    <div class="wrap">
+      <section class="hero" aria-labelledby="main-title">
+        <div class="hero-copy">
+          <h1 id="main-title">A card game<br>for two players</h1>
+          <p class="subhead">Compare Influence, Secure the votes. Become <strong>YOUR CLASS REP!</strong></p>
+          <div class="countdown-card" aria-live="polite">
+            <p class="countdown-title" id="home-sale-message">CROWD SALE STARTS IN</p>
+            <div class="countdown" id="home-countdown" aria-label="Countdown to the crowd sale">
+              <div class="count-unit"><span class="count-value" data-unit="days">--</span><span class="count-label">DAYS</span></div>
+              <div class="count-unit"><span class="count-value" data-unit="hours">--</span><span class="count-label">HOURS</span></div>
+              <div class="count-unit"><span class="count-value" data-unit="minutes">--</span><span class="count-label">MIN</span></div>
+              <div class="count-unit"><span class="count-value" data-unit="seconds">--</span><span class="count-label">SEC</span></div>
+            </div>
+          </div>
+          <a class="button" id="home-sale-button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
+        </div>
+        <div class="hero-video"><iframe data-youtube-id="1VZW6BRRT9M" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="Your Class Rep gameplay" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><img class="character-sprinkle hero-sprinkle-left" src="images/Characters/04-NerdM-Ch.png" alt="" aria-hidden="true"><img class="character-sprinkle hero-sprinkle-right" src="images/Characters/03-NerdF-Ch.png" alt="" aria-hidden="true"></div>
+      </section>
     </div>
 
-    <img
-      class="hero-image"
-      src="images/Action Shots/YCR-Hero-2.png"
-      alt="Your Class Rep card game">
-
-    <div class="hero-content">
-
-      <div class="crowdsale-panel" aria-labelledby="crowdsale-title">
-        <p class="crowdsale-kicker">THE CROWD SALE IS COMING</p>
-        <h2 id="crowdsale-title">YOUR CLASS REP: THE CARD GAME</h2>
-        <div class="countdown" id="crowdsale-countdown" role="timer" aria-label="Time until the Your Class Rep crowd sale begins">
-          <div class="countdown-unit"><span class="countdown-value" id="countdown-days">--</span><span class="countdown-label">DAYS</span></div>
-          <div class="countdown-unit"><span class="countdown-value" id="countdown-hours">--</span><span class="countdown-label">HOURS</span></div>
-          <div class="countdown-unit"><span class="countdown-value" id="countdown-minutes">--</span><span class="countdown-label">MINUTES</span></div>
-          <div class="countdown-unit"><span class="countdown-value" id="countdown-seconds">--</span><span class="countdown-label">SECONDS</span></div>
+    <section class="band band-paper" id="how-it-works">
+      <div class="wrap">
+        <div class="section-title"><h2>HOW IT WORKS</h2></div>
+        <div class="steps">
+          <article class="step"><span class="step-num">1</span><h3>BUILD YOUR CLASSROOM</h3><p>Choose your cards and plan a classroom with the students you think can win.</p></article>
+          <article class="step"><span class="step-num">2</span><h3>CAMPAIGN</h3><p>Play cards secretly, compare Influence, and use abilities to shift the election.</p></article>
+          <article class="step"><span class="step-num">3</span><h3>TALLY THE VOTES</h3><p>Resolve the face-up cards. The player with the most votes becomes Class Rep.</p></article>
         </div>
-        <a class="button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
-        <p class="crowdsale-note" id="crowdsale-status">Launching October 31, 2026 at 12:00 AM Eastern Time.</p>
       </div>
+    </section>
 
-      <h1>
-        THE ELECTION<br>
-        IS ON.
-      </h1>
-
-      <p class="hero-tagline">
-        A fast-paced card game where you and your opponent battle to become
-        Class Rep.
-      </p>
-
-      <p class="brand-intro">Your Class Rep is a growing entertainment brand built around school-life characters, games, comic strips, and creative products. Our first release is <strong>Your Class Rep: The Card Game</strong>, a quick, strategic two-player classroom election game.</p>
-
-      <div class="hero-buttons">
-
-        <a
-          class="button"
-          href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
-          target="_blank"
-          rel="noopener noreferrer">
-          GET THE GAME
-        </a>
-
-        <a
-          class="button secondary"
-          href="#signup">
-          JOIN THE CLASS
-        </a>
-
-      </div>
-
-      <div class="hero-meta">
-
-        <span>2 PLAYERS</span>
-        <span>QUICK GAMES</span>
-        <span>STRATEGY</span>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       THE PITCH
-  ========================= -->
-
-  <section class="section">
-
-    <div class="section-header">
-      <h2>RUN. SCHEME. WIN.</h2>
-    </div>
-
-    <p class="section-intro">
-      Everyone wants to be Class Rep. Read your opponent, choose the right
-      student, and collect enough votes to win the election.
-    </p>
-
-    <div class="steps">
-
-      <div class="step">
-
-        <div class="step-number">
-          01
+    <section class="band band-dark" id="featured-cards">
+      <div class="wrap">
+        <div class="section-title"><h2>MEET SOME OF THE CARDS</h2></div>
+        <p class="section-intro">Every character brings a different ability. Which ones will you put in your classroom?</p>
+        <div class="featured-grid">
+          <a class="featured" href="cards.html?card=1#card-detail"><img src="images/Characters/01-SpeechM-Ch.png" alt="Speech Kid character art"><h3>SPEECH KID</h3></a>
+          <a class="featured" href="cards.html?card=6#card-detail"><img src="images/Characters/06-CoolF-Ch.png" alt="Cool Kid character art"><h3>COOL KID</h3></a>
+          <a class="featured" href="cards.html?card=13#card-detail"><img src="images/Characters/13-PrincM-Ch.png" alt="Principal character art"><h3>PRINCIPAL</h3></a>
+          <a class="featured" href="cards.html?card=11#card-detail"><img src="images/Characters/11-PetF-Ch.png" alt="Teacher's Pet character art"><h3>TEACHER'S PET</h3></a>
         </div>
-
-        <h3>
-          PICK YOUR CARD
-        </h3>
-
-        <p>
-          Choose a student in secret. Every card brings something different
-          to the election.
-        </p>
-
+        <div class="center section-action"><a class="button" href="cards.html">EXPLORE THE CARDS</a></div>
       </div>
+    </section>
 
-      <div class="step">
-
-        <div class="step-number">
-          02
+    <section class="band band-paper" id="videos">
+      <div class="wrap">
+        <div class="section-title"><h2>SEE THE GAME IN ACTION</h2></div>
+        <p class="section-intro">Quick looks at the game and the people behind it.</p>
+        <div class="shorts-grid">
+          <div class="short-video"><iframe data-youtube-id="dXkFr5CicBQ" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/dXkFr5CicBQ" title="Playing Your Class Rep" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="short-video"><iframe data-youtube-id="D9mlF4GlQIM" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/D9mlF4GlQIM" title="Designing the Your Class Rep cards" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
-
-        <h3>
-          REVEAL
-        </h3>
-
-        <p>
-          Reveal your choices together and see which student's Influence
-          takes the round.
-        </p>
-
       </div>
+    </section>
 
-      <div class="step">
-
-        <div class="step-number">
-          03
+    <section class="band band-dark" id="crowd-sale">
+      <div class="wrap sale-block">
+        <img class="sale-character-left" src="images/Characters/36-MascotM-Ch.png" alt="" aria-hidden="true">
+        <img class="sale-character-right" src="images/Characters/35-MascotF-Ch.png" alt="" aria-hidden="true">
+        <div class="sale-block-intro">
+          <h2 id="sale-section-heading">THE CROWD SALE</h2>
+          <p>Join the crowd sale and save on Your Class Rep. The more people join, the bigger the discount!</p>
         </div>
-
-        <h3>
-          TAKE THE VOTES
-        </h3>
-
-        <p>
-          Win rounds, collect Votes, and finish the election with the most
-          support.
-        </p>
-
+        <div class="sale-cta-group">
+        <div class="sale-countdown" aria-live="polite">
+            <p class="countdown-title" id="sale-section-message">LAUNCHES OCT 31</p>
+            <div class="countdown" id="sale-countdown" aria-label="Countdown to the crowd sale">
+              <div class="count-unit"><span class="count-value" data-unit="days">--</span><span class="count-label">DAYS</span></div>
+              <div class="count-unit"><span class="count-value" data-unit="hours">--</span><span class="count-label">HOURS</span></div>
+              <div class="count-unit"><span class="count-value" data-unit="minutes">--</span><span class="count-label">MIN</span></div>
+              <div class="count-unit"><span class="count-value" data-unit="seconds">--</span><span class="count-label">SEC</span></div>
+            </div>
+        </div>
+        <a class="button sale-section-button" id="sale-section-button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
+        </div>
+        <div class="sale-art-wrap">
+          <img class="sale-box" src="images/Assets/Box-Transparent.png" alt="Your Class Rep card game box" loading="lazy">
+        </div>
+        <ul class="sale-points"><li>42 unique character cards!</li><li>Pocket sized game!</li><li>Great for 2 players!</li><li>Plays in just a few minutes!</li></ul>
       </div>
+    </section>
 
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       HOOK
-  ========================= -->
-
-  <section class="section">
-
-    <div class="hook">
-
-      <h2>
-        EVERYONE HAS AN AGENDA.
-      </h2>
-
-      <p>
-        Every card brings three things to the election:
-        <strong class="red">Influence</strong>,
-        an <strong class="red">Ability</strong>, and
-        <strong class="red">Votes</strong>.
-      </p>
-
-      <p>
-        <strong class="red">Influence</strong> determines who comes out on top
-        each round. <strong class="red">Abilities</strong> give you ways to
-        change what happens. <strong class="red">Votes</strong> are what
-        ultimately decide who becomes Class Rep.
-      </p>
-
-      <p>
-        The trick is knowing which card to play, and when.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FEATURES
-  ========================= -->
-
-  <section class="section">
-
-    <div class="section-header">
-      <h2>THE CLASSROOM</h2>
-    </div>
-
-    <div class="features">
-
-      <div class="feature">
-
-        <h3>
-          2 PLAYERS
-        </h3>
-
-        <p>
-          Go head-to-head in a direct battle for the classroom.
-        </p>
-
+    <section class="band band-paper">
+      <div class="wrap discord-box">
+        <img class="discord-mascot left" src="images/Characters/11-PetF-Ch1.png" alt="" aria-hidden="true">
+        <img class="discord-mascot right" src="images/Characters/11-PetF-Ch2.png" alt="" aria-hidden="true">
+        <img class="discord-sparkle l1" src="images/Assets/Stars/4pointStarL.png" alt="" aria-hidden="true"><img class="discord-sparkle l2" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true"><img class="discord-sparkle l3" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true"><img class="discord-sparkle l4" src="images/Assets/Stars/5pointStarL.png" alt="" aria-hidden="true"><img class="discord-sparkle l5" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true">
+        <img class="discord-sparkle r1" src="images/Assets/Stars/5pointStarL.png" alt="" aria-hidden="true"><img class="discord-sparkle r2" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true"><img class="discord-sparkle r3" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true"><img class="discord-sparkle r4" src="images/Assets/Stars/4pointStarL.png" alt="" aria-hidden="true"><img class="discord-sparkle r5" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true">
+        <div class="section-title"><h2>JOIN THE CLASS</h2></div>
+        <p>Join the Discord community for Your Class Rep and other LessThanPi projects.</p>
+        <a class="button" href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a>
       </div>
-
-      <div class="feature">
-
-        <h3>
-          QUICK TO PLAY
-        </h3>
-
-        <p>
-          A complete election takes only a few rounds, making it easy to
-          play again and again.
-        </p>
-
-      </div>
-
-      <div class="feature">
-
-        <h3>
-          EVERY CARD MATTERS
-        </h3>
-
-        <p>
-          Every card has a unique ability that can completely change a
-          round.
-        </p>
-
-      </div>
-
-      <div class="feature">
-
-        <h3>
-          PICK YOUR MOMENT
-        </h3>
-
-        <p>
-          Strong cards are valuable. Knowing when to play them is where the
-          strategy comes in.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       GALLERY
-  ========================= -->
-
-  <section class="section" id="gallery">
-
-    <div class="section-header">
-      <h2>GAME GALLERY</h2>
-    </div>
-
-    <p class="section-intro">
-      See the election in action.
-    </p>
-
-    <div class="gallery">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots1.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots2.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots3.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots4.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots5.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots6.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots7.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots8.png"
-        alt="Your Class Rep gameplay">
-
-      <img
-        src="images/Action Shots/TCG-YCR-ActionShots9.png"
-        alt="Your Class Rep gameplay">
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       HOW TO PLAY
-  ========================= -->
-
-  <section class="section" id="how-to-play">
-
-    <div class="section-header">
-      <h2>HOW TO PLAY</h2>
-    </div>
-
-    <div class="how-to-play">
-
-      <div class="round">
-
-        <div class="round-number">
-          01
-        </div>
-
-        <div>
-          <h3>
-            CHOOSE
-          </h3>
-
-          <p>
-            Both players secretly choose one card.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="round">
-
-        <div class="round-number">
-          02
-        </div>
-
-        <div>
-          <h3>
-            REVEAL
-          </h3>
-
-          <p>
-            Reveal your cards at the same time.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="round">
-
-        <div class="round-number">
-          03
-        </div>
-
-        <div>
-          <h3>
-            RESOLVE
-          </h3>
-
-          <p>
-            Apply <strong class="red">Influential Abilities</strong> and
-            compare <strong class="red">Influence</strong>. If abilities
-            conflict, the higher Influence takes precedence.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="round">
-
-        <div class="round-number">
-          04
-        </div>
-
-        <div>
-          <h3>
-            WIN
-          </h3>
-
-          <p>
-            Winning and tied cards remain face up. Losing cards are placed
-            face down.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="round">
-
-        <div class="round-number">
-          05
-        </div>
-
-        <div>
-          <h3>
-            REPEAT
-          </h3>
-
-          <p>
-            Repeat steps 1–4 six times. You'll have one card remaining
-            in your hand.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="round">
-
-        <div class="round-number">
-          06
-        </div>
-
-        <div>
-          <h3>
-            BECOME CLASS REP
-          </h3>
-
-          <p>
-            Resolve the <strong class="red">Votes</strong> and
-            <strong class="red">Voter Abilities</strong> of the face-up
-            cards. The player with the most Votes wins the election.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       MAILING LIST
-  ========================= -->
-
-  <section class="section" id="signup">
-
-    <div class="signup">
-
-      <h2>
-        GET ON THE LIST
-      </h2>
-
-      <p>
-        Get updates on Your Class Rep, new cards, releases, and what's
-        happening behind the scenes.
-      </p>
-
-      <form
-        class="signup-form"
-        action="https://app.kit.com/forms/9642522/subscriptions"
-        method="post">
-
-        <input
-          type="email"
-          name="email_address"
-          placeholder="ENTER YOUR EMAIL"
-          required>
-
-        <button
-          class="button"
-          type="submit">
-          JOIN THE CLASS
-        </button>
-
-      </form>
-
-    </div>
-
-  </section>
-
-</div>
-
-
-<!-- =========================
-     FINAL CTA
-========================= -->
-
-<section class="final-cta">
-
-  <h2>
-    CLASS IS IN SESSION.
-  </h2>
-
-  <p>
-    Six rounds. Two players. One Class Rep.
-  </p>
-
-  <a
-    class="button"
-    href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game"
-    target="_blank"
-    rel="noopener noreferrer">
-    GET YOUR CLASS REP
-  </a>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="footer">
-
-  BUILT BY LESSTHANPI
-
-  <br><br>
-
-  YOUR CLASS REP • GAMES, COMICS & MORE
-
-</footer>
-
-
-<!-- =========================
-     LIGHTBOX
-========================= -->
-
-<div class="lightbox" id="lightbox">
-
-  <div class="lightbox-close" id="lightbox-close">
-    X
-  </div>
-
-  <button
-    class="lightbox-nav lightbox-prev"
-    id="lightbox-prev"
-    aria-label="Previous image">
-    &lt;
-  </button>
-
-  <img
-    id="lightbox-image"
-    src=""
-    alt="">
-
-  <button
-    class="lightbox-nav lightbox-next"
-    id="lightbox-next"
-    aria-label="Next image">
-    &gt;
-  </button>
-
-</div>
-
-
-<!-- =========================
-     LIGHTBOX SCRIPT
-========================= -->
-
-<script>
-
-  const galleryImages = Array.from(
-    document.querySelectorAll(".gallery img")
-  );
-
-  const lightbox = document.getElementById("lightbox");
-
-  const lightboxImage =
-    document.getElementById("lightbox-image");
-
-  const lightboxClose =
-    document.getElementById("lightbox-close");
-
-  const lightboxPrev =
-    document.getElementById("lightbox-prev");
-
-  const lightboxNext =
-    document.getElementById("lightbox-next");
-
-  let currentImageIndex = 0;
-
-
-  function showImage(index) {
-
-    currentImageIndex =
-      (index + galleryImages.length) %
-      galleryImages.length;
-
-    const image =
-      galleryImages[currentImageIndex];
-
-    lightboxImage.src = image.src;
-
-    lightboxImage.alt = image.alt;
-
-  }
-
-
-  function openLightbox(index) {
-
-    showImage(index);
-
-    lightbox.classList.add("active");
-
-    document.body.style.overflow = "hidden";
-
-  }
-
-
-  function closeLightbox() {
-
-    lightbox.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-  }
-
-
-  function showPreviousImage() {
-
-    showImage(currentImageIndex - 1);
-
-  }
-
-
-  function showNextImage() {
-
-    showImage(currentImageIndex + 1);
-
-  }
-
-
-  galleryImages.forEach((image, index) => {
-
-    image.addEventListener("click", () => {
-
-      openLightbox(index);
-
-    });
-
-  });
-
-
-  lightboxPrev.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-
-    showPreviousImage();
-
-  });
-
-
-  lightboxNext.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-
-    showNextImage();
-
-  });
-
-
-  lightbox.addEventListener("click", (event) => {
-
-    if (
-      event.target === lightbox ||
-      event.target === lightboxClose
-    ) {
-
-      closeLightbox();
-
-    }
-
-  });
-
-
-  document.addEventListener("keydown", (event) => {
-
-    if (!lightbox.classList.contains("active")) {
-      return;
-    }
-
-    if (event.key === "Escape") {
-
-      closeLightbox();
-
-    }
-
-    if (event.key === "ArrowLeft") {
-
-      showPreviousImage();
-
-    }
-
-    if (event.key === "ArrowRight") {
-
-      showNextImage();
-
-    }
-
-  });
-
-</script>
-
-
-<script>
-  (() => {
-    // Midnight at the start of October 31, 2026 in US Eastern Time.
-    const launchTime = new Date('2026-10-31T00:00:00-04:00').getTime();
-    const fields = {
-      days: document.getElementById('countdown-days'),
-      hours: document.getElementById('countdown-hours'),
-      minutes: document.getElementById('countdown-minutes'),
-      seconds: document.getElementById('countdown-seconds')
-    };
-    const status = document.getElementById('crowdsale-status');
-    const title = document.getElementById('crowdsale-title');
-    const pad = value => String(value).padStart(2, '0');
-    function updateCountdown() {
-      const remaining = launchTime - Date.now();
-      if (remaining <= 0) {
-        Object.values(fields).forEach(field => field.textContent = '00');
-        title.textContent = 'THE CROWD SALE IS LIVE!';
-        status.textContent = 'The Your Class Rep crowd sale has started. Visit the sale page to join in!';
-        return;
+    </section>
+  </main>
+
+  <footer><img class="maker-logo" src="images/Assets/LessThanPiGamesLogo-Large.png" alt="LessThanPi Games"><span>YOUR CLASS REP · GAMES, COMICS &amp; MORE</span><br><br><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a><small class="legal">© 2026 LessThanPi Games. Your Class Rep, including its name, characters, artwork, and game materials, is the property of LessThanPi Games. All rights reserved.</small></footer>
+
+  <script>
+    (() => {
+      // Explicit offsets preserve the sale's Eastern Time window across visitor time zones and DST.
+      const start = new Date('2026-10-31T00:00:00-04:00').getTime();
+      const end = new Date('2026-11-22T00:00:00-05:00').getTime(); // midnight after Nov 21, inclusive through 11:59 PM ET
+      const fmt = value => String(value).padStart(2, '0');
+      const groups = [
+        { box: 'home-countdown', message: 'home-sale-message', button: 'home-sale-button' },
+        { box: 'sale-countdown', message: 'sale-section-message', button: 'sale-section-button' }
+      ];
+      function update() {
+        const now = Date.now();
+        let target = start;
+        let message = 'LAUNCHES OCT 31';
+        let button = 'VISIT THE CROWD SALE';
+        let heading = 'THE CROWD SALE';
+        if (now >= end) {
+          target = now;
+          message = 'CROWD SALE ENDED';
+          button = 'VIEW THE GAME';
+          heading = 'THANKS FOR JOINING THE CLASS';
+        } else if (now >= start) {
+          target = end;
+          message = 'SALE ENDS NOV 21';
+          button = 'JOIN THE CROWD SALE';
+          heading = 'THE CROWD SALE IS LIVE';
+        }
+        const remaining = Math.max(0, Math.floor((target - now) / 1000));
+        const values = { days: Math.floor(remaining / 86400), hours: Math.floor(remaining % 86400 / 3600), minutes: Math.floor(remaining % 3600 / 60), seconds: remaining % 60 };
+        groups.forEach(group => {
+          const root = document.getElementById(group.box);
+          root.querySelectorAll('[data-unit]').forEach(node => node.textContent = node.dataset.unit === 'days' ? String(values[node.dataset.unit]) : fmt(values[node.dataset.unit]));
+          document.getElementById(group.message).textContent = message;
+          document.getElementById(group.button).textContent = button;
+        });
+        document.getElementById('sale-section-heading').textContent = heading;
       }
-      const seconds = Math.floor(remaining / 1000);
-      fields.days.textContent = String(Math.floor(seconds / 86400));
-      fields.hours.textContent = pad(Math.floor((seconds % 86400) / 3600));
-      fields.minutes.textContent = pad(Math.floor((seconds % 3600) / 60));
-      fields.seconds.textContent = pad(seconds % 60);
+      update();
+      setInterval(update, 1000);
+    })();
+    if (location.protocol === 'file:') {
+      document.querySelectorAll('iframe[data-youtube-id]').forEach(frame => {
+        const id = frame.dataset.youtubeId;
+        const path = frame.dataset.youtubeKind === 'shorts' ? `shorts/${id}` : `watch?v=${id}`;
+        const link = document.createElement('a');
+        link.className = 'youtube-fallback'; link.href = `https://www.youtube.com/${path}`;
+        link.target = '_blank'; link.rel = 'noopener';
+        link.innerHTML = '<img src="images/Assets/Box-Transparent.png" alt=""><span>PLAY ON YOUTUBE</span>';
+        frame.replaceWith(link);
+      });
     }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  })();
-</script>
-
+  </script>
 </body>
 </html>

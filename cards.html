@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meet the Cards | Your Class Rep</title>
+  <meta name="description" content="Browse the characters in Your Class Rep and select a character to see their card.">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/Assets/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/Assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#0d0d0d; --white:#f2f2f2; --light-gray:#999; --dark-gray:#4d4d4d; --red:#b44c4c; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:100px; }
+    body { margin:0; background:var(--white); color:var(--black); font:22px "VT323",monospace; }
+    a { color:inherit; }
+    h1,h2,h3,.pixel { font-family:"Press Start 2P",monospace; text-transform:uppercase; }
+    h1 { font-size:clamp(22px,3vw,36px); line-height:1.5; margin:0; }
+    h2 { font-size:clamp(15px,2vw,21px); line-height:1.7; margin:0; }
+    h3 { font-size:10px; line-height:1.7; margin:0; }
+    p { line-height:1.4; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
+    .topbar { position:sticky; top:0; z-index:10; background:var(--black); color:var(--white); border-bottom:4px solid var(--red); }
+    .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:22px; }
+    .brand { position:absolute; z-index:2; left:0; top:-8px; display:block; }
+    .brand img { display:block; width:220px; height:auto; max-width:none; object-fit:initial; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(11px,2vw,24px); }
+    .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
+    .navlinks a:hover { color:#ff8b8b; }
+    .navlinks .sale-nav { padding:13px 16px; background:var(--red); border:2px solid var(--white); }
+    .page-head { display:grid; grid-template-columns:minmax(0,2fr) minmax(270px,1fr); align-items:center; gap:15px; padding:30px 0 26px; text-align:left; }
+    .page-head p { max-width:740px; margin:15px 0 0; font-size:24px; }
+    .page-head-portrait { position:relative; display:flex; min-height:290px; align-items:center; justify-content:center; }
+    .page-head-art { width:216px; height:280px; object-fit:contain; image-rendering:pixelated; }
+    .character-speech { position:absolute; top:-10px; right:95px; width:160px; padding:12px 10px; border:3px solid var(--black); border-radius:16px; background:#fff; font:8px/1.7 "Press Start 2P",monospace; text-align:center; }
+    .character-speech::after { content:""; position:absolute; left:18px; bottom:-10px; width:14px; height:14px; border-right:3px solid var(--black); border-bottom:3px solid var(--black); background:#fff; transform:skewY(45deg); }
+    .band { padding:35px 0; border-block:3px solid var(--black); }
+    .section-title { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:22px; text-align:center; }
+    .section-title h2 { font-size:clamp(18px,2.7vw,28px); }
+    .section-title::before,.section-title::after { content:""; flex:none; width:75px; height:80px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
+    .page-heading { display:flex; align-items:center; justify-content:flex-start; gap:24px; }
+    .page-heading img { width:50px; height:75px; object-fit:contain; image-rendering:pixelated; }
+    .set-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
+    .set-tab { min-height:44px; padding:10px 15px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:10px; font:8px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .set-tab[aria-pressed="true"],.set-tab:hover { color:var(--white); background:var(--red); }
+    .rail-shell { position:relative; }
+    .character-rail { display:grid; width:100%; grid-auto-flow:column; grid-template-rows:repeat(2,175px); grid-auto-columns:125px; gap:12px; padding:8px 8px 20px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-color:var(--red) var(--dark-gray); }
+    .character-rail.is-centered { justify-content:center; }
+    .character { display:flex; min-width:0; flex-direction:column; align-items:center; justify-content:flex-start; padding:7px 7px 8px; background:var(--white); border:3px solid var(--black); border-radius:12px; scroll-snap-align:start; cursor:pointer; }
+    .character img { flex:none; width:108px; height:140px; object-fit:contain; image-rendering:pixelated; }
+    .character span { display:block; width:100%; margin-top:1px; font:7px/1.5 "Press Start 2P",monospace; text-align:center; }
+    .character[aria-pressed="true"] { outline:4px solid var(--red); outline-offset:-7px; }
+    .character:hover,.character:focus-visible { outline:4px solid var(--red); outline-offset:-7px; }
+    .detail-visual { display:flex; flex-direction:column; gap:14px; }
+    .card-types { margin-top:7px; text-align:left; }
+    .type-tags { display:flex; justify-content:flex-start; gap:8px; }
+    .type-tags span { padding:6px 10px; border:2px solid var(--black); border-radius:18px; background:var(--white); font:8px "Press Start 2P",monospace; }
+    .selected-count { margin:12px 0 0; color:var(--dark-gray); font-size:17px; text-align:center; }
+    .detail { display:grid; grid-template-columns:minmax(210px,.65fr) minmax(0,1.35fr); gap:32px; align-items:start; padding:35px; border:3px solid var(--black); border-radius:18px; background:var(--white); overflow:hidden; }
+    .detail-card { display:flex; justify-content:center; padding:0; background:transparent; border-radius:0; overflow:visible; }
+    .detail-card img { display:block; width:min(100%,300px); height:auto; border-radius:8px; object-fit:contain; image-rendering:pixelated; }
+    .detail-copy { padding-top:8px; }
+    .detail-copy h2 { margin-bottom:14px; }
+    .detail-copy p { margin:0 0 16px; font-size:23px; }
+    .placeholder { margin-top:20px; padding:16px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
+    .placeholder h3 { margin-bottom:8px; }
+    .placeholder p { margin:0; }
+    .strategy-tips { margin-top:20px; padding:2px 0; background:var(--white); }
+    .strategy-tips h3 { margin-bottom:8px; }
+    .strategy-tips p { margin:0; }
+    .combination { margin-top:20px; padding:18px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
+    .combination h3 { margin-bottom:14px; text-align:center; }
+    .combination-content { display:grid; grid-template-columns:auto auto auto minmax(150px,1fr); align-items:center; gap:12px; }
+    .combo-character { display:flex; width:95px; min-height:130px; flex-direction:column; align-items:center; justify-content:center; padding:8px; color:var(--black); background:var(--white); border:2px solid var(--black); border-radius:10px; text-align:center; text-decoration:none; cursor:pointer; }
+    .combo-character:hover,.combo-character:focus-visible { outline:3px solid var(--red); outline-offset:2px; }
+    .combo-character img { width:54px; height:70px; object-fit:contain; image-rendering:pixelated; }
+    .combo-character span { font:6px/1.6 "Press Start 2P",monospace; }
+    .combo-plus { font:16px "Press Start 2P",monospace; }
+    .combo-copy { margin:0!important; padding:12px; background:var(--white); border-radius:8px; }
+    .community { position:relative; max-width:1160px; min-height:320px; margin:35px auto; padding:50px 250px; color:var(--black); background:var(--light-gray); text-align:center; border:3px solid var(--black); border-radius:24px; overflow:hidden; }
+    .community .section-title { margin-bottom:18px; }
+    .community .section-title h2 { font-size:clamp(22px,3vw,34px); }
+    .community-character { position:absolute; top:50%; width:216px; height:280px; transform:translateY(-50%); }
+    .community-character.left { left:15px; }
+    .community-character.right { right:15px; }
+    .community-art { position:absolute; inset:0; width:216px; height:280px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .community-sparkle { position:absolute; width:42px; height:45px; object-fit:contain; pointer-events:none; }
+    .community-sparkle.s4 { top:20px; left:35px; }
+    .community-sparkle.s5 { top:95px; right:-18px; }
+    .community-sparkle.s6 { bottom:0; right:25px; }
+    .community-sparkle.s1 { top:0; left:-10px; }
+    .community-sparkle.s2 { top:42px; right:-8px; }
+    .community-sparkle.s3 { bottom:28px; left:5px; }
+    .community .button { min-height:70px; padding:20px 30px; color:#fff; background:var(--red); border-color:var(--black); border-radius:12px; font-size:10px; }
+    .community .button:hover { color:#fff; background:var(--black); }
+    .community p { font-size:24px; }
+    .button { display:inline-flex; justify-content:center; align-items:center; min-height:48px; padding:12px 18px; color:var(--white); background:var(--red); border:3px solid var(--black); box-shadow:4px 4px 0 var(--black); text-decoration:none; font:8px "Press Start 2P",monospace; line-height:1.8; }
+    .button:hover { background:var(--black); }
+    footer { padding:25px; color:var(--white); background:var(--black); text-align:center; border-top:4px solid var(--red); }
+    .maker-logo { display:block; width:min(210px,58vw); height:auto; margin:0 auto 18px; }
+    footer a { color:var(--white); }
+    @media(max-width:800px) {
+      .nav { display:block; padding-block:12px; }
+      .brand img { width:220px; }
+      .navlinks { justify-content:flex-end; flex-wrap:wrap; gap:10px 14px; padding:70px 0 3px; }
+      .navlinks a { font-size:7px; }
+      .detail { grid-template-columns:minmax(160px,.8fr) minmax(0,1.2fr); gap:20px; padding:22px; }
+    }
+    @media(max-width:560px) {
+      body { font-size:20px; }
+      .wrap { width:calc(100% - 28px); }
+      .nav { display:block; }
+      .brand { top:-6px; }
+      .brand img { width:220px; height:auto; }
+      .navlinks { justify-content:flex-start; padding:78px 0 3px; }
+      .navlinks a { font-size:6px; }
+      .navlinks .sale-nav { padding:9px; }
+      .page-head { grid-template-columns:minmax(0,2fr) minmax(150px,1fr); gap:8px; padding:22px 0 18px; }
+      .page-head-portrait { min-height:160px; }
+      .page-head-art { width:108px; height:140px; }
+      .character-speech { top:-6px; right:95px; width:125px; padding:8px 6px; font-size:6px; }
+      .community { min-height:250px; padding:40px 155px; }
+      .community-character { width:108px; height:140px; }
+      .community-art { width:108px; height:140px; }
+      .community-sparkle { width:30px; height:32px; }
+      .community-sparkle.s1 { top:8px; left:-8px; }
+      .community-sparkle.s2 { top:32px; right:-8px; }
+      .community-sparkle.s3 { bottom:16px; left:0; }
+      .band { padding:25px 0; }
+      .character-rail { grid-template-rows:repeat(2,115px); grid-auto-columns:105px; gap:9px; }
+      .character img { width:54px; height:70px; }
+      .character span { font-size:6px; }
+      .detail { grid-template-columns:1fr; gap:20px; padding:15px; }
+      .detail-card img { width:min(70vw,260px); }
+      .detail-copy h2 { font-size:14px; }
+      .page-head { grid-template-columns:1fr; gap:8px; padding:29px 0 23px; }
+      .page-head-portrait { min-height:90px; }
+      .page-head-art { width:54px; height:70px; }
+      .character-speech { top:0; right:calc(50% - 145px); width:105px; padding:6px 4px; font-size:5px; }
+      .page-heading { gap:10px; }
+      .page-heading img { width:35px; height:55px; }
+      .combination-content { grid-template-columns:auto auto auto; justify-content:center; }
+      .combo-copy { grid-column:1 / -1; }
+      .community { min-height:220px; margin:20px 14px; padding:30px 68px; }
+      .community-character { width:54px; height:70px; }
+      .community-character.left { left:4px; }
+      .community-character.right { right:4px; }
+      .community-art { width:54px; height:70px; }
+      .community-sparkle { width:28px; height:30px; }
+      .community-sparkle.s1 { top:12px; left:-10px; }
+      .community-sparkle.s2 { top:28px; right:-10px; }
+      .community-sparkle.s3 { bottom:8px; left:0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
+      <div class="navlinks"><a href="index.html">HOME</a><a href="cards.html" aria-current="page">CARDS</a><a href="index.html#how-it-works">RULES</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a href="index.html#videos">VIDEOS</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head wrap">
+      <div><div class="page-heading"><img src="images/Assets/TinyCardBack-Large-L.png" alt=""><h1>THE CARDS</h1><img src="images/Assets/TinyCardBack-Large-R.png" alt=""></div>
+      <p>Meet the students, staff, and special characters in Your Class Rep. Choose a set, then select a character to see their card.</p></div>
+      <div class="page-head-portrait"><img class="page-head-art" src="images/Characters/02-SpeechF-Ch.png" alt="Speech Kid 2"><span class="character-speech">WHO WILL YOU PLAY?</span></div>
+    </section>
+    <section class="band" aria-label="Character sets">
+      <div class="wrap">
+        <div class="set-tabs" role="group" aria-label="Choose a set">
+          <button class="set-tab" type="button" data-set="1" aria-pressed="true">SET 01</button>
+          <button class="set-tab" type="button" data-set="2" aria-pressed="false">SET 02</button>
+          <button class="set-tab" type="button" data-set="3" aria-pressed="false">SET 03</button>
+          <button class="set-tab" type="button" data-set="all" aria-pressed="false">ALL CHARACTERS</button>
+        </div>
+        <div class="section-title"><h2 id="set-title">SET 01 · CHARACTERS 01–14</h2></div>
+        <div class="rail-shell">
+          <div class="character-rail" id="character-rail" aria-label="Characters in selected set"></div>
+        </div>
+        <p class="selected-count" id="selected-count" aria-live="polite">Select a character to view their card.</p>
+      </div>
+    </section>
+    <section class="band" id="card-detail">
+      <div class="wrap">
+        <div class="section-title"><h2>CARD DETAILS</h2></div>
+        <article class="detail" aria-live="polite">
+          <div class="detail-visual"><div class="detail-card"><img id="full-card" src="images/Cards/01-SpeechM.png" alt="Speech Kid full card"></div></div>
+          <div class="detail-copy">
+            <h2 id="detail-name">SPEECH KID</h2>
+            <div class="card-types"><div class="type-tags"><span>STUDENT</span><span>STAFF</span></div></div>
+            <p id="detail-intro">Select another character above to see their full card.</p>
+            <div class="placeholder"><h3>ABILITY</h3><p>The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
+            <div class="strategy-tips"><h3>STRATEGY TIPS</h3><p>Tips and card combinations will be added as the strategy guide is developed.</p></div>
+            <div class="combination"><h3>TRY THIS COMBINATION</h3><div class="combination-content"><button class="combo-character" type="button" data-number="11" aria-label="View Teacher's Pet card"><img src="images/Characters/11-PetF-Ch.png" alt=""><span>TEACHER'S PET</span></button><span class="combo-plus">+</span><button class="combo-character" type="button" data-number="12" aria-label="View Teacher's Pet card"><img src="images/Characters/12-PetM-Ch.png" alt=""><span>TEACHER'S PET</span></button><p class="combo-copy">This is a placeholder combination. We’ll add unique pairings and strategy for each card as the guide is completed.</p></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="community wrap">
+      <div class="community-character left"><img class="community-art" src="images/Characters/07-SubF-Ch.png" alt="" aria-hidden="true"><img class="community-sparkle s1" src="images/Assets/Stars/4pointStarL.png" alt="" aria-hidden="true"><img class="community-sparkle s2" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true"><img class="community-sparkle s3" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true"><img class="community-sparkle s4" src="images/Assets/Stars/5pointStarL.png" alt="" aria-hidden="true"><img class="community-sparkle s5" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true"><img class="community-sparkle s6" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true"></div>
+      <div class="community-character right"><img class="community-art" src="images/Characters/09-SportM-Ch.png" alt="" aria-hidden="true"><img class="community-sparkle s1" src="images/Assets/Stars/5pointStarL.png" alt="" aria-hidden="true"><img class="community-sparkle s2" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true"><img class="community-sparkle s3" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true"><img class="community-sparkle s4" src="images/Assets/Stars/4pointStarL.png" alt="" aria-hidden="true"><img class="community-sparkle s5" src="images/Assets/Stars/5pointStarS.png" alt="" aria-hidden="true"><img class="community-sparkle s6" src="images/Assets/Stars/4pointStarS.png" alt="" aria-hidden="true"></div>
+      <div class="section-title"><h2>READY TO PLAY?</h2></div>
+      <p>Get Your Class Rep during the crowd sale on Game Crafter.</p>
+      <a class="button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
+    </section>
+  </main>
+  <footer><img class="maker-logo" src="images/Assets/LessThanPiGamesLogo-Large.png" alt="LessThanPi Games">YOUR CLASS REP · GAMES, COMICS &amp; MORE<br><br><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a><small class="legal" style="display:block;max-width:900px;margin:20px auto 0;color:#c4c4c4">© 2026 LessThanPi Games. Your Class Rep, including its name, characters, artwork, and game materials, is the property of LessThanPi Games. All rights reserved.</small></footer>
+  <script>
+    const entries = [
+      ['SpeechM','Speech Kid'],['SpeechF','Speech Kid'],['NerdF','Nerd Kid'],['NerdM','Nerd Kid'],['CoolM','Cool Kid'],['CoolF','Cool Kid'],['SubF','Substitute Teacher'],['SubM','Substitute Teacher'],['SportM','Sporty Kid'],['SportF','Sporty Kid'],['PetX',"Teacher's Pet",'PetF'],['PetM',"Teacher's Pet"],['PrincM','Principal'],['PrincF','Principal'],
+      ['ClassicalF','Classical Kid'],['ClassicalM','Classical Kid'],['PunkM','Punk Student'],['PunkF','Punk Student'],['BandF','Band Kid'],['BandM','Band Kid'],['LunchM','Lunch Manly'],['LunchF','Lunch Lady'],['MusicF','Music Teacher'],['MusicM','Music Teacher'],['HipHopM','Hip-Hop Kid'],['HipHopF','Hip-Hop Kid'],['MathF','Math Teacher'],['MathM','Math Teacher'],
+      ['KarateM','Karate Kid'],['KarateF','Karate Kid'],['TrackF','Track Kid'],['TrackM','Track Kid'],['CrossingM','Crossing Guard'],['CrossingF','Crossing Guard'],['MascotF','Mascot'],['MascotM','Mascot'],['SkaterM','Skater Kid'],['SkaterF','Skater Kid'],['SwimmerF','Swimmer Kid'],['SwimmerM','Swimmer Kid'],['GymM','Gym Teacher'],['GymF','Gym Teacher']
+    ].map(([code,name,artCode],index) => ({ number:index+1, code, name, artCode:artCode || code }));
+    const rail = document.getElementById('character-rail');
+    const requestedCard = Number(new URLSearchParams(window.location.search).get('card'));
+    let selected = Number.isInteger(requestedCard) && requestedCard >= 1 && requestedCard <= 42 ? requestedCard : 1;
+    let activeSet = Math.ceil(selected / 14);
+    function selectCharacter(number) {
+      selected = number;
+      const entry = entries[number-1];
+      document.querySelectorAll('.character').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.number) === number)));
+      const id = String(entry.number).padStart(2,'0');
+      document.getElementById('full-card').src = `images/Cards/${id}-${entry.code}.png`;
+      document.getElementById('full-card').alt = `${entry.name} full card`;
+      document.getElementById('detail-name').textContent = entry.name.toUpperCase();
+      document.getElementById('detail-intro').textContent = `Set ${Math.ceil(number/14)} · Card ${id}. The full card is shown here; expanded card notes will be added later.`;
+      document.getElementById('selected-count').textContent = `${entry.name} selected · Card ${id} of 42`;
+    }
+    function showSet(set) {
+      activeSet = set;
+      const all = set === 'all';
+      const first = all ? 1 : (set - 1) * 14 + 1;
+      const last = all ? entries.length : first + 13;
+      document.getElementById('set-title').textContent = all ? 'ALL CHARACTERS · 01–42' : `SET 0${set} · CHARACTERS ${String(first).padStart(2,'0')}–${String(last).padStart(2,'0')}`;
+      document.querySelectorAll('.set-tab').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.set === String(set))));
+      rail.replaceChildren();
+      entries.slice(first-1,last).forEach(entry => {
+        const id = String(entry.number).padStart(2,'0');
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'character'; button.dataset.number = entry.number;
+        button.setAttribute('aria-label', `View ${entry.name} card`);
+        button.setAttribute('aria-pressed', String(entry.number === selected));
+        button.innerHTML = `<img src="images/Characters/${id}-${entry.artCode}-Ch.png" alt=""><span>${entry.name}</span>`;
+        button.addEventListener('click', () => {
+          selectCharacter(entry.number);
+          document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+        rail.append(button);
+      });
+      rail.classList.toggle('is-centered', rail.scrollWidth <= rail.clientWidth);
+      rail.scrollLeft = 0;
+      if (selected < first || selected > last) selectCharacter(first);
+      else selectCharacter(selected);
+    }
+    document.querySelectorAll('.combo-character').forEach(button => button.addEventListener('click', () => {
+      const number = Number(button.dataset.number);
+      const targetSet = Math.ceil(number / 14);
+      if (activeSet !== targetSet) showSet(targetSet);
+      selectCharacter(number);
+      document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
+    }));
+    document.querySelectorAll('.set-tab').forEach(button => button.addEventListener('click', () => showSet(button.dataset.set === 'all' ? 'all' : Number(button.dataset.set))));
+    showSet(activeSet);
+  </script>
+</body>
+</html>
