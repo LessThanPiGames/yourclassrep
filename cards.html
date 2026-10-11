@@ -52,26 +52,35 @@
     .character { display:flex; min-width:0; flex-direction:column; align-items:center; justify-content:flex-start; padding:7px 7px 8px; background:var(--white); border:3px solid var(--black); border-radius:12px; scroll-snap-align:start; cursor:pointer; }
     .character img { flex:none; width:108px; height:140px; object-fit:contain; image-rendering:pixelated; }
     .character span { display:block; width:100%; margin-top:1px; font:7px/1.5 "Press Start 2P",monospace; text-align:center; }
-    .character[aria-pressed="true"] { outline:4px solid var(--red); outline-offset:-7px; }
-    .character:hover,.character:focus-visible { outline:4px solid var(--red); outline-offset:-7px; }
-    .detail-visual { display:flex; flex-direction:column; gap:14px; }
-    .card-types { margin-top:7px; text-align:left; }
+    .character[aria-pressed="true"] { border-color:var(--red); box-shadow:inset 0 0 0 1px var(--red); }
+    .character:hover,.character:focus-visible { border-color:var(--red); box-shadow:inset 0 0 0 1px var(--red); }
+    .detail-visual { float:left; width:32%; margin:8px 28px 18px 0; }
+    .card-types { display:flex; width:calc(100% - 32% - 28px); align-items:center; justify-content:center; gap:10px; margin:7px 0 0 calc(32% + 28px); text-align:center; }
     .type-tags { display:flex; justify-content:flex-start; gap:8px; }
     .type-tags span { padding:6px 10px; border:2px solid var(--black); border-radius:18px; background:var(--white); font:8px "Press Start 2P",monospace; }
     .selected-count { margin:12px 0 0; color:var(--dark-gray); font-size:17px; text-align:center; }
-    .detail { display:grid; grid-template-columns:minmax(210px,.65fr) minmax(0,1.35fr); gap:32px; align-items:start; padding:35px; border:3px solid var(--black); border-radius:18px; background:var(--white); overflow:hidden; }
+    .detail { position:relative; display:flow-root; padding:35px; border:3px solid var(--black); border-radius:18px; background:var(--white); }
     .detail-card { display:flex; justify-content:center; padding:0; background:transparent; border-radius:0; overflow:visible; }
     .detail-card img { display:block; width:min(100%,300px); height:auto; border-radius:8px; object-fit:contain; image-rendering:pixelated; }
     .detail-copy { padding-top:8px; }
     .detail-copy h2 { margin-bottom:14px; }
+    #detail-name { width:calc(100% - 32% - 28px); margin:8px 0 14px calc(32% + 28px); text-align:center; }
+    #detail-name span { display:block; }
+    .card-nav { position:absolute; top:50%; z-index:3; display:grid; width:40px; height:40px; place-items:center; transform:translateY(-50%); color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:9px; font:14px "Press Start 2P",monospace; cursor:pointer; }
+    .card-nav.previous { left:-22px; }
+    .card-nav.next { right:-22px; }
+    .card-nav:hover,.card-nav:focus-visible { color:var(--white); background:var(--red); }
+    #detail-name { text-transform:none; }
     .detail-copy p { margin:0 0 16px; font-size:23px; }
-    .placeholder { margin-top:20px; padding:16px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
+    .detail-interests { margin-bottom:12px!important; }
+    .detail-interests strong { font-family:"Press Start 2P",monospace; font-size:9px; }
+    .placeholder { width:calc(100% - 32% - 28px); margin:20px 0 0 calc(32% + 28px); padding:16px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
     .placeholder h3 { margin-bottom:8px; }
     .placeholder p { margin:0; }
-    .strategy-tips { margin-top:20px; padding:2px 0; background:var(--white); }
+    .strategy-tips { width:calc(100% - 32% - 28px); margin:20px 0 0 calc(32% + 28px); padding:2px 0; background:var(--white); }
     .strategy-tips h3 { margin-bottom:8px; }
     .strategy-tips p { margin:0; }
-    .combination { margin-top:20px; padding:18px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
+    .combination { clear:left; margin-top:20px; padding:18px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
     .combination h3 { margin-bottom:14px; text-align:center; }
     .combination-content { display:grid; grid-template-columns:auto auto auto minmax(150px,1fr); align-items:center; gap:12px; }
     .combo-character { display:flex; width:95px; min-height:130px; flex-direction:column; align-items:center; justify-content:center; padding:8px; color:var(--black); background:var(--white); border:2px solid var(--black); border-radius:10px; text-align:center; text-decoration:none; cursor:pointer; }
@@ -107,7 +116,9 @@
       .brand img { width:220px; }
       .navlinks { justify-content:flex-end; flex-wrap:wrap; gap:10px 14px; padding:70px 0 3px; }
       .navlinks a { font-size:7px; }
-      .detail { grid-template-columns:minmax(160px,.8fr) minmax(0,1.2fr); gap:20px; padding:22px; }
+      .detail { padding:22px; }
+      .detail-visual { width:34%; margin-right:20px; }
+      #detail-name,.card-types,.placeholder,.strategy-tips { width:calc(100% - 34% - 20px); margin-left:calc(34% + 20px); }
     }
     @media(max-width:560px) {
       body { font-size:20px; }
@@ -133,8 +144,14 @@
       .character-rail { grid-template-rows:repeat(2,115px); grid-auto-columns:105px; gap:9px; }
       .character img { width:54px; height:70px; }
       .character span { font-size:6px; }
-      .detail { grid-template-columns:1fr; gap:20px; padding:15px; }
-      .detail-card img { width:min(70vw,260px); }
+      .detail { padding:15px; }
+      .detail-visual { width:40%; margin:6px 14px 14px 0; }
+      #detail-name,.card-types,.placeholder,.strategy-tips { width:calc(100% - 40% - 14px); margin-left:calc(40% + 14px); }
+      #detail-name { font-size:9px; }
+      .card-nav { width:32px; height:32px; font-size:10px; }
+      .card-nav.previous { left:2px; }
+      .card-nav.next { right:2px; }
+      .detail-card img { width:100%; }
       .detail-copy h2 { font-size:14px; }
       .page-head { grid-template-columns:1fr; gap:8px; padding:29px 0 23px; }
       .page-head-portrait { min-height:90px; }
@@ -188,13 +205,16 @@
       <div class="wrap">
         <div class="section-title"><h2>CARD DETAILS</h2></div>
         <article class="detail" aria-live="polite">
+          <button class="card-nav previous" id="previous-card" type="button" aria-label="Previous card">‹</button>
+          <button class="card-nav next" id="next-card" type="button" aria-label="Next card">›</button>
           <div class="detail-visual"><div class="detail-card"><img id="full-card" src="images/Cards/01-SpeechM.png" alt="Speech Kid full card"></div></div>
           <div class="detail-copy">
-            <h2 id="detail-name">SPEECH KID</h2>
+            <h2 id="detail-name"><span id="detail-title-card">#01 | SPEECH KID</span><span id="detail-title-character">Placeholder</span></h2>
             <div class="card-types"><div class="type-tags"><span>STUDENT</span><span>STAFF</span></div></div>
-            <p id="detail-intro">Select another character above to see their full card.</p>
-            <div class="placeholder"><h3>ABILITY</h3><p>The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
-            <div class="strategy-tips"><h3>STRATEGY TIPS</h3><p>Tips and card combinations will be added as the strategy guide is developed.</p></div>
+            <p id="detail-bio">Character biography will be added as the character guide is completed.</p>
+            <p class="detail-interests"><span id="detail-interests">Interests will be added as the character guide is completed.</span></p>
+            <div class="placeholder"><h3>ABILITY</h3><p id="detail-ability">The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
+            <div class="strategy-tips"><h3>STRATEGY TIPS</h3><p id="detail-strategy">Tips and card combinations will be added as the strategy guide is developed.</p></div>
             <div class="combination"><h3>TRY THIS COMBINATION</h3><div class="combination-content"><button class="combo-character" type="button" data-number="11" aria-label="View Teacher's Pet card"><img src="images/Characters/11-PetF-Ch.png" alt=""><span>TEACHER'S PET</span></button><span class="combo-plus">+</span><button class="combo-character" type="button" data-number="12" aria-label="View Teacher's Pet card"><img src="images/Characters/12-PetM-Ch.png" alt=""><span>TEACHER'S PET</span></button><p class="combo-copy">This is a placeholder combination. We’ll add unique pairings and strategy for each card as the guide is completed.</p></div></div>
           </div>
         </article>
@@ -209,25 +229,75 @@
     </section>
   </main>
   <footer><img class="maker-logo" src="images/Assets/LessThanPiGamesLogo-Large.png" alt="LessThanPi Games">YOUR CLASS REP · GAMES, COMICS &amp; MORE<br><br><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a><small class="legal" style="display:block;max-width:900px;margin:20px auto 0;color:#c4c4c4">© 2026 LessThanPi Games. Your Class Rep, including its name, characters, artwork, and game materials, is the property of LessThanPi Games. All rights reserved.</small></footer>
+  <script src="character-data.js"></script>
   <script>
-    const entries = [
-      ['SpeechM','Speech Kid'],['SpeechF','Speech Kid'],['NerdF','Nerd Kid'],['NerdM','Nerd Kid'],['CoolM','Cool Kid'],['CoolF','Cool Kid'],['SubF','Substitute Teacher'],['SubM','Substitute Teacher'],['SportM','Sporty Kid'],['SportF','Sporty Kid'],['PetX',"Teacher's Pet",'PetF'],['PetM',"Teacher's Pet"],['PrincM','Principal'],['PrincF','Principal'],
-      ['ClassicalF','Classical Kid'],['ClassicalM','Classical Kid'],['PunkM','Punk Student'],['PunkF','Punk Student'],['BandF','Band Kid'],['BandM','Band Kid'],['LunchM','Lunch Manly'],['LunchF','Lunch Lady'],['MusicF','Music Teacher'],['MusicM','Music Teacher'],['HipHopM','Hip-Hop Kid'],['HipHopF','Hip-Hop Kid'],['MathF','Math Teacher'],['MathM','Math Teacher'],
-      ['KarateM','Karate Kid'],['KarateF','Karate Kid'],['TrackF','Track Kid'],['TrackM','Track Kid'],['CrossingM','Crossing Guard'],['CrossingF','Crossing Guard'],['MascotF','Mascot'],['MascotM','Mascot'],['SkaterM','Skater Kid'],['SkaterF','Skater Kid'],['SwimmerF','Swimmer Kid'],['SwimmerM','Swimmer Kid'],['GymM','Gym Teacher'],['GymF','Gym Teacher']
-    ].map(([code,name,artCode],index) => ({ number:index+1, code, name, artCode:artCode || code }));
+    const entries = window.CHARACTER_ENTRIES;
+    const details = window.CHARACTER_DETAILS;
     const rail = document.getElementById('character-rail');
     const requestedCard = Number(new URLSearchParams(window.location.search).get('card'));
     let selected = Number.isInteger(requestedCard) && requestedCard >= 1 && requestedCard <= 42 ? requestedCard : 1;
     let activeSet = Math.ceil(selected / 14);
+    const abilityPlaceholder = 'The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.';
+    const strategyPlaceholder = 'Tips and card combinations will be added as the strategy guide is developed.';
+    function renderCombinations(detail) {
+      const container = document.querySelector('.combination-content');
+      const copy = document.createElement('p');
+      copy.className = 'combo-copy';
+      copy.textContent = detail.combinationText || 'Combination pairings and strategy will be added as the character guide is completed.';
+      container.replaceChildren();
+      if (detail.combinations?.length) {
+        detail.combinations.forEach((number, index) => {
+          const entry = entries[number - 1];
+          if (index) {
+            const plus = document.createElement('span');
+            plus.className = 'combo-plus';
+            plus.textContent = '+';
+            container.append(plus);
+          }
+          const button = document.createElement('button');
+          const id = String(number).padStart(2,'0');
+          button.type = 'button';
+          button.className = 'combo-character';
+          button.dataset.number = number;
+          button.setAttribute('aria-label', `View ${entry.name} card`);
+          const image = document.createElement('img');
+          image.src = `images/Characters/${id}-${entry.artCode}-Ch.png`;
+          image.alt = '';
+          const label = document.createElement('span');
+          label.textContent = entry.name.toUpperCase();
+          button.append(image, label);
+          button.addEventListener('click', () => {
+            const targetSet = Math.ceil(number / 14);
+            if (activeSet !== targetSet) showSet(targetSet);
+            selectCharacter(number);
+            document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
+          });
+          container.append(button);
+        });
+      }
+      container.append(copy);
+    }
     function selectCharacter(number) {
       selected = number;
       const entry = entries[number-1];
+      const detail = details[number] || {};
       document.querySelectorAll('.character').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.number) === number)));
       const id = String(entry.number).padStart(2,'0');
       document.getElementById('full-card').src = `images/Cards/${id}-${entry.code}.png`;
       document.getElementById('full-card').alt = `${entry.name} full card`;
-      document.getElementById('detail-name').textContent = entry.name.toUpperCase();
-      document.getElementById('detail-intro').textContent = `Set ${Math.ceil(number/14)} · Card ${id}. The full card is shown here; expanded card notes will be added later.`;
+      document.getElementById('detail-title-card').textContent = `#${id} | ${(detail.cardTitle || entry.name).toUpperCase()}`;
+      document.getElementById('detail-title-character').textContent = detail.characterName || 'Placeholder';
+      const typeTags = document.querySelector('.type-tags');
+      typeTags.replaceChildren(...(detail.types || ['Type information will be added.']).map(type => {
+        const tag = document.createElement('span');
+        tag.textContent = type.toUpperCase();
+        return tag;
+      }));
+      document.getElementById('detail-interests').textContent = detail.interests ? `Interests include ${detail.interests}` : 'Interests will be added as the character guide is completed.';
+      document.getElementById('detail-bio').textContent = detail.bio || 'Character biography will be added as the character guide is completed.';
+      document.getElementById('detail-ability').textContent = detail.ability || abilityPlaceholder;
+      document.getElementById('detail-strategy').textContent = detail.strategy || strategyPlaceholder;
+      renderCombinations(detail);
       document.getElementById('selected-count').textContent = `${entry.name} selected · Card ${id} of 42`;
     }
     function showSet(set) {
@@ -256,13 +326,14 @@
       if (selected < first || selected > last) selectCharacter(first);
       else selectCharacter(selected);
     }
-    document.querySelectorAll('.combo-character').forEach(button => button.addEventListener('click', () => {
-      const number = Number(button.dataset.number);
+    function navigateCard(direction) {
+      const number = ((selected - 1 + direction + entries.length) % entries.length) + 1;
       const targetSet = Math.ceil(number / 14);
-      if (activeSet !== targetSet) showSet(targetSet);
+      if (activeSet !== 'all' && activeSet !== targetSet) showSet(targetSet);
       selectCharacter(number);
-      document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
-    }));
+    }
+    document.getElementById('previous-card').addEventListener('click', () => navigateCard(-1));
+    document.getElementById('next-card').addEventListener('click', () => navigateCard(1));
     document.querySelectorAll('.set-tab').forEach(button => button.addEventListener('click', () => showSet(button.dataset.set === 'all' ? 'all' : Number(button.dataset.set))));
     showSet(activeSet);
   </script>

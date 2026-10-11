@@ -15,10 +15,10 @@
   <meta property="og:title" content="Your Class Rep | A Card Game for Two Players">
   <meta property="og:description" content="Compare Influence, secure the votes, and become Your Class Rep.">
   <meta property="og:url" content="https://yourclassrep.com/">
-  <meta property="og:image" content="https://yourclassrep.com/images/Assets/Box-Transparent.png">
-  <meta property="og:image:alt" content="Your Class Rep card game box">
+  <meta property="og:image" content="https://yourclassrep.com/images/Action%20Shots/YCR-Hero-2.png">
+  <meta property="og:image:alt" content="Your Class Rep handheld game console with the game logo on screen">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://yourclassrep.com/images/Assets/Box-Transparent.png">
+  <meta name="twitter:image" content="https://yourclassrep.com/images/Action%20Shots/YCR-Hero-2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
     .hero { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); align-items:center; gap:34px; padding-block:38px 52px; }
     .hero-copy { padding:12px 0; }
     .hero-copy .subhead { margin:18px 0 24px; font-size:27px; }
-    .hero-video { position:relative; width:100%; aspect-ratio:16/9; border:4px solid var(--black); border-radius:18px; background:#222; }
+    .hero-video { position:relative; container-type:inline-size; width:100%; aspect-ratio:16/9; border:4px solid var(--black); border-radius:18px; background:#222; }
     .hero-video iframe,.short-video iframe { display:block; width:100%; height:100%; border:0; }
     .countdown-card { padding:15px; background:var(--red); color:var(--white); border:3px solid var(--black); border-radius:14px; box-shadow:5px 5px 0 var(--black); }
     .countdown-title { margin:0 0 11px; font:8px "Press Start 2P",monospace; line-height:1.8; }
@@ -72,8 +72,11 @@
     .character-sprinkle { position:absolute; z-index:1; width:108px; height:140px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
     .hero-video { position:relative; }
     .hero-sprinkle-left,.hero-sprinkle-right { width:216px; height:280px; bottom:-65px; z-index:2; }
-    .hero-sprinkle-left { left:25px; transform:translateX(-50%); }
-    .hero-sprinkle-right { right:30px; transform:translateX(50%); }
+    @supports (width:1cqw) {
+      .hero-sprinkle-left,.hero-sprinkle-right { width:clamp(72px,20cqw,216px); height:clamp(94px,26cqw,280px); bottom:clamp(-65px,-6cqw,-22px); }
+    }
+    .hero-sprinkle-left { left:2.3%; transform:translateX(-50%); }
+    .hero-sprinkle-right { right:2.8%; transform:translateX(50%); }
     .featured-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:15px; background:var(--white); border:3px solid var(--black); border-radius:18px; }
     .featured { display:block; padding:12px; color:var(--black); background:var(--white); text-align:center; text-decoration:none; }
     .featured:hover img,.featured:focus-visible img { box-shadow:0 0 0 3px var(--red); border-radius:14px; }
@@ -82,6 +85,7 @@
     .featured p { margin:0; color:var(--dark-gray); }
     .center { text-align:center; }
     .section-action { margin-top:26px; }
+    #featured-cards .section-action .button { display:flex; width:100%; min-height:76px; font-size:12px; }
     .shorts-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:760px; margin:auto; }
     .short-video { width:100%; aspect-ratio:9/16; max-height:680px; border:3px solid var(--black); border-radius:18px; background:var(--black); overflow:hidden; }
     .facts { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:26px; }
@@ -132,10 +136,14 @@
     .maker-logo { display:block; width:min(210px,58vw); height:auto; margin:0 auto 18px; }
     .hero-copy { position:relative; }
     .hero-copy::after { content:""; position:absolute; width:31px; height:31px; right:-9px; top:-14px; background:center/contain no-repeat url("images/Assets/Stars/4pointStarL.png"); }
+    @media(max-width:1000px) {
+      .nav { display:block; min-height:0; padding:16px 0 8px; }
+      .navlinks { display:flex; width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:10px; margin:0; padding:0; text-align:right; }
+      .navlinks .sale-nav { margin-left:0; }
+    }
     @media(max-width:800px) {
-      .nav { display:block; padding-block:12px; }
       .brand img { width:220px; }
-      .navlinks { justify-content:flex-end; flex-wrap:wrap; gap:10px 14px; margin-left:0; padding:70px 0 3px; }
+      .navlinks { justify-content:flex-end; flex-wrap:wrap; gap:10px 14px; margin-left:0; padding:0; }
       .navlinks a { font-size:7px; }
       .hero { grid-template-columns:1fr; gap:20px; padding-top:27px; }
       .hero-copy { max-width:560px; }
@@ -144,7 +152,6 @@
       .hero .button { max-width:430px; }
       .featured img { width:162px; height:210px; }
       .character-sprinkle { width:108px; height:140px; }
-      .hero-sprinkle-left,.hero-sprinkle-right { width:162px; height:210px; bottom:-50px; }
       .sale-block { grid-template-columns:1fr 1fr; grid-template-areas:"intro intro" "timer points" "art art"; }
       .sale-art-wrap { min-height:300px; }
       .sale-section-button { left:0; width:100%; }
@@ -158,10 +165,9 @@
     @media(max-width:560px) {
       body { font-size:20px; }
       .wrap { width:min(100% - 28px,1160px); }
-      .nav { display:block; }
       .brand { top:-6px; }
       .brand img { width:220px; height:auto; }
-      .navlinks { justify-content:flex-start; margin-left:0; padding:78px 0 3px; }
+      .navlinks { justify-content:flex-end; margin-left:0; padding:0; }
       .navlinks a { font-size:6px; }
       .navlinks .sale-nav { padding:9px; }
       .hero { padding-block:24px 34px; }
@@ -194,9 +200,6 @@
       .facts { gap:8px; }
       .facts span { font-size:7px; }
       .character-sprinkle { width:54px; height:70px; }
-      .hero-sprinkle-left,.hero-sprinkle-right { width:108px; height:140px; bottom:-34px; }
-      .hero-sprinkle-left { left:-12px; }
-      .hero-sprinkle-right { right:-12px; }
       .discord-box { padding:26px 55px; }
       .discord-mascot { width:54px; height:70px; }
       .discord-mascot.left { left:-5px; }
