@@ -74,10 +74,10 @@
     .detail-copy p { margin:0 0 16px; font-size:23px; }
     .detail-interests { margin-bottom:12px!important; }
     .detail-interests strong { font-family:"Press Start 2P",monospace; font-size:9px; }
-    .placeholder { width:calc(100% - 32% - 28px); margin:20px 0 0 calc(32% + 28px); padding:16px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
+    .placeholder { clear:left; width:100%; margin:20px 0 0; padding:16px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
     .placeholder h3 { margin-bottom:8px; }
     .placeholder p { margin:0; }
-    .strategy-tips { width:calc(100% - 32% - 28px); margin:20px 0 0 calc(32% + 28px); padding:2px 0; background:var(--white); }
+    .strategy-tips { clear:left; width:100%; margin:20px 0 0; padding:2px 0; background:var(--white); }
     .strategy-tips h3 { margin-bottom:8px; }
     .strategy-tips p { margin:0; }
     .combination { clear:left; margin-top:20px; padding:18px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
@@ -111,22 +111,23 @@
     footer { padding:25px; color:var(--white); background:var(--black); text-align:center; border-top:4px solid var(--red); }
     .maker-logo { display:block; width:min(210px,58vw); height:auto; margin:0 auto 18px; }
     footer a { color:var(--white); }
+    @media(max-width:1000px) {
+      .nav { display:block; min-height:0; padding:16px 0 8px; }
+      .navlinks { display:flex; width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:10px; margin:0; padding:0; text-align:right; }
+      .navlinks .sale-nav { margin-left:0; }
+    }
     @media(max-width:800px) {
-      .nav { display:block; padding-block:12px; }
       .brand img { width:220px; }
-      .navlinks { justify-content:flex-end; flex-wrap:wrap; gap:10px 14px; padding:70px 0 3px; }
       .navlinks a { font-size:7px; }
       .detail { padding:22px; }
       .detail-visual { width:34%; margin-right:20px; }
-      #detail-name,.card-types,.placeholder,.strategy-tips { width:calc(100% - 34% - 20px); margin-left:calc(34% + 20px); }
+      #detail-name,.card-types { width:calc(100% - 34% - 20px); margin-left:calc(34% + 20px); }
     }
     @media(max-width:560px) {
       body { font-size:20px; }
       .wrap { width:calc(100% - 28px); }
-      .nav { display:block; }
       .brand { top:-6px; }
       .brand img { width:220px; height:auto; }
-      .navlinks { justify-content:flex-start; padding:78px 0 3px; }
       .navlinks a { font-size:6px; }
       .navlinks .sale-nav { padding:9px; }
       .page-head { grid-template-columns:minmax(0,2fr) minmax(150px,1fr); gap:8px; padding:22px 0 18px; }
@@ -146,7 +147,7 @@
       .character span { font-size:6px; }
       .detail { padding:15px; }
       .detail-visual { width:40%; margin:6px 14px 14px 0; }
-      #detail-name,.card-types,.placeholder,.strategy-tips { width:calc(100% - 40% - 14px); margin-left:calc(40% + 14px); }
+      #detail-name,.card-types { width:calc(100% - 40% - 14px); margin-left:calc(40% + 14px); }
       #detail-name { font-size:9px; }
       .card-nav { width:32px; height:32px; font-size:10px; }
       .card-nav.previous { left:2px; }
@@ -154,9 +155,10 @@
       .detail-card img { width:100%; }
       .detail-copy h2 { font-size:14px; }
       .page-head { grid-template-columns:1fr; gap:8px; padding:29px 0 23px; }
-      .page-head-portrait { min-height:90px; }
-      .page-head-art { width:54px; height:70px; }
-      .character-speech { top:0; right:calc(50% - 145px); width:105px; padding:6px 4px; font-size:5px; }
+      .page-head-portrait { min-height:clamp(210px,70vw,245px); align-items:flex-end; }
+      .page-head-art { width:40vw; max-width:160px; height:auto; }
+      .character-speech { top:0; right:auto; left:50%; width:min(160px,55vw); padding:6px 7px; font-size:5px; transform:translateX(-50%); }
+      .character-speech::after { left:calc(50% - 7px); }
       .page-heading { gap:10px; }
       .page-heading img { width:35px; height:55px; }
       .combination-content { grid-template-columns:auto auto auto; justify-content:center; }
@@ -170,6 +172,10 @@
       .community-sparkle.s1 { top:12px; left:-10px; }
       .community-sparkle.s2 { top:28px; right:-10px; }
       .community-sparkle.s3 { bottom:8px; left:0; }
+    }
+    @media(max-width:640px) {
+      .card-nav { z-index:25; visibility:hidden; opacity:0; pointer-events:none; transition:opacity .15s ease; }
+      .card-nav.is-section-visible { visibility:visible; opacity:1; pointer-events:auto; }
     }
   </style>
 </head>
@@ -213,10 +219,10 @@
             <div class="card-types"><div class="type-tags"><span>STUDENT</span><span>STAFF</span></div></div>
             <p id="detail-bio">Character biography will be added as the character guide is completed.</p>
             <p class="detail-interests"><span id="detail-interests">Interests will be added as the character guide is completed.</span></p>
-            <div class="placeholder"><h3>ABILITY</h3><p id="detail-ability">The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
-            <div class="strategy-tips"><h3>STRATEGY TIPS</h3><p id="detail-strategy">Tips and card combinations will be added as the strategy guide is developed.</p></div>
-            <div class="combination"><h3>TRY THIS COMBINATION</h3><div class="combination-content"><button class="combo-character" type="button" data-number="11" aria-label="View Teacher's Pet card"><img src="images/Characters/11-PetF-Ch.png" alt=""><span>TEACHER'S PET</span></button><span class="combo-plus">+</span><button class="combo-character" type="button" data-number="12" aria-label="View Teacher's Pet card"><img src="images/Characters/12-PetM-Ch.png" alt=""><span>TEACHER'S PET</span></button><p class="combo-copy">This is a placeholder combination. We’ll add unique pairings and strategy for each card as the guide is completed.</p></div></div>
           </div>
+          <div class="placeholder"><h3>ABILITY</h3><p id="detail-ability">The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
+          <div class="strategy-tips"><h3>STRATEGY TIPS</h3><p id="detail-strategy">Tips and card combinations will be added as the strategy guide is developed.</p></div>
+          <div class="combination"><h3>TRY THIS COMBINATION</h3><div class="combination-content"><button class="combo-character" type="button" data-number="11" aria-label="View Teacher's Pet card"><img src="images/Characters/11-PetF-Ch.png" alt=""><span>TEACHER'S PET</span></button><span class="combo-plus">+</span><button class="combo-character" type="button" data-number="12" aria-label="View Teacher's Pet card"><img src="images/Characters/12-PetM-Ch.png" alt=""><span>TEACHER'S PET</span></button><p class="combo-copy">This is a placeholder combination. We’ll add unique pairings and strategy for each card as the guide is completed.</p></div></div>
         </article>
       </div>
     </section>
@@ -237,6 +243,25 @@
     const requestedCard = Number(new URLSearchParams(window.location.search).get('card'));
     let selected = Number.isInteger(requestedCard) && requestedCard >= 1 && requestedCard <= 42 ? requestedCard : 1;
     let activeSet = Math.ceil(selected / 14);
+    const detailPanel = document.querySelector('.detail');
+    const cardNavButtons = [...document.querySelectorAll('.card-nav')];
+    function positionCardNav() {
+      if (window.innerWidth > 640) {
+        cardNavButtons.forEach(button => button.style.top = '');
+        return;
+      }
+      const rect = detailPanel.getBoundingClientRect();
+      const panelTop = rect.top + detailPanel.clientTop;
+      cardNavButtons.forEach(button => {
+        const halfHeight = button.offsetHeight / 2;
+        const minCenter = halfHeight + 8;
+        const maxCenter = Math.max(minCenter, detailPanel.clientHeight - halfHeight - 8);
+        const center = Math.min(Math.max(window.innerHeight / 2, panelTop + minCenter), panelTop + maxCenter);
+        button.style.top = `${center - panelTop}px`;
+      });
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(positionCardNav), { passive:true });
+    window.addEventListener('resize', positionCardNav);
     const abilityPlaceholder = 'The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.';
     const strategyPlaceholder = 'Tips and card combinations will be added as the strategy guide is developed.';
     function renderCombinations(detail) {
@@ -299,6 +324,7 @@
       document.getElementById('detail-strategy').textContent = detail.strategy || strategyPlaceholder;
       renderCombinations(detail);
       document.getElementById('selected-count').textContent = `${entry.name} selected · Card ${id} of 42`;
+      positionCardNav();
     }
     function showSet(set) {
       activeSet = set;
@@ -331,11 +357,19 @@
       const targetSet = Math.ceil(number / 14);
       if (activeSet !== 'all' && activeSet !== targetSet) showSet(targetSet);
       selectCharacter(number);
+      document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
     }
     document.getElementById('previous-card').addEventListener('click', () => navigateCard(-1));
     document.getElementById('next-card').addEventListener('click', () => navigateCard(1));
+    if ('IntersectionObserver' in window) {
+      const navigationObserver = new IntersectionObserver(([entry]) => {
+        cardNavButtons.forEach(button => button.classList.toggle('is-section-visible', entry.isIntersecting));
+      });
+      navigationObserver.observe(detailPanel);
+    }
     document.querySelectorAll('.set-tab').forEach(button => button.addEventListener('click', () => showSet(button.dataset.set === 'all' ? 'all' : Number(button.dataset.set))));
     showSet(activeSet);
+    positionCardNav();
   </script>
 </body>
 </html>
