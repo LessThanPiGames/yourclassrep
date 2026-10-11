@@ -6,46 +6,508 @@ window.CHARACTER_ENTRIES = [
     ].map(([code,name,artCode],index) => ({ number:index+1, code, name, artCode:artCode || code }));
 
 window.CHARACTER_DETAILS = {
-      1:{cardTitle:'Speech Kid',characterName:'Michael Blaze',types:['Student','Speaker'],interests:'Singing, school spirit, pep rallies, and helping others.',bio:'Michael knows everyone’s name and probably has a theme song for it. Loud, charming, and always ready to help, his giant afro and questionable collection of ties have become school legends.',ability:'Class Rep Ability: I always tie',strategy:'Use this Class Rep when you know you need to Guarantee points.',combinations:[28,36],combinationText:'Pair with the Math Teacher and Mascot. Both a low risk way to proc their tally abilities with Speech Kid in the deck.'},
-      2:{cardTitle:'Speech Kid',characterName:'Naomi Lin',types:['Student','Speaker'],interests:'Reading, organizing things, and student council meetings.',bio:'Naomi runs on color-coded schedules, careful planning, and honesty. She always has the class’s best interests at heart, provided everyone follows the plan.',ability:'Class Rep Ability: I always tie',strategy:'Use this Class Rep when you know you need to Guarantee points.',combinations:[27,35],combinationText:'Pair with the Math Teacher and Mascot. Both a low risk way to proc their tally abilities with Speech Kid in the deck.'},
-      3:{cardTitle:'Nerdy Kid',characterName:'Tabitha Newtonium',types:['Student','Special'],interests:'Robotics club, astronomy, and old cartoons.',bio:'Tabitha is one of three exceptionally smart triplets, each with a knack for figuring out how things work. A brilliant, slightly awkward problem-solver, she can spend hours debugging a science project, even if nobody asked for help.',ability:'Campaign Ability: When played versus [6 Influence] cards I win.',strategy:'This is a high risk high reward card. Play her when you think your opponent will use a 6 or a lowest Influence wins card.',combinations:[39,42],combinationText:'Nerdy kid is a great defense for these high influence card’s counters and help to proc Gym Teacher’s Tally Ability'},
-      4:{cardTitle:'Nerdy Kid',characterName:'Felix Gurbb',types:['Student','Special'],interests:'Dinosaurs, math puzzles, and science fiction.',bio:'Felix is a well-meaning know-it-all who always has a fact, correction, or fun explanation ready for any situation. He genuinely loves sharing what he knows, even when nobody asked, and gets especially excited when the conversation turns to dinosaurs, math, or science fiction.',ability:'Campaign Ability: When played versus [6 Influence] cards I win.',strategy:'Nerdy Kid is a high risk high reward card. Play him when you think your opponent will use a 6 or a lowest [Influence] wins card.',combinations:[40,41],combinationText:'Nerdy Kid is a great defense to cover for Swimmer Kid and Gym Teacher’s weaknesses and also helps to proc Gym Teacher’s Tally Ability'},
-      5:{cardTitle:'Cool Kid',characterName:'Charles “Chill” Mann',types:['Student','Speaker'],interests:'Being chill.',bio:'Chill is the shortest kid in class and somehow the smoothest, gliding through life without breaking a sweat. His effortless charm makes him popular, though he’s usually too busy relaxing to notice.',ability:'Tally Ability: If there is 1 or more [Special] cards on your side you gain +2[votes]',strategy:'Cool Kid may not be powerful but when he lands face up his Tally ability is very reliable.',combinations:[12,16],combinationText:'Cool Kid wants to pair with high influence [special] type cards to help ensure his ability activates!'},
-      6:{cardTitle:'Cool Kid',characterName:'Bree “Breezy” Day',types:['Student','Speaker'],interests:'Fashion, trends, and gossip (but the fun kind).',bio:'Bree always knows what’s happening around school before anyone else does. With her bubbly personality, stylish outfits, and sticker-covered binder, she’s a social butterfly with a big heart.',ability:'Tally Ability: If there is 1 or more [Special] cards on your side you gain +2[votes]',strategy:'Cool Kid may not be very influential, but when she lands face up her Tally ability is very reliable.',combinations:[11,15],combinationText:'Cool Kid wants to pair with powerful high influence [special] type cards to help ensure her ability activates!'},
-      7:{cardTitle:'Substitute Teacher',characterName:'Miss Sunny',types:['Staff','Special'],interests:'Poetry, flowers, sunshine, and juggling.',bio:'Miss Sunny brings warmth and laughter wherever she goes, even when she has no idea what the lesson plan says. Her classes always leave students smiling, occasionally after watching her knock over the whiteboard.',ability:'Campaign Ability: Lowest Influence wins.',strategy:'Substitute Teacher is a powerful anti-high influence card. Use her when you think your opponent will try and play 4,5, or 6 Influence cards.',combinations:[14,26],combinationText:'The Substitute Teacher acts as a powerful defensive option when helping to proc The Principal and HipHop Kid’s Tally abilities.'},
-      8:{cardTitle:'Substitute Teacher',characterName:'Mr. Mortimer',types:['Staff','Special'],interests:'Rule books, history, motorcycles, and birdwatching.',bio:'Mr. Mortimer is firm, fair, and blessed with a booming voice, impressive chalkboard penmanship, and an endless supply of jumpsuits. His only real weakness is remembering what lesson he’s supposed to be teaching.',ability:'Campaign Ability: Lowest Influence wins.',strategy:'Substitute Teacher is a powerful anti-high influence card. Use him when you think your opponent will try and play 4,5, or 6 Influence cards.',combinations:[13,25],combinationText:'The Substitute Teacher acts as a powerful defensive option when helping to proc The Principal and HipHop Kid’s Tally abilities.'},
-      9:{cardTitle:'Sporty Kid',characterName:'Frank “Faceoff” Ball',types:['Student'],interests:'Every sport ever, seriously all of them.',bio:'Frank plays every sport like it’s the championship, and nobody has ever managed to capture him standing still in a class photo. Somehow, even indoor sporting events leave him covered in grass stains.',ability:'Campaign Ability: When played versus [Speaker] Cards I get +2[Influence]',strategy:'Sporty Kid is a powerful student card that won’t clog up your typing synergies, but shuts down many cards with powerful Tally abilities.',combinations:[28,32],combinationText:'This is a combination that covers a lot of bases with room to remain flexible and add in other strategies.'},
-      10:{cardTitle:'Sporty Kid',characterName:'Danielle “Dani” Nette',types:['Student'],interests:'Dribbling, scoring, passing (and soccer, shh… don’t tell anyone).',bio:'Dani is a basketball prodigy who dominates the court and takes every game in stride. Secretly, though, she’d rather be playing soccer, a fact she’s determined to keep under wraps.',ability:'Campaign Ability: When played versus [Speaker] Cards I get +2[Influence]',strategy:'Sporty Kid is a powerful student card that won’t clog up your typing synergies, but shuts down many cards with powerful Tally abilities.',combinations:[27,31],combinationText:'This is a combination that covers a lot of bases with room to remain flexible and add in other strategies.'},
-      11:{cardTitle:'Teacher’s Pet',characterName:'Pip and Nibbs',types:['Special'],interests:'Studying, note taking, tests, snacks, and naps.',bio:'Pip is an unusually studious girl hamster who attends class, takes notes, and somehow manages to ace tests and finish homework. Her fluffy companion Nibbs is a boy hamster who prefers a simpler life of eating snacks and sleeping all day, making them quite the pair.',ability:'Tally Ability: If there are only 2[Staff] face up on your side you gain +1[Vote]',strategy:'Teacher’s Pet is powerful in combinations with two Staff Cards!',combinations:[22,34],combinationText:'This power combination can beat most high influence cards and activates The Teacher’s Pets’ Abilities'},
-      12:{cardTitle:'Teacher’s Pet',characterName:'Scurry',types:['Special'],interests:'Escape tunnels and air vents.',bio:'Scurry is a lab mouse who’s always plotting his great escape from school. He’s made it to the front doors, explored the ceiling tiles, and somehow keeps sneaking into the lunchroom, but freedom remains just out of reach.',ability:'Tally Ability: If there are only 2[Staff] cards face up on your side you gain +1[Vote]',strategy:'Teacher’s Pet is powerful in combinations with two Staff Cards!',combinations:[21,33],combinationText:'This power combination can beat most high influence cards and activates The Teacher’s Pet’s Abilities'},
-      13:{cardTitle:'Principal',characterName:'Vice Principal Grizz',types:['Staff','Speaker'],interests:'Discipline and poetry.',bio:'Vice Principal Grizz looks and sounds intimidating, but beneath his gravelly voice is a soft-hearted guy who wants every student to succeed. He enforces the rules while quietly fixing broken lockers and checking on kids who need a little extra support.',ability:'Tally Ability: If there are less than 2[Student] cards face up on your side you gain +1[Vote]',strategy:'The Principal is powerful when paired with other staff Cards.',combinations:[8,24],combinationText:'This power combination can beat most other cards and leave room to still activate the Principal’s Tally ability.'},
-      14:{cardTitle:'Principal',characterName:'Principal Stone',types:['Staff','Speaker'],interests:'Rules, structure, hair gel, and rare umbrellas.',bio:'Principal Stone runs the school with an icy stare, perfectly timed footsteps, and an appreciation for order. Behind her strict exterior, she’s deeply devoted to her students and staff, always making sure the school runs like clockwork.',ability:'Tally Ability: If there are less than 2[Student] cards face up on your side you gain +1[Vote]',strategy:'The Principal is powerful when paired with other staff Cards.',combinations:[7,23],combinationText:'This power combination can beat most other cards and leave room to still activate the Principal’s Tally ability.'},
-      15:{cardTitle:'Classical Kid',characterName:'Rumi Sato',types:['Student','Special'],interests:'Cello, studying, and LessThanPi Comics.',bio:'Rumi is a dedicated student and talented cellist who makes excellence look effortless. Beneath her polished reputation is a comic-loving superfan who could write an entire thesis about her favorite heroes.'},
-      16:{cardTitle:'Classical Kid',characterName:'Victor Strings',types:['Student','Special'],interests:'Violin, quiet practice rooms, and classical playlists.',bio:'Victor treats every room like a concert hall and every note like a work of art. He takes his time perfecting his music, and being told he was born in the wrong century is a compliment in his book.'},
-      17:{cardTitle:'Punk Kid',characterName:'Riff Razor',types:['Student','Speaker'],interests:'Loud riffs, customizing guitars, and sticking band stickers on everything.',bio:'Riff lives for loud guitars, wild performances, and turning every practice session into a battle of the bands. His guitar is covered in stickers, and his volume knob rarely drops below maximum.'},
-      18:{cardTitle:'Punk Kid',characterName:'Lexi Riot',types:['Student','Speaker'],interests:'Mic checks, concerts, and crafting band merch.',bio:'Lexi is the fearless frontwoman of The Bandits, commanding attention with her gritty voice and bold personality. Whether she’s performing onstage or organizing a lunchtime gig, she knows how to make a crowd go wild.'},
-      19:{cardTitle:'Band Kid',characterName:'Nina Drummond',types:['Student','Speaker'],interests:'Cadences, stick tricks, and marching formations.',bio:'Nina leads the drumline with sharp focus and quiet authority, always tapping out rhythms wherever she goes. Even when everything is silent, she can hear the next beat coming.'},
-      20:{cardTitle:'Band Kid',characterName:'Toby Brass',types:['Student','Speaker'],interests:'Marching band, warmups, and annoying his sister.',bio:'Toby believes volume equals victory and practices his trumpet whenever he gets the chance. His triumphant high notes can make any pep rally feel like a championship celebration.'},
-      21:{cardTitle:'Lunch Staff',characterName:'“Lunch Manly” Dan',types:['Staff'],interests:'Protein-packed meals, heroic poses, and chili cook-offs.',bio:'Dan treats every lunch period like a championship event, serving meals with heroic flair and motivational speeches. Legend has it that he once flexed so hard the pudding cups trembled.'},
-      22:{cardTitle:'Lunch Staff',characterName:'Lunch Lady Pam',types:['Staff'],interests:'Secret recipes, giant ladles, and lunchtime diplomacy.',bio:'Pam runs the cafeteria with calm confidence, remembering every student’s favorite meal and keeping the line moving. Her mashed potatoes are legendary, and around Little Middle, she’s the real head of state.'},
-      23:{cardTitle:'Music Teacher',characterName:'Mrs. Delgado',types:['Staff','Special'],interests:'Maracas, dancing the samba, and correcting pitch.',bio:'Mrs. Delgado brings warmth and rhythm to every choir session, encouraging students to sing with confidence and heart. Under her direction, concert nights become unforgettable performances.'},
-      24:{cardTitle:'Music Teacher',characterName:'Mr. Toupin',types:['Staff','Special'],interests:'Conducting, pep band, and dramatic entrances.',bio:'Mr. Toupin treats every rehearsal like opening night, leading with grand gestures and unstoppable enthusiasm. His hairstyle might be a topic of conversation, but nobody questions his passion for music.'},
-      25:{cardTitle:'Hip-Hop Kid',characterName:'Jay Beats',types:['Student','Speaker'],interests:'Beatmaking, vinyl records, and collecting headphones.',bio:'Jay hears music everywhere, turning locker doors and hallway footsteps into beats. He’s always creating new tracks in his head, ready to turn an ordinary moment into the next big hit.'},
-      26:{cardTitle:'Hip-Hop Kid',characterName:'Kira Flow',types:['Student','Speaker'],interests:'Freestyling, fashion, and choreography.',bio:'Kira turns everyday conversations and classroom presentations into rhythmic performances. With clever wordplay and effortless style, she always knows how to command the spotlight.'},
-      27:{cardTitle:'Math Teacher',characterName:'Mrs. Summer',types:['Staff'],interests:'Baking pies, math duets, and color-coded notebooks.',bio:'Mrs. Summer combines flawless organization with theatrical math lessons that make tricky problems easier to understand. Her math duets with her husband are a crowd favorite at school assemblies.'},
-      28:{cardTitle:'Math Teacher',characterName:'Mr. Summer',types:['Staff'],interests:'Puns, math songs, and calculators.',bio:'Mr. Summer turns equations into lyrics and fractions into full musical performances. His students may arrive expecting worksheets, but they leave humming multiplication tables.'},
-      29:{cardTitle:'Karate Kid',characterName:'Kenneth Master',types:['Student','Speaker'],interests:'Martial arts, Japanese snacks, and dramatic poses.',bio:'Kenneth is Class 3A’s class representative, bringing discipline and confidence to everything he does. After training in Japan over the summer, he returned ready to lead his classmates with the focus of a true martial artist.'},
-      30:{cardTitle:'Karate Kid',characterName:'Rose Meadows',types:['Student','Speaker'],interests:'Karate, comic books, and prank sparring.',bio:'Rose is Class 3A’s energetic vice representative, mixing martial arts with playful sparring and comic-book enthusiasm. She loves showing off her moves and keeping her classmates entertained.'},
-      31:{cardTitle:'Track Kid',characterName:'Riley Swift',types:['Student','Speaker'],interests:'Sprinting, relay races, and beating personal records.',bio:'Riley is the fastest sprinter in school, always eager to race anyone willing to challenge her. She loves breaking records, pushing her limits, and leaving classmates cheering in her wake.'},
-      32:{cardTitle:'Track Kid',characterName:'Miles Long',types:['Student','Speaker'],interests:'Jogging, steady routines, and energy bars.',bio:'Miles is a long-distance runner who treats every sidewalk and hallway as part of his training route. Quiet and consistent, he pushes himself every day without needing anyone else to notice.'},
-      33:{cardTitle:'Crossing Guard',characterName:'Mr. Beacon',types:['Staff'],interests:'Safety drills, morning stretches, and beard grooming.',bio:'Mr. Beacon keeps students safe with a confident stride and a beard that’s impossible to miss. Every morning, he guides students across the street with the determination of someone leading a parade.'},
-      34:{cardTitle:'Crossing Guard',characterName:'Mrs. Bright',types:['Staff'],interests:'Whistles, staying hydrated, and neighborhood watch.',bio:'Mrs. Bright manages the crosswalk with boundless energy, sharp attention, and a whistle that commands respect. She makes morning safety routines feel like an organized team sport.'},
-      35:{cardTitle:'Mascot',characterName:'Pip',types:['Special'],interests:'School spirit, dramatic entrances, and confusing people.',bio:'Pip is a student in a hamster mascot costume inspired by the school’s studious pet hamster. Nobody knows who’s inside the suit, but this silent performer keeps everyone entertained with dramatic entrances and unpredictable antics.'},
-      36:{cardTitle:'Mascot',characterName:'Nibbs',types:['Special'],interests:'Snacks, dancing, and copying Pip.',bio:'Nibbs is a student in a hamster mascot costume who brings a whole lot more energy than the sleepy pet who inspired him. He bounces, dances, and enthusiastically copies Pip’s antics, keeping students laughing at assemblies and pep rallies.'},
-      37:{cardTitle:'Skater Kid',characterName:'Wheels Warren',types:['Student','Special'],interests:'Rollerblading, obstacle courses, and showing off tricks.',bio:'Wheels is always on his rollerblades, weaving through hallways and turning every open space into an obstacle course. Teachers watch with cautious admiration while his classmates struggle to keep up.'},
-      38:{cardTitle:'Skater Kid',characterName:'Zoe Hawk',types:['Student','Special'],interests:'Skateboarding, deck designs, and rooftop sunsets.',bio:'Zoe treats the school grounds like her personal skate park, constantly practicing tricks and designing custom boards. Her fearless attitude and determination keep her trying again, even after a spectacular wipeout.'},
-      39:{cardTitle:'Swimmer Kid',characterName:'Cascade Deep',types:['Student','Special'],interests:'Diving, floaties, and dramatic cannonballs.',bio:'Cascade is an incredible diver who can perform amazing flips despite struggling to swim in a straight line. Her trusty inflatable tube and dramatic cannonballs make every poolside appearance an event.'},
-      40:{cardTitle:'Swimmer Kid',characterName:'Brooks Wake',types:['Student','Special'],interests:'Swim meets, early morning practice, and snacks.',bio:'Brooks takes swimming seriously, training before sunrise and preparing carefully for every meet. His goggles are practically part of his uniform, and he stays calm even when things get a little splashy.'},
-      41:{cardTitle:'Gym Teacher',characterName:'Coach Boulder',types:['Staff','Speaker'],interests:'Whistles, dodgeball, and protein smoothies.',bio:'Coach Boulder treats every gym class like a championship match, motivating students with booming instructions and relentless enthusiasm. Under his watch, even the quietest kids find themselves giving a little extra effort.'},
-      42:{cardTitle:'Gym Teacher',characterName:'Coach Strong',types:['Staff','Speaker'],interests:'Track meets, stretching, and school sports.',bio:'Coach Strong brings energy and encouragement to every lesson, celebrating improvement as much as athletic achievement. She tracks her students’ progress and inspires everyone to give their best.'}
-    };
+  "1": {
+    "cardTitle": "Speech Kid",
+    "characterName": "Michael Blaze",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Singing, school spirit, pep rallies, helping others",
+    "bio": "Michael knows everyone’s name and probably has a theme song ready for it. He’s loud, charming, and always eager to step up, whether he’s leading a school-spirit rally, helping a classmate, or breaking into song. His giant afro bounces with every step, and his questionably large collection of ties has become a school legend.",
+    "ability": "Class Rep Ability: I always tie",
+    "strategy": "Use this Class Rep when you know you need to Guarantee points.",
+    "combinations": [
+      28,
+      36
+    ],
+    "combinationText": "Pair with the Math Teacher and Mascot. Both a low risk way to proc their tally abilities with Speech Kid in the deck."
+  },
+  "2": {
+    "cardTitle": "Speech Kid",
+    "characterName": "Naomi Lin",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Reading, organizing things, student council meetings",
+    "bio": "Naomi runs on color-coded schedules, careful planning, and honesty, and she always seems to have a backup plan for her backup plan. She’s dependable and sharp, with little patience for nonsense unless it’s neatly organized. Deep down, she wants what’s best for the class, plus a few extra books for the library.",
+    "ability": "Class Rep Ability: I always tie",
+    "strategy": "Use this Class Rep when you know you need to Guarantee points.",
+    "combinations": [
+      27,
+      35
+    ],
+    "combinationText": "Pair with the Math Teacher and Mascot. Both a low risk way to proc their tally abilities with Speech Kid in the deck."
+  },
+  "3": {
+    "cardTitle": "Nerdy Kid",
+    "characterName": "Tabitha Newtonium",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Robotics club, astronomy, old cartoons",
+    "bio": "Tabitha is one of three exceptionally smart triplets, each with a knack for figuring out how things work. She’s brilliant, a little awkward, and about six inches taller than the other girls in class; when she’s thinking hard, she sometimes forgets to blink. She’ll happily debug your science fair project whether you asked for help or not, and she won’t give up until she solves the problem, even if it costs her a few hours of sleep.",
+    "ability": "Campaign Ability: When played versus a [6 Influence] card I win.",
+    "strategy": "This is a high risk high reward card. Play her when you think your opponent will use a 6 or a lowest Influence wins card.",
+    "combinations": [
+      39,
+      42
+    ],
+    "combinationText": "Nerdy kid is a great defense for these high influence card’s counters and help to proc Gym Teacher’s Tally Ability"
+  },
+  "4": {
+    "cardTitle": "Nerdy Kid",
+    "characterName": "Felix Gurbb",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Dinosaurs, math puzzles, science fiction",
+    "bio": "Felix looks like he stepped out of a vintage computer magazine, bowl cut and all, and he always has a fact, correction, or explanation ready to share. He’s a well-meaning know-it-all who genuinely wants to help, even when nobody asked for a lesson. Mention dinosaurs, math puzzles, or science fiction, and his enthusiasm can keep the conversation going long after everyone else is ready to move on.",
+    "ability": "Campaign Ability: When played versus a [6 Influence] card I win.",
+    "strategy": "Nerdy Kid is a high risk high reward card. Play him when you think your opponent will use a 6 or a lowest [Influence] wins card.",
+    "combinations": [
+      40,
+      41
+    ],
+    "combinationText": "Nerdy Kid is a great defense to cover for Swimmer Kid and Gym Teacher’s weaknesses and also helps to proc Gym Teacher’s Tally Ability"
+  },
+  "5": {
+    "cardTitle": "Cool Kid",
+    "characterName": "Charles “Chill” Mann",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Being chill",
+    "bio": "Chill doesn’t walk so much as glide. He’s the shortest kid in class, yet somehow the smoothest, and he never seems to let a problem ruin his relaxed attitude. His effortless charm has made him popular, though he’s usually too busy chilling to notice.",
+    "ability": "Tally Ability: If there is 1 or more [Special] cards on your side you gain +2[votes]",
+    "strategy": "Cool Kid may not be powerful but when he lands face up his Tally ability is very reliable.",
+    "combinations": [
+      12,
+      16
+    ],
+    "combinationText": "Cool Kid wants to pair with high influence [special] type cards to help ensure his ability activates!"
+  },
+  "6": {
+    "cardTitle": "Cool Kid",
+    "characterName": "Bree “Breezy” Day",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Fashion, trends, gossip (but the fun kind)",
+    "bio": "Bree has the inside scoop on everyone and everything, often before it even happens. She’s bubbly, stylish, and always ready with a trend, a sticker, or a piece of gossip that’s meant to be fun. Beneath the glitter pens and sticker-covered binder is a big heart and a friend who cares.",
+    "ability": "Tally Ability: If there is 1 or more [Special] cards on your side you gain +2[votes]",
+    "strategy": "Cool Kid may not be very influential, but when she lands face up her Tally ability is very reliable.",
+    "combinations": [
+      11,
+      15
+    ],
+    "combinationText": "Cool Kid wants to pair with powerful high influence [special] type cards to help ensure her ability activates!"
+  },
+  "7": {
+    "cardTitle": "Substitute Teacher",
+    "characterName": "Miss Sunny",
+    "types": [
+      "Staff",
+      "Special"
+    ],
+    "interests": "Poetry, flowers, sunshine, juggling",
+    "bio": "Miss Sunny is sunshine in teacher form, bringing poetry, flowers, and contagious laughter wherever she goes. She never quite knows what the lesson plan says, but somehow her students leave happier than when they arrived. Her juggling skills are surprisingly real, although her tendency to knock over the whiteboard is just as impressive.",
+    "ability": "Campaign Ability: Lowest Influence wins.",
+    "strategy": "Substitute Teacher is a powerful anti-high influence card. Use her when you think your opponent will try and play 4,5, or 6 Influence cards.",
+    "combinations": [
+      14,
+      26
+    ],
+    "combinationText": "The Substitute Teacher acts as a powerful defensive option when helping to proc The Principal and HipHop Kid’s Tally abilities."
+  },
+  "8": {
+    "cardTitle": "Substitute Teacher",
+    "characterName": "Mr. Mortimer",
+    "types": [
+      "Staff",
+      "Special"
+    ],
+    "interests": "Rule books, history, motorcycles, birdwatching",
+    "bio": "Mr. Mortimer is firm but fair, with a booming voice, impressive chalkboard penmanship, and an endless collection of jumpsuits. He loves history and rule books, and spends his free time riding motorcycles or birdwatching. His one classroom mystery is how he can be so prepared for everything except remembering which lesson the class is on.",
+    "ability": "Campaign Ability: Lowest Influence wins.",
+    "strategy": "Substitute Teacher is a powerful anti-high influence card. Use him when you think your opponent will try and play 4,5, or 6 Influence cards.",
+    "combinations": [
+      13,
+      25
+    ],
+    "combinationText": "The Substitute Teacher acts as a powerful defensive option when helping to proc The Principal and HipHop Kid’s Tally abilities."
+  },
+  "9": {
+    "cardTitle": "Sporty Kid",
+    "characterName": "Frank “Faceoff” Ball",
+    "types": [
+      "Student"
+    ],
+    "interests": "Every sport ever, seriously all of them",
+    "bio": "Frank plays every sport like it’s the championship and is almost never seen standing still. Class photos rarely capture more than a blur of limbs, and somehow he ends up with grass stains even after indoor sporting events. He’s a natural athlete who treats every game like the biggest moment of his life.",
+    "ability": "Campaign Ability: When played versus [Speaker] Cards I get +2[Influence]",
+    "strategy": "Sporty Kid is a powerful student card that won’t clog up your typing synergies, but shuts down many cards with powerful Tally abilities.",
+    "combinations": [
+      28,
+      32
+    ],
+    "combinationText": "This is a combination  that covers a lot of bases with room to remain flexible and add in other strategies."
+  },
+  "10": {
+    "cardTitle": "Sporty Kid",
+    "characterName": "Danielle “Dani” Nette",
+    "types": [
+      "Student"
+    ],
+    "interests": "Dribbling, scoring, passing (and soccer, shh… don’t tell anyone)",
+    "bio": "Dani dominates the basketball court and makes dribbling, passing, and scoring look easy. She’s respected for her skills and never shies away from a challenge, but she has a secret: she’d rather be out on the soccer field. For now, she’s keeping that little detail to herself.",
+    "ability": "Campaign Ability: When played versus [Speaker] Cards I get +2[Influence]",
+    "strategy": "Sporty Kid is a powerful student card that won’t clog up your typing synergies, but shuts down many cards with powerful Tally abilities.",
+    "combinations": [
+      27,
+      31
+    ],
+    "combinationText": "This is a combination  that covers a lot of bases with room to remain flexible and add in other strategies."
+  },
+  "11": {
+    "cardTitle": "Teacher’s Pet",
+    "characterName": "Pip and Nibbs",
+    "types": [
+      "Special"
+    ],
+    "interests": "Studying, note taking, tests, snacks, naps",
+    "bio": "Pip is a studious girl hamster who seems determined to do school just like the kids: she attends class, takes notes, does her homework, and somehow aces her tests. Her companion Nibbs is a boy hamster with a much simpler routine: snack, nap, repeat. Together, these very different little pets have become beloved members of the Little Middle school community.",
+    "strategy": "Teacher’s Pet is powerful in combinations with two Staff Cards!",
+    "combinations": [
+      22,
+      34
+    ],
+    "combinationText": "This power combination can beat most high influence cards and activates The Teacher’s Pets’ Abilities"
+  },
+  "12": {
+    "cardTitle": "Teacher’s Pet",
+    "characterName": "Scurry",
+    "types": [
+      "Special"
+    ],
+    "interests": "Escape tunnels, air vents",
+    "bio": "Scurry is a mouse with one goal in life: escape school! He’s tried the front doors, the ceiling tiles, the air vents, and a suspiciously small hole in the principal’s office, but somehow he always ends up back in the lunchroom, usually with a stolen snack and a fresh detention slip. Every failed escape only inspires an even more ridiculous plan.",
+    "strategy": "Teacher’s Pet is powerful in combinations with two Staff Cards!",
+    "combinations": [
+      21,
+      33
+    ],
+    "combinationText": "This power combination can beat most high influence cards and activates The Teacher’s Pet’s Abilities"
+  },
+  "13": {
+    "cardTitle": "Principal",
+    "characterName": "Vice Principal Grizz",
+    "types": [
+      "Staff",
+      "Speaker"
+    ],
+    "interests": "Discipline, poetry",
+    "bio": "Vice Principal Grizz is huge, intimidating, and sounds like he gargles gravel, but beneath that gruff exterior is a big softie who wants every student to succeed. He enforces the rules while quietly fixing broken lockers and checking on kids who seem down. He may have an iron fist, but he also has a secret weakness for poetry.",
+    "ability": "Tally Ability: If there are less than 2[Student] cards face up on your side you gain +1[Vote]",
+    "strategy": "The Principal is powerful when paired with other staff Cards",
+    "combinations": [
+      8,
+      24
+    ],
+    "combinationText": "This power combination can beat most other cards and leave room to still activate the Principal's Tally ability."
+  },
+  "14": {
+    "cardTitle": "Principal",
+    "characterName": "Principal Stone",
+    "types": [
+      "Staff",
+      "Speaker"
+    ],
+    "interests": "Rules, structure, hair gel, rare umbrellas",
+    "bio": "Principal Stone’s shoes click like a metronome of doom, and her icy stare can silence an entire cafeteria. She loves rules, structure, perfectly styled hair, and rare umbrellas, but she cares deeply about her students and staff. When things get tough, she’s the first one in and the last one to leave, making sure the school runs like clockwork.",
+    "ability": "Tally Ability: If there are less than 2[Student] cards face up on your side you gain +1[Vote]",
+    "strategy": "The Principal is powerful when paired with other staff Cards",
+    "combinations": [
+      7,
+      23
+    ],
+    "combinationText": "This power combination can beat most other cards and leave room to still activate the Principal's Tally ability."
+  },
+  "15": {
+    "cardTitle": "Classical Kid",
+    "characterName": "Rumi Sato",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Cello, studying, LessThanPi Comics",
+    "bio": "Rumi is one of the hardest-working students in school. Her grades shine, her cello performances stun, and she makes excellence look effortless, earning the admiration of teachers and classmates alike. Beneath her polished image is a LessThanPi Comics superfan who could write a full thesis about her favorite heroes."
+  },
+  "16": {
+    "cardTitle": "Classical Kid",
+    "characterName": "Victor Strings",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Violin, quiet practice rooms, classical playlists",
+    "bio": "Victor carries himself as though he’s stepping onto a grand stage every time he enters a room. He tunes his violin carefully and treats every note with respect, taking the time to refine what others might rush. Some say he was born in the wrong century, and he takes that as a compliment."
+  },
+  "17": {
+    "cardTitle": "Punk Kid",
+    "characterName": "Riff Razor",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Loud riffs, customizing guitars, sticking band stickers on everything",
+    "bio": "Riff was practically born in the middle of a guitar solo. His guitar is covered in stickers, his riffs are loud, and his volume rarely drops below maximum. He treats practice like a performance and every performance like a battle, even if the walls would really prefer he turn it down."
+  },
+  "18": {
+    "cardTitle": "Punk Kid",
+    "characterName": "Lexi Riot",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Mic checks, concerts, crafting band merch",
+    "bio": "Lexi commands attention the moment she steps forward, with a gritty voice and fearless confidence that fills the hallway. As the frontwoman of The Bandits, she always seems to have another concert or lunchtime gig in the works. Give her a crowd and she’ll have everyone singing along by the first chorus."
+  },
+  "19": {
+    "cardTitle": "Band Kid",
+    "characterName": "Nina Drummond",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Cadences, stick tricks, marching formations",
+    "bio": "Nina is never still for long, tapping rhythms on desks and lockers without even noticing. She leads the drumline with sharp focus and quiet authority, keeping every cadence and marching formation on beat. Even in silence, she can hear the next count coming."
+  },
+  "20": {
+    "cardTitle": "Band Kid",
+    "characterName": "Toby Brass",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Marching band, warmups, annoying his sister",
+    "bio": "Toby believes volume equals victory and practices his trumpet whether the school is ready or not. His triumphant high notes can make any pep rally feel like a championship celebration. Subtlety has never been part of his strategy, especially when it comes to annoying his sister."
+  },
+  "21": {
+    "cardTitle": "Lunch Staff",
+    "characterName": "“Lunch Manly” Dan",
+    "types": [
+      "Staff"
+    ],
+    "interests": "Protein-packed meals, heroic poses, chili cook-offs",
+    "bio": "Dan treats every lunch period like a championship event, serving protein-packed meals with dramatic flair and motivational speeches. He somehow makes an apron look heroic, and teachers linger just to hear his latest pep talk. Legend says he once flexed and the pudding cups trembled."
+  },
+  "22": {
+    "cardTitle": "Lunch Staff",
+    "characterName": "Lunch Lady Pam",
+    "types": [
+      "Staff"
+    ],
+    "interests": "Secret recipes, giant ladles, lunchtime diplomacy",
+    "bio": "Pam runs the cafeteria with calm confidence, remembering every student’s favorite meal and keeping the line moving at impressive speed. Her secret recipes and giant ladle have earned her a legendary reputation, especially for her mashed potatoes. Around Little Middle, she’s the real head of state."
+  },
+  "23": {
+    "cardTitle": "Music Teacher",
+    "characterName": "Mrs. Delgado",
+    "types": [
+      "Staff",
+      "Special"
+    ],
+    "interests": "Maracas, dancing the samba, correcting pitch",
+    "bio": "Mrs. Delgado brings warmth and rhythm to every choir session, guiding students patiently while encouraging them to give their best. She loves maracas and dancing the samba, and she believes every student has a voice worth hearing. Under her direction, concert nights feel electric."
+  },
+  "24": {
+    "cardTitle": "Music Teacher",
+    "characterName": "Mr. Toupin",
+    "types": [
+      "Staff",
+      "Special"
+    ],
+    "interests": "Conducting, pep band, dramatic entrances",
+    "bio": "Mr. Toupin treats every rehearsal like opening night, with grand conducting gestures and dramatic entrances. Students may whisper about his very determined hairstyle, but nobody questions his love for music or the pep band. For him, applause is the perfect form of punctuation."
+  },
+  "25": {
+    "cardTitle": "Hip-Hop Kid",
+    "characterName": "Jay Beats",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Beatmaking, vinyl records, collecting headphones",
+    "bio": "Jay hears rhythm in everything, from locker doors to footsteps echoing down the hall. He collects headphones and vinyl records, and he often builds a whole track in his head before it ever reaches his laptop. Give him a minute and he’ll give you a hook."
+  },
+  "26": {
+    "cardTitle": "Hip-Hop Kid",
+    "characterName": "Kira Flow",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Freestyling, fashion, choreography",
+    "bio": "Kira turns ordinary moments into performances, making class presentations rhythmic showcases and hallway conversations clever wordplay. She moves with confidence, loves fashion and choreography, and always knows how to say something with style. When Kira starts freestyling, the whole room becomes her stage."
+  },
+  "27": {
+    "cardTitle": "Math Teacher",
+    "characterName": "Mrs. Summer",
+    "types": [
+      "Staff"
+    ],
+    "interests": "Baking pies, math duets, color-coded notebooks",
+    "bio": "Mrs. Summer balances theatrical math lessons with steady grace, making tricky problems feel manageable. Her chalkboard writing is flawless, her notebooks are color-coded, and she loves baking pies. At assemblies, her math duets with her husband draw roaring applause."
+  },
+  "28": {
+    "cardTitle": "Math Teacher",
+    "characterName": "Mr. Summer",
+    "types": [
+      "Staff"
+    ],
+    "interests": "Puns, math songs, calculators",
+    "bio": "Mr. Summer refuses to teach math quietly. Equations become lyrics and fractions turn into full performances, so students often leave class humming multiplication tables instead of just remembering the homework. He loves puns and calculators, and truly believes math deserves a standing ovation."
+  },
+  "29": {
+    "cardTitle": "Karate Kid",
+    "characterName": "Kenneth Master",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Martial arts, Japanese snacks, dramatic poses",
+    "bio": "Kenneth is Class 3A’s class representative, and he takes the role seriously. After spending the summer training in Japan, he returned with sharper martial arts skills and a calm confidence that shapes everything he does. He wears his gi every day and tries to set an example, even when school life gets chaotic."
+  },
+  "30": {
+    "cardTitle": "Karate Kid",
+    "characterName": "Rose Meadows",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Karate, comic books, prank sparring",
+    "bio": "Rose is Class 3A’s energetic vice representative, bringing her love of karate and comic books into everyday school life. She enjoys playful sparring and creative pranks, and she’s always ready to show off a new move. Her determination and cheerful spirit make her both inspiring and fun to be around."
+  },
+  "31": {
+    "cardTitle": "Track Kid",
+    "characterName": "Riley Swift",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Sprinting, relay races, beating personal records",
+    "bio": "Riley is the fastest sprinter in school and loves racing anyone who dares to challenge her. She thrives on short bursts of speed, relay races, and beating her personal records, often zipping past before anyone realizes the race has started. Her energy is contagious, and she seems to have picked up her determination and love of track from someone who knows a thing or two about coaching"
+  },
+  "32": {
+    "cardTitle": "Track Kid",
+    "characterName": "Miles Long",
+    "types": [
+      "Student",
+      "Speaker"
+    ],
+    "interests": "Jogging, steady routines, energy bars",
+    "bio": "Miles is a long-distance runner who treats every hallway and sidewalk as part of his route. He keeps a steady pace, sticks to his routines, and rarely draws attention to himself. His quiet consistency shows in the way he keeps pushing forward every day."
+  },
+  "33": {
+    "cardTitle": "Crossing Guard",
+    "characterName": "Mr. Beacon",
+    "types": [
+      "Staff"
+    ],
+    "interests": "Safety drills, morning stretches, beard grooming",
+    "bio": "Mr. Beacon keeps students safe as they cross the street, guiding them with a brisk, confident pace. His legendary beard makes him easy to spot, and even older students slow down and follow his lead. He enjoys the rhythm of morning safety routines and takes pride in getting everyone to school safely."
+  },
+  "34": {
+    "cardTitle": "Crossing Guard",
+    "characterName": "Mrs. Bright",
+    "types": [
+      "Staff"
+    ],
+    "interests": "Whistles, staying hydrated, neighborhood watch",
+    "bio": "Mrs. Bright manages the crosswalk with energy and precision, keeping track of students, steps, and neighborhood activity. Her whistle and cheerful, commanding presence earn respect from everyone passing her corner. She makes safety feel like a team effort, with everyone moving in the right direction."
+  },
+  "35": {
+    "cardTitle": "Mascot",
+    "characterName": "Pip",
+    "types": [
+      "Special"
+    ],
+    "interests": "School spirit, dramatic entrances, confusing people",
+    "bio": "Pip is a student hidden inside a hamster mascot costume inspired by the school’s studious pet hamster. Nobody knows who’s inside the suit, but the silent performer brings school spirit with dramatic entrances and unpredictable antics."
+  },
+  "36": {
+    "cardTitle": "Mascot",
+    "characterName": "Nibbs",
+    "types": [
+      "Special"
+    ],
+    "interests": "Snacks, dancing, copying Pip",
+    "bio": "Nibbs is a student in a hamster mascot costume inspired by the school’s sleepy pet, though this performer has energy to spare. He bounces, dances, and enthusiastically copies Pip’s antics, turning assemblies and pep rallies into lively shows."
+  },
+  "37": {
+    "cardTitle": "Skater Kid",
+    "characterName": "Wheels Warren",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Rollerblading, obstacle courses, showing off tricks",
+    "bio": "Wheels is always on his rollerblades, gliding through hallways, weaving around lockers, and pulling off tricks whenever he gets the chance. Teachers watch with cautious admiration while classmates try to keep up with his constant motion. For Wheels, every open space is a new obstacle course."
+  },
+  "38": {
+    "cardTitle": "Skater Kid",
+    "characterName": "Zoe Hawk",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Skateboarding, deck designs, rooftop sunsets",
+    "bio": "Zoe treats the school grounds like her personal skate park, practicing tricks and decorating her boards with custom designs. She keeps trying until she lands the move she wants, even after a spectacular wipeout. Her daring attitude and persistence have earned the admiration of her friends."
+  },
+  "39": {
+    "cardTitle": "Swimmer Kid",
+    "characterName": "Cascade Deep",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Diving, floaties, dramatic cannonballs",
+    "bio": "Cascade amazes everyone with flips and dramatic dives, even though swimming in a straight line can be a challenge. Her inflatable tube goes everywhere, and she brings flair to every poolside appearance. Friends love her theatrical cannonballs, while teachers admire the effort she puts into each dive."
+  },
+  "40": {
+    "cardTitle": "Swimmer Kid",
+    "characterName": "Brooks Wake",
+    "types": [
+      "Student",
+      "Special"
+    ],
+    "interests": "Swim meets, early morning practice, snacks",
+    "bio": "Brooks takes swimming seriously, showing up to practice early and preparing for every meet like it’s the Olympics. He wears his goggles practically everywhere, and with his careful planning and calm demeanor, he’s always ready to dive in."
+  },
+  "41": {
+    "cardTitle": "Gym Teacher",
+    "characterName": "Coach Boulder",
+    "types": [
+      "Staff",
+      "Speaker"
+    ],
+    "interests": "Whistles, dodgeball, protein smoothies",
+    "bio": "Coach Boulder treats every gym class like a championship match, motivating students with booming instructions and careful attention to effort. His love of dodgeball, whistles, and protein smoothies is matched by his determination to help everyone improve. Even the quietest students find themselves trying a little harder under his watch."
+  },
+  "42": {
+    "cardTitle": "Gym Teacher",
+    "characterName": "Coach Swift",
+    "types": [
+      "Staff",
+      "Speaker"
+    ],
+    "interests": "Track meets, stretching, school sports",
+    "bio": "Coach Swift brings energy and encouragement to every lesson, celebrating improvement as much as athletic achievement. She tracks her students’ progress, cheers them on at track meets, and inspires everyone to give their best. She always seems especially invested when her students take to the track, offering the kind of encouragement that comes from knowing exactly what it takes to cross the finish line."
+  }
+};
