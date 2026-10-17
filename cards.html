@@ -57,9 +57,9 @@
     .section-title::before,.section-title::after { content:""; flex:none; width:75px; height:80px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
     .page-heading { display:flex; align-items:center; justify-content:flex-start; gap:24px; }
     .page-heading img { width:50px; height:75px; object-fit:contain; image-rendering:pixelated; }
-    .set-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
-    .set-tab { min-height:44px; padding:10px 15px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:10px; font:8px/1.6 "Press Start 2P",monospace; cursor:pointer; }
-    .set-tab[aria-pressed="true"],.set-tab:hover { color:var(--white); background:var(--red); }
+    .type-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
+    .type-tab { min-height:44px; padding:10px 15px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:10px; font:8px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .type-tab[aria-pressed="true"],.type-tab:hover { color:var(--white); background:var(--red); }
     .rail-shell { position:relative; }
     .character-rail { display:grid; width:100%; grid-auto-flow:column; grid-template-rows:repeat(2,175px); grid-auto-columns:125px; gap:12px; padding:8px 8px 20px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-color:var(--red) var(--dark-gray); }
     .character-rail.is-centered { justify-content:center; }
@@ -204,20 +204,21 @@
   <main>
     <section class="page-head wrap">
       <div><div class="page-heading"><img src="images/Assets/TinyCardBack-Large-L.png" alt=""><h1>THE CARDS</h1><img src="images/Assets/TinyCardBack-Large-R.png" alt=""></div>
-      <p>Meet the students, staff, and special characters in Your Class Rep. Choose a set, then select a character to see their card.</p></div>
+      <p>Meet the students, staff, and special characters in Your Class Rep. Filter by card type, then select a character to see their card.</p></div>
       <div class="page-head-portrait"><img class="page-head-art" src="images/Characters/02-SpeechF-Ch.png" alt="Speech Kid 2"><span class="character-speech">WHO WILL YOU PLAY?</span></div>
     </section>
-    <section class="band" aria-label="Character sets">
+    <section class="band" aria-label="Filter characters by type">
       <div class="wrap">
-        <div class="set-tabs" role="group" aria-label="Choose a set">
-          <button class="set-tab" type="button" data-set="1" aria-pressed="true">SET 01</button>
-          <button class="set-tab" type="button" data-set="2" aria-pressed="false">SET 02</button>
-          <button class="set-tab" type="button" data-set="3" aria-pressed="false">SET 03</button>
-          <button class="set-tab" type="button" data-set="all" aria-pressed="false">ALL CHARACTERS</button>
+        <div class="type-tabs" role="group" aria-label="Choose a card type">
+          <button class="type-tab" type="button" data-type="Student" aria-pressed="false">STUDENT</button>
+          <button class="type-tab" type="button" data-type="Speaker" aria-pressed="false">SPEAKER</button>
+          <button class="type-tab" type="button" data-type="Staff" aria-pressed="false">STAFF</button>
+          <button class="type-tab" type="button" data-type="Special" aria-pressed="false">SPECIAL</button>
+          <button class="type-tab" type="button" data-type="all" aria-pressed="true">ALL CHARACTERS</button>
         </div>
-        <div class="section-title"><h2 id="set-title">SET 01 · CHARACTERS 01–14</h2></div>
+        <div class="section-title"><h2 id="type-title">ALL CHARACTERS · 01–42</h2></div>
         <div class="rail-shell">
-          <div class="character-rail" id="character-rail" aria-label="Characters in selected set"></div>
+          <div class="character-rail" id="character-rail" aria-label="Characters matching selected type"></div>
         </div>
         <p class="selected-count" id="selected-count" aria-live="polite">Select a character to view their card.</p>
       </div>
@@ -281,7 +282,7 @@
     const rail = document.getElementById('character-rail');
     const requestedCard = Number(new URLSearchParams(window.location.search).get('card'));
     let selected = Number.isInteger(requestedCard) && requestedCard >= 1 && requestedCard <= 42 ? requestedCard : 1;
-    let activeSet = Math.ceil(selected / 14);
+    let activeType = 'all';
     const detailPanel = document.querySelector('.detail');
     const cardNavButtons = [...document.querySelectorAll('.card-nav')];
     function positionCardNav() {
@@ -331,8 +332,7 @@
           label.textContent = entry.name.toUpperCase();
           button.append(image, label);
           button.addEventListener('click', () => {
-            const targetSet = Math.ceil(number / 14);
-            if (activeSet !== targetSet) showSet(targetSet);
+            if (activeType !== 'all' && !(details[number]?.types || []).includes(activeType)) showType('all');
             selectCharacter(number);
             document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
           });
@@ -362,18 +362,21 @@
       document.getElementById('detail-ability').textContent = detail.ability || abilityPlaceholder;
       document.getElementById('detail-strategy').textContent = detail.strategy || strategyPlaceholder;
       renderCombinations(detail);
-      document.getElementById('selected-count').textContent = `${entry.name} selected · Card ${id} of 42`;
+      const category = activeType === 'all' ? 'All characters' : activeType;
+      document.getElementById('selected-count').textContent = `${entry.name} selected · Card ${id} of 42 · ${category}`;
       positionCardNav();
     }
-    function showSet(set) {
-      activeSet = set;
-      const all = set === 'all';
-      const first = all ? 1 : (set - 1) * 14 + 1;
-      const last = all ? entries.length : first + 13;
-      document.getElementById('set-title').textContent = all ? 'ALL CHARACTERS · 01–42' : `SET 0${set} · CHARACTERS ${String(first).padStart(2,'0')}–${String(last).padStart(2,'0')}`;
-      document.querySelectorAll('.set-tab').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.set === String(set))));
+    function getVisibleEntries(type = activeType) {
+      return type === 'all' ? entries : entries.filter(entry => (details[entry.number]?.types || []).includes(type));
+    }
+    function showType(type) {
+      activeType = type;
+      const visibleEntries = getVisibleEntries(type);
+      document.getElementById('type-title').textContent = type === 'all' ? 'ALL CHARACTERS · 01–42' : `${type.toUpperCase()} CARDS · ${visibleEntries.length}`;
+      document.querySelectorAll('.type-tab').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.type === type)));
+      rail.setAttribute('aria-label', type === 'all' ? 'All characters' : `${type} characters`);
       rail.replaceChildren();
-      entries.slice(first-1,last).forEach(entry => {
+      visibleEntries.forEach(entry => {
         const id = String(entry.number).padStart(2,'0');
         const button = document.createElement('button');
         button.type = 'button'; button.className = 'character'; button.dataset.number = entry.number;
@@ -388,13 +391,14 @@
       });
       rail.classList.toggle('is-centered', rail.scrollWidth <= rail.clientWidth);
       rail.scrollLeft = 0;
-      if (selected < first || selected > last) selectCharacter(first);
+      if (!visibleEntries.some(entry => entry.number === selected)) selectCharacter(visibleEntries[0].number);
       else selectCharacter(selected);
     }
     function navigateCard(direction) {
-      const number = ((selected - 1 + direction + entries.length) % entries.length) + 1;
-      const targetSet = Math.ceil(number / 14);
-      if (activeSet !== 'all' && activeSet !== targetSet) showSet(targetSet);
+      const visibleEntries = getVisibleEntries();
+      const currentIndex = visibleEntries.findIndex(entry => entry.number === selected);
+      const nextIndex = (currentIndex + direction + visibleEntries.length) % visibleEntries.length;
+      const number = visibleEntries[nextIndex].number;
       selectCharacter(number);
       document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
     }
@@ -406,8 +410,8 @@
       });
       navigationObserver.observe(detailPanel);
     }
-    document.querySelectorAll('.set-tab').forEach(button => button.addEventListener('click', () => showSet(button.dataset.set === 'all' ? 'all' : Number(button.dataset.set))));
-    showSet(activeSet);
+    document.querySelectorAll('.type-tab').forEach(button => button.addEventListener('click', () => showType(button.dataset.type)));
+    showType(activeType);
     positionCardNav();
   </script>
 </body>
