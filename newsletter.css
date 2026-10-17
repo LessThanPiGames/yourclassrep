@@ -1,0 +1,75 @@
+.newsletter-area {
+  max-width: 640px;
+  margin: 28px auto 0;
+  padding-top: 20px;
+  border-top: 2px solid var(--black);
+  text-align: center;
+}
+
+.newsletter-area h3 {
+  margin: 0 0 10px;
+  font: 10px/1.8 "Press Start 2P", monospace;
+  text-transform: uppercase;
+}
+
+.newsletter-area > p {
+  margin: 0 auto 14px;
+  font-size: 21px;
+}
+
+.newsletter-form {
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  color: var(--black) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.newsletter-form .formkit-background { display: none !important; }
+.newsletter-form [data-style="minimal"] { padding: 0 !important; }
+
+.newsletter-form .formkit-fields {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px;
+  margin: 0 auto !important;
+}
+
+.newsletter-form .formkit-field,
+.newsletter-form .formkit-submit {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.newsletter-form .formkit-input {
+  width: 100% !important;
+  min-height: 48px;
+  padding: 10px 12px !important;
+  color: var(--black) !important;
+  background: var(--white) !important;
+  border: 2px solid var(--black) !important;
+  border-radius: 8px !important;
+  font: 21px "VT323", monospace !important;
+}
+
+.newsletter-form .formkit-submit {
+  min-height: 54px;
+  padding: 12px !important;
+  color: var(--white) !important;
+  background: var(--red) !important;
+  border: 3px solid var(--black) !important;
+  border-radius: 10px !important;
+  font: 8px "Press Start 2P", monospace !important;
+  cursor: pointer;
+}
+
+.newsletter-form .formkit-submit:hover,
+.newsletter-form .formkit-submit:focus-visible { background: var(--black) !important; }
+.newsletter-form .formkit-guarantee { color: var(--black) !important; font: 18px "VT323", monospace !important; }
+.newsletter-form .formkit-powered-by-convertkit-container { margin: 8px 0 0 !important; }
+.newsletter-form .formkit-powered-by-convertkit { color: var(--black); font: 14px "VT323", monospace; }

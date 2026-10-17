@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Class Rep | A Card Game for Two Players</title>
-  <meta name="description" content="Meet Your Class Rep, a fast-paced two-player card game. Compare Influence, secure the votes, and become Your Class Rep.">
+  <title>Your Class Rep | Build your classroom. Outsmart your opponent. Win the election.</title>
+  <meta name="description" content="Build your classroom. Outsmart your opponent. Win the election. Become YOUR CLASS REP.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://yourclassrep.com/">
   <link rel="icon" type="image/png" sizes="32x32" href="images/Assets/favicon-32.png">
@@ -12,12 +12,14 @@
   <link rel="apple-touch-icon" href="images/Assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Your Class Rep">
-  <meta property="og:title" content="Your Class Rep | A Card Game for Two Players">
-  <meta property="og:description" content="Compare Influence, secure the votes, and become Your Class Rep.">
+  <meta property="og:title" content="YOUR CLASS REP">
+  <meta property="og:description" content="Build your classroom. Outsmart your opponent. Win the election. Become YOUR CLASS REP.">
   <meta property="og:url" content="https://yourclassrep.com/">
   <meta property="og:image" content="https://yourclassrep.com/images/Action%20Shots/YCR-Hero-2.png">
   <meta property="og:image:alt" content="Your Class Rep handheld game console with the game logo on screen">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YOUR CLASS REP">
+  <meta name="twitter:description" content="Build your classroom. Outsmart your opponent. Win the election. Become YOUR CLASS REP.">
   <meta name="twitter:image" content="https://yourclassrep.com/images/Action%20Shots/YCR-Hero-2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,8 +77,8 @@
     @supports (width:1cqw) {
       .hero-sprinkle-left,.hero-sprinkle-right { width:clamp(72px,20cqw,216px); height:clamp(94px,26cqw,280px); bottom:clamp(-65px,-6cqw,-22px); }
     }
-    .hero-sprinkle-left { left:2.3%; transform:translateX(-50%); }
-    .hero-sprinkle-right { right:2.8%; transform:translateX(50%); }
+    .hero-sprinkle-left { left:2.3%; transform:translateX(calc(-50% - 30px)); }
+    .hero-sprinkle-right { right:2.8%; transform:translateX(calc(50% + 60px)); }
     .featured-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:15px; background:var(--white); border:3px solid var(--black); border-radius:18px; }
     .featured { display:block; padding:12px; color:var(--black); background:var(--white); text-align:center; text-decoration:none; }
     .featured:hover img,.featured:focus-visible img { box-shadow:0 0 0 3px var(--red); border-radius:14px; }
@@ -213,13 +215,14 @@
       .discord-sparkle.r5 { right:38px; }
     }
   </style>
+  <link rel="stylesheet" href="newsletter.css">
 </head>
 <body>
   <header class="topbar">
     <nav class="nav wrap" aria-label="Main navigation">
         <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
       <div class="navlinks">
-        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="#how-it-works">RULES</a>
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a>
         <a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a>
         <a href="#videos">VIDEOS</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
       </div>
@@ -230,8 +233,8 @@
     <div class="wrap">
       <section class="hero" aria-labelledby="main-title">
         <div class="hero-copy">
-          <h1 id="main-title">A card game<br>for two players</h1>
-          <p class="subhead">Compare Influence, Secure the votes. Become <strong>YOUR CLASS REP!</strong></p>
+          <h1 id="main-title">YOUR CLASS REP</h1>
+          <p class="subhead">Build your classroom. Outsmart your opponent. Win the election. Become YOUR CLASS REP.</p>
           <div class="countdown-card" aria-live="polite">
             <p class="countdown-title" id="home-sale-message">CROWD SALE STARTS IN</p>
             <div class="countdown" id="home-countdown" aria-label="Countdown to the crowd sale">
@@ -243,7 +246,7 @@
           </div>
           <a class="button" id="home-sale-button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
         </div>
-        <div class="hero-video"><iframe data-youtube-id="1VZW6BRRT9M" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="Your Class Rep gameplay" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><img class="character-sprinkle hero-sprinkle-left" src="images/Characters/04-NerdM-Ch.png" alt="" aria-hidden="true"><img class="character-sprinkle hero-sprinkle-right" src="images/Characters/03-NerdF-Ch.png" alt="" aria-hidden="true"></div>
+        <div class="hero-video"><iframe data-youtube-id="1VZW6BRRT9M" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="Your Class Rep gameplay" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><img class="character-sprinkle hero-sprinkle-left" src="images/Characters/06-CoolF-Ch.png" alt="" aria-hidden="true"><img class="character-sprinkle hero-sprinkle-right" src="images/Characters/05-CoolM-Ch.png" alt="" aria-hidden="true"></div>
       </section>
     </div>
 
@@ -319,6 +322,23 @@
         <div class="section-title"><h2>JOIN THE CLASS</h2></div>
         <p>Join the Discord community for Your Class Rep and other LessThanPi projects.</p>
         <a class="button" href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a>
+        <div class="newsletter-area">
+          <h3>Join the LessThanPi Newsletter</h3>
+          <p>Get updates on what we’re building at LessThanPi, mostly games. We’re starting with Your Class Rep and will share progress, ideas, and things worth showing along the way.</p>
+          <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+          <form action="https://app.kit.com/forms/9570682/subscriptions" class="seva-form formkit-form newsletter-form" method="post" data-sv-form="9570682" data-uid="beb55ba1cf" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800">
+            <div data-style="minimal">
+              <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+              <div data-element="fields" data-stacked="true" class="seva-fields formkit-fields">
+                <div class="formkit-field"><input class="formkit-input" aria-label="First Name" name="fields[first_name]" required placeholder="First Name" type="text"></div>
+                <div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email"></div>
+                <button data-element="submit" class="formkit-submit"><div class="formkit-spinner"><div></div><div></div><div></div></div><span>Subscribe</span></button>
+              </div>
+              <div class="formkit-guarantee" data-element="guarantee">We won't send you spam. Unsubscribe at any time.</div>
+              <div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" target="_blank" rel="nofollow noopener">Built with Kit</a></div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </main>
