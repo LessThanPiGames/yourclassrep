@@ -40,7 +40,7 @@
     .wrap { width:min(1160px,calc(100% - 40px)); margin-inline:auto; }
     .topbar { position:sticky; top:0; z-index:20; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
     .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
-    .brand { position:absolute; z-index:2; left:0; top:-8px; display:block; }
+    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
     .brand img { display:block; width:220px; height:auto; }
     .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(12px,2vw,25px); }
     .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
@@ -59,7 +59,14 @@
     .contents { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 auto 30px; padding:16px; background:var(--red); border:3px solid var(--black); border-radius:16px; }
     .contents a { padding:10px 12px; color:var(--white); border:2px solid var(--black); border-radius:8px; text-decoration:none; font:8px/1.7 "Press Start 2P",monospace; }
     .contents a:hover,.contents a:focus-visible { color:var(--black); background:var(--white); }
-    .rule-section { position:relative; margin:24px auto; padding:clamp(20px,4vw,38px); border:3px solid var(--black); border-radius:20px; background:#fff; scroll-margin-top:100px; }
+    .download-promo { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:0 auto 30px; padding:20px 24px; border:3px solid var(--black); border-radius:16px; background:var(--pink); }
+    .download-promo h2 { margin:0 0 8px; font-size:clamp(13px,1.7vw,18px); }
+    .download-promo p { display:block; }
+    .download-promo .promo-description { margin:8px 0 0; font-size:23px; }
+    .download-promo .promo-instructions { margin:3px 0 0; font-size:18px; }
+    .download-promo .button { display:inline-flex; flex:none; align-items:center; justify-content:center; min-height:50px; padding:12px 18px; color:var(--white); background:var(--red); border:3px solid var(--black); border-radius:12px; box-shadow:5px 5px 0 var(--black); text-decoration:none; font:8px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .download-promo .button:hover,.download-promo .button:focus-visible { color:var(--white); background:var(--black); }
+    .rule-section { position:relative; margin:24px auto; padding:clamp(20px,4vw,38px); border:3px solid var(--black); border-radius:20px; background:var(--white); scroll-margin-top:100px; }
     .rule-section.decorated { padding-inline:clamp(66px,9vw,104px); }
     .rule-section > :not(.rule-character) { position:relative; z-index:1; }
     /* 50% of the site's 216 × 280 px full-size character art. */
@@ -83,6 +90,7 @@
     .rule-section li { margin:5px 0; }
     .phase-step { margin:20px 0; padding:20px; border:2px solid var(--black); border-radius:14px; background:var(--white); color:var(--black); }
     .phase-step h3 { margin:0 0 8px; }
+    #tally-phase > .tie-breaker-title { color:var(--black); }
     .phase-step ol { margin-bottom:0; }
     .rule-callout { margin:18px 0; padding:15px 18px; border-left:7px solid var(--red); background:var(--pink); color:var(--black); }
     .rule-callout p:first-child { margin-top:0; }
@@ -90,6 +98,12 @@
     .guide-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
     .guide-card { padding:20px; color:var(--black); border:2px solid var(--black); border-radius:14px; background:var(--white); }
     .guide-card h3 { margin:0 0 10px; }
+    .icon-heading { display:flex; align-items:center; gap:9px; }
+    .game-icon { display:block; flex:none; width:30px; height:32px; object-fit:contain; image-rendering:pixelated; }
+    .game-icon.large { width:45px; height:48px; }
+    .game-icon.small { width:15px; height:16px; }
+    .keywords .game-icon.small { width:30px; height:32px; }
+    .keyword .icon-heading { font-size:10px; }
     .guide-card p:last-child { margin-bottom:0; }
     .type-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:0!important; list-style:none; }
     .type-list li { margin:0!important; padding:16px; color:var(--black); border:2px solid var(--black); border-radius:12px; background:var(--white); }
@@ -100,6 +114,7 @@
     .keywords { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
     .keyword { padding:15px; border:2px solid var(--black); border-radius:12px; background:var(--white); }
     .keyword dt { margin-bottom:8px; font:10px/1.8 "Press Start 2P",monospace; }
+    .keyword dt.icon-heading { gap:7px; }
     .keyword dd { margin:0; }
     .rule-section a:not(.contents a) { color:var(--red); text-decoration-thickness:2px; text-underline-offset:3px; }
     .rule-section.dark a { color:#ff8b8b; }
@@ -121,7 +136,7 @@
     .legal { display:block; max-width:900px; margin:20px auto 0; color:#c4c4c4; font-size:17px; }
     .winner-callout { max-width:780px; margin:22px auto!important; text-align:center; }
     .winner-callout .pixel { font-size:clamp(12px,1.8vw,18px); line-height:1.8; }
-    @media(max-width:1000px) {
+    @media(max-width:1100px) {
       .nav { display:block; min-height:0; padding:16px 0 8px; }
       .navlinks { width:100%; flex-direction:column; align-items:flex-end; gap:10px; text-align:right; }
     }
@@ -138,7 +153,6 @@
     @media(max-width:560px) {
       body { font-size:20px; }
       .wrap { width:calc(100% - 28px); }
-      .brand { top:-6px; }
       .navlinks a { font-size:6px; }
       .navlinks .sale-nav { padding:9px; }
       .page-intro { grid-template-columns:minmax(0,1.65fr) minmax(105px,.8fr); gap:4px; padding:25px 0 18px; }
@@ -153,6 +167,8 @@
       .page-title { gap:8px; }
       .page-title::before,.page-title::after { width:32px; height:38px; }
       .contents { gap:7px; padding:12px; }
+      .download-promo { flex-direction:column; align-items:stretch; text-align:center; }
+      .download-promo .button { align-self:center; }
       .contents a { font-size:7px; }
       .guide-grid,.type-list,.keywords { grid-template-columns:1fr; }
       .rule-section { padding:19px 15px; border-radius:15px; }
@@ -169,10 +185,10 @@
     @media(max-width:640px) {
       /* 25% of the site's 216 × 280 px full-size character art. */
       .rule-character { width:54px; height:70px; }
-      .rule-character.left { left:7px; }
+      .rule-character.left { display:none; }
       .rule-character.right { right:7px; }
+      .rule-section.decorated { padding-left:15px; padding-right:72px; }
       .class-rep-characters .rule-character { width:54px; height:70px; }
-      .class-rep-characters .rule-character.left { left:7px; }
       .class-rep-characters .rule-character.right { right:7px; }
       .keywords { grid-template-columns:1fr; }
     }
@@ -187,6 +203,7 @@
         <a href="index.html">HOME</a>
         <a href="cards.html">CARDS</a>
         <a href="rules.html" aria-current="page">RULES</a>
+        <a href="downloads.html">DOWNLOADS</a>
         <a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a>
         <a href="index.html#videos">VIDEOS</a>
         <a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
@@ -215,6 +232,15 @@
       <a href="#more-ways">MORE WAYS TO PLAY</a>
     </nav>
 
+    <section class="download-promo wrap" aria-labelledby="download-promo-title">
+      <div>
+        <h2 id="download-promo-title">WANT TO PLAY AT HOME?</h2>
+        <p class="promo-description">Try the Your Class Rep: The Card Game print and play! It contains the first 14 cards and a quick rules sheet.</p>
+        <p class="promo-instructions">(US Letter paper; 3 pages; print at 100%/Actual size)</p>
+      </div>
+      <a class="button" href="output/pdf/Your-Class-Rep-Free-Print-and-Play.pdf" download>DOWNLOAD THE PDF</a>
+    </section>
+
     <section class="rule-section decorated wrap" id="game-rules" aria-labelledby="game-rules-title">
       <img class="rule-character left spread-start" src="images/Characters/08-SubM-Ch.png" alt="" aria-hidden="true">
       <img class="rule-character right spread-upper-middle" src="images/Characters/19-BandF-Ch.png" alt="" aria-hidden="true">
@@ -239,7 +265,7 @@
         <p>When the cards are revealed:</p>
         <ol>
           <li>Apply any Class Rep Abilities and Influential Abilities that affect the matchup. See <a href="#during-campaign">During the Campaign Phase</a>.</li>
-          <li>Compare the cards’ Influence values, applying any ability effects that change the matchup’s outcome. See <a href="#influence">Influence</a>.</li>
+          <li>The card with higher Influence wins unless an ability changes the matchup’s outcome. See <a href="#influence">Influence</a>.</li>
           <li>The winning card stays face-up. The losing card is turned face-down.</li>
           <li>If the result is tied or conflicting abilities remain unresolved, both cards stay face-up. See <a href="#resolving-conflicts">Resolving Conflicts</a>.</li>
         </ol>
@@ -259,7 +285,7 @@
           <p>The player with the most Votes wins the election and must shout:</p>
           <p class="pixel">“I AM YOUR CLASS REP!”</p>
         </div>
-        <h3>Tie-Breaker</h3>
+        <h3 class="tie-breaker-title">Tie-Breaker</h3>
         <p>If players tie in Votes, the player with the most face-up cards wins. If they are still tied, the player with the highest total <strong>printed Influence</strong> among their face-up cards wins. If they are still tied, both players win.</p>
       </div>
     </section>
@@ -272,22 +298,22 @@
 
       <div class="guide-grid" style="margin-top:22px">
         <article class="guide-card" id="influence">
-          <h3>Influence</h3>
+          <h3 class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Stats/InfluenceIcon-Large.png" alt="" aria-hidden="true">Influence</h3>
           <p>Influence determines which card wins a Campaign matchup, unless an ability changes the outcome.</p>
           <p>When conflicting abilities need an order, use the priority rules in <a href="#resolving-conflicts">Resolving Conflicts</a>.</p>
         </article>
         <article class="guide-card" id="votes">
-          <h3>Votes</h3>
+          <h3 class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Stats/VoteIcon-Large.png" alt="" aria-hidden="true">Votes</h3>
           <p>Votes determine your score during the Tally Phase. Only face-up cards contribute Votes, and Voter Abilities may change their Vote contributions.</p>
         </article>
       </div>
 
       <h3 style="margin-top:24px">Card Types</h3>
       <ul class="type-list">
-        <li><strong>Student</strong><br>Usually has low Influence but is your main source of Votes.</li>
-        <li><strong>Speaker</strong><br>Can affect Influence or Votes through an ability.</li>
-        <li><strong>Staff</strong><br>Often has high Influence but provides no Votes.</li>
-        <li><strong>Special</strong><br>Has unique abilities and effects.</li>
+        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/StudentIcon-Large.png" alt="" aria-hidden="true">Student</strong><br>Usually has low Influence but is your main source of Votes.</li>
+        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/SpeakerIcon-Large.png" alt="" aria-hidden="true">Speaker</strong><br>Can affect Influence or Votes through an ability.</li>
+        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/StaffIcon-Large.png" alt="" aria-hidden="true">Staff</strong><br>Often has high Influence but provides no Votes.</li>
+        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/SpecialIcon-Large.png" alt="" aria-hidden="true">Special</strong><br>Has unique abilities and effects.</li>
       </ul>
     </section>
 
@@ -305,10 +331,16 @@
       <div class="section-title"><h2 id="keywords-title">CARD KEYWORDS &amp; SYMBOLS</h2></div>
       <p>These keywords and symbols appear on cards to explain their types, conditions, and effects.</p>
       <dl class="keywords">
-        <div class="keyword"><dt>Student</dt><dd>Identifies a Student card.</dd></div>
-        <div class="keyword"><dt>Speaker</dt><dd>Identifies a Speaker card.</dd></div>
-        <div class="keyword"><dt>Staff</dt><dd>Identifies a Staff card.</dd></div>
-        <div class="keyword"><dt>Special</dt><dd>Identifies a Special card.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Types/StudentIcon-Large.png" alt="" aria-hidden="true">Student</dt><dd>Identifies a Student card.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Types/SpeakerIcon-Large.png" alt="" aria-hidden="true">Speaker</dt><dd>Identifies a Speaker card.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Types/StaffIcon-Large.png" alt="" aria-hidden="true">Staff</dt><dd>Identifies a Staff card.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Types/SpecialIcon-Large.png" alt="" aria-hidden="true">Special</dt><dd>Identifies a Special card.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Types/ClassRepIcon-Large.png" alt="" aria-hidden="true">Class Rep</dt><dd>Marks a Class Rep card. Each Classroom must include exactly one.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Stats/InfluenceIcon-Large.png" alt="" aria-hidden="true">Influence</dt><dd>Determines the winner of a Campaign matchup unless an ability changes the outcome.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Stats/VoteIcon-Large.png" alt="" aria-hidden="true">Votes</dt><dd>Contribute to a player’s score during the Tally Phase.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Abilities/ClassRepAbility-Large.png" alt="" aria-hidden="true">Class Rep Ability</dt><dd>Resolves during a Campaign matchup and takes priority over conflicting non-Class Rep Abilities.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Abilities/InfluentialAbility-Large.png" alt="" aria-hidden="true">Influential Ability</dt><dd>Resolves during a Campaign matchup and primarily affects Influence or the matchup’s outcome.</dd></div>
+        <div class="keyword"><dt class="icon-heading"><img class="game-icon small" src="images/Assets/GameIcons/Abilities/VoterAbility-Large.png" alt="" aria-hidden="true">Voter Ability</dt><dd>Resolves during the Tally Phase and can change the Votes contributed by face-up cards.</dd></div>
         <div class="keyword"><dt>VS</dt><dd>Refers to the opposing card played in the same Campaign matchup. The ability specifies whether to compare card types, Influence, or Votes.</dd></div>
         <div class="keyword"><dt>ONLY</dt><dd>The ability activates only when the specified number matches exactly.</dd></div>
         <div class="keyword"><dt>OR MORE</dt><dd>The ability activates when the number is equal to or greater than the specified number.</dd></div>
@@ -329,11 +361,11 @@
       <section id="during-campaign" aria-labelledby="during-campaign-title">
         <h3 id="during-campaign-title">During the Campaign Phase</h3>
         <article class="guide-card" style="margin-top:12px">
-          <h3>Class Rep Abilities</h3>
+          <h3 class="icon-heading"><img class="game-icon" src="images/Assets/GameIcons/Abilities/ClassRepAbility-Large.png" alt="" aria-hidden="true">Class Rep Abilities</h3>
           <p>Class Rep Abilities take effect during a Campaign matchup. When they conflict with a non-Class Rep Ability, the Class Rep Ability takes priority. If both conflicting abilities belong to Class Reps, the Class Rep with higher Influence takes priority. See <a href="#resolving-conflicts">Resolving Conflicts</a>.</p>
         </article>
         <article class="guide-card" style="margin-top:12px">
-          <h3>Influential Abilities</h3>
+          <h3 class="icon-heading"><img class="game-icon" src="images/Assets/GameIcons/Abilities/InfluentialAbility-Large.png" alt="" aria-hidden="true">Influential Abilities</h3>
           <p>Influential Abilities take effect during a Campaign matchup. They primarily affect Influence or the matchup’s outcome. Apply their effects before deciding which card wins.</p>
         </article>
 
@@ -352,7 +384,7 @@
       <section id="during-tally" aria-labelledby="during-tally-title" style="margin-top:28px">
         <h3 id="during-tally-title">During the Tally Phase</h3>
         <article class="guide-card" style="margin-top:12px">
-          <h3>Voter Abilities</h3>
+          <h3 class="icon-heading"><img class="game-icon" src="images/Assets/GameIcons/Abilities/VoterAbility-Large.png" alt="" aria-hidden="true">Voter Abilities</h3>
           <p>Voter Abilities take effect during the Tally Phase and can change the Votes contributed by your face-up cards. Check each ability’s conditions and apply its effect before comparing players’ Vote totals. There is no required order among Voter Abilities in the current set of cards.</p>
         </article>
         <p>The seventh card’s ability does not activate, and its Votes are not scored.</p>

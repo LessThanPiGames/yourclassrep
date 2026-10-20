@@ -39,7 +39,7 @@
     .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
     .topbar { position:sticky; top:0; z-index:10; background:var(--black); color:var(--white); border-bottom:4px solid var(--red); }
     .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:22px; }
-    .brand { position:absolute; z-index:2; left:0; top:-8px; display:block; }
+    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
     .brand img { display:block; width:220px; height:auto; max-width:none; object-fit:initial; }
     .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(11px,2vw,24px); }
     .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
@@ -52,13 +52,16 @@
     .character-speech { position:absolute; top:-10px; right:95px; width:160px; padding:12px 10px; border:3px solid var(--black); border-radius:16px; background:#fff; font:8px/1.7 "Press Start 2P",monospace; text-align:center; }
     .character-speech::after { content:""; position:absolute; left:18px; bottom:-10px; width:14px; height:14px; border-right:3px solid var(--black); border-bottom:3px solid var(--black); background:#fff; transform:skewY(45deg); }
     .band { padding:35px 0; border-block:3px solid var(--black); }
+    #card-detail { color:var(--white); background:var(--black); }
+    #card-detail .detail { color:var(--black); }
     .section-title { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:22px; text-align:center; }
     .section-title h2 { font-size:clamp(18px,2.7vw,28px); }
     .section-title::before,.section-title::after { content:""; flex:none; width:75px; height:80px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
     .page-heading { display:flex; align-items:center; justify-content:flex-start; gap:24px; }
     .page-heading img { width:50px; height:75px; object-fit:contain; image-rendering:pixelated; }
     .type-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
-    .type-tab { min-height:44px; padding:10px 15px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:10px; font:8px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .type-tab { display:inline-flex; min-height:44px; align-items:center; gap:8px; padding:6px 12px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:10px; font:8px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .type-tab img { width:30px; height:32px; object-fit:contain; image-rendering:pixelated; }
     .type-tab[aria-pressed="true"],.type-tab:hover { color:var(--white); background:var(--red); }
     .rail-shell { position:relative; }
     .character-rail { display:grid; width:100%; grid-auto-flow:column; grid-template-rows:repeat(2,175px); grid-auto-columns:125px; gap:12px; padding:8px 8px 20px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-color:var(--red) var(--dark-gray); }
@@ -70,8 +73,10 @@
     .character:hover,.character:focus-visible { border-color:var(--red); box-shadow:inset 0 0 0 1px var(--red); }
     .detail-visual { float:left; width:32%; margin:8px 28px 18px 0; }
     .card-types { display:flex; width:calc(100% - 32% - 28px); align-items:center; justify-content:center; gap:10px; margin:7px 0 0 calc(32% + 28px); text-align:center; }
-    .type-tags { display:flex; justify-content:flex-start; gap:8px; }
-    .type-tags span { padding:6px 10px; border:2px solid var(--black); border-radius:18px; background:var(--white); font:8px "Press Start 2P",monospace; }
+    .type-tags { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:8px; }
+    .type-tags button { display:inline-flex; align-items:center; gap:6px; padding:4px 9px; color:var(--black); border:2px solid var(--black); border-radius:18px; background:var(--white); font:8px "Press Start 2P",monospace; cursor:pointer; }
+    .type-tags button:hover,.type-tags button:focus-visible,.type-tags button[aria-pressed="true"] { color:var(--white); background:var(--red); }
+    .type-tags img { flex:none; width:30px; height:32px; object-fit:contain; image-rendering:pixelated; }
     .selected-count { margin:12px 0 0; color:var(--dark-gray); font-size:17px; text-align:center; }
     .detail { position:relative; display:flow-root; padding:35px; border:3px solid var(--black); border-radius:18px; background:var(--white); }
     .detail-card { display:flex; justify-content:center; padding:0; background:transparent; border-radius:0; overflow:visible; }
@@ -89,7 +94,8 @@
     .detail-interests { margin-bottom:12px!important; }
     .detail-interests strong { font-family:"Press Start 2P",monospace; font-size:9px; }
     .placeholder { clear:left; width:100%; margin:20px 0 0; padding:16px; background:#f4dfdc; border:2px solid var(--red); border-radius:12px; }
-    .placeholder h3 { margin-bottom:8px; }
+    .placeholder h3 { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+    .detail-ability-icon:not([hidden]) { display:block; width:30px; height:32px; object-fit:contain; image-rendering:pixelated; }
     .placeholder p { margin:0; }
     .strategy-tips { clear:left; width:100%; margin:20px 0 0; padding:2px 0; background:var(--white); }
     .strategy-tips h3 { margin-bottom:8px; }
@@ -125,7 +131,7 @@
     footer { padding:25px; color:var(--white); background:var(--black); text-align:center; border-top:4px solid var(--red); }
     .maker-logo { display:block; width:min(210px,58vw); height:auto; margin:0 auto 18px; }
     footer a { color:var(--white); }
-    @media(max-width:1000px) {
+    @media(max-width:1100px) {
       .nav { display:block; min-height:0; padding:16px 0 8px; }
       .navlinks { display:flex; width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:10px; margin:0; padding:0; text-align:right; }
       .navlinks .sale-nav { margin-left:0; }
@@ -140,7 +146,6 @@
     @media(max-width:560px) {
       body { font-size:20px; }
       .wrap { width:calc(100% - 28px); }
-      .brand { top:-6px; }
       .brand img { width:220px; height:auto; }
       .navlinks a { font-size:6px; }
       .navlinks .sale-nav { padding:9px; }
@@ -198,7 +203,7 @@
   <header class="topbar">
     <nav class="nav wrap" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
-      <div class="navlinks"><a href="index.html">HOME</a><a href="cards.html" aria-current="page">CARDS</a><a href="rules.html">RULES</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a href="index.html#videos">VIDEOS</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a></div>
+      <div class="navlinks"><a href="index.html">HOME</a><a href="cards.html" aria-current="page">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a href="index.html#videos">VIDEOS</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a></div>
     </nav>
   </header>
   <main>
@@ -207,14 +212,15 @@
       <p>Meet the students, staff, and special characters in Your Class Rep. Filter by card type, then select a character to see their card.</p></div>
       <div class="page-head-portrait"><img class="page-head-art" src="images/Characters/02-SpeechF-Ch.png" alt="Speech Kid 2"><span class="character-speech">WHO WILL YOU PLAY?</span></div>
     </section>
-    <section class="band" aria-label="Filter characters by type">
+    <section class="band" id="character-select" aria-label="Filter characters by type">
       <div class="wrap">
         <div class="type-tabs" role="group" aria-label="Choose a card type">
-          <button class="type-tab" type="button" data-type="Student" aria-pressed="false">STUDENT</button>
-          <button class="type-tab" type="button" data-type="Speaker" aria-pressed="false">SPEAKER</button>
-          <button class="type-tab" type="button" data-type="Staff" aria-pressed="false">STAFF</button>
-          <button class="type-tab" type="button" data-type="Special" aria-pressed="false">SPECIAL</button>
           <button class="type-tab" type="button" data-type="all" aria-pressed="true">ALL CHARACTERS</button>
+          <button class="type-tab" type="button" data-type="Class Rep" aria-pressed="false"><img src="images/Assets/GameIcons/Types/ClassRepIcon-Large.png" alt="" aria-hidden="true">CLASS REP</button>
+          <button class="type-tab" type="button" data-type="Student" aria-pressed="false"><img src="images/Assets/GameIcons/Types/StudentIcon-Large.png" alt="" aria-hidden="true">STUDENT</button>
+          <button class="type-tab" type="button" data-type="Speaker" aria-pressed="false"><img src="images/Assets/GameIcons/Types/SpeakerIcon-Large.png" alt="" aria-hidden="true">SPEAKER</button>
+          <button class="type-tab" type="button" data-type="Staff" aria-pressed="false"><img src="images/Assets/GameIcons/Types/StaffIcon-Large.png" alt="" aria-hidden="true">STAFF</button>
+          <button class="type-tab" type="button" data-type="Special" aria-pressed="false"><img src="images/Assets/GameIcons/Types/SpecialIcon-Large.png" alt="" aria-hidden="true">SPECIAL</button>
         </div>
         <div class="section-title"><h2 id="type-title">ALL CHARACTERS · 01–42</h2></div>
         <div class="rail-shell">
@@ -232,11 +238,11 @@
           <div class="detail-visual"><div class="detail-card"><img id="full-card" src="images/Cards/01-SpeechM.png" alt="Speech Kid full card"></div></div>
           <div class="detail-copy">
             <h2 id="detail-name"><span id="detail-title-card">#01 | SPEECH KID</span><span id="detail-title-character">Placeholder</span></h2>
-            <div class="card-types"><div class="type-tags"><span>STUDENT</span><span>STAFF</span></div></div>
+            <div class="card-types"><div class="type-tags" role="group" aria-label="Filter by this card's type"></div></div>
             <p id="detail-bio">Character biography will be added as the character guide is completed.</p>
             <p class="detail-interests"><span id="detail-interests">Interests will be added as the character guide is completed.</span></p>
           </div>
-          <div class="placeholder"><h3>ABILITY</h3><p id="detail-ability">The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
+          <div class="placeholder"><h3><img id="detail-ability-icon" class="detail-ability-icon" alt="" hidden>ABILITY</h3><p id="detail-ability">The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.</p></div>
           <div class="strategy-tips"><h3>STRATEGY TIPS</h3><p id="detail-strategy">Tips and card combinations will be added as the strategy guide is developed.</p></div>
           <div class="combination"><h3>TRY THIS COMBINATION</h3><div class="combination-content"><button class="combo-character" type="button" data-number="11" aria-label="View Teacher's Pet card"><img src="images/Characters/11-PetF-Ch.png" alt=""><span>TEACHER'S PET</span></button><span class="combo-plus">+</span><button class="combo-character" type="button" data-number="12" aria-label="View Teacher's Pet card"><img src="images/Characters/12-PetM-Ch.png" alt=""><span>TEACHER'S PET</span></button><p class="combo-copy">This is a placeholder combination. We’ll add unique pairings and strategy for each card as the guide is completed.</p></div></div>
         </article>
@@ -304,6 +310,25 @@
     window.addEventListener('resize', positionCardNav);
     const abilityPlaceholder = 'The card image shows the current printed stats and ability. More descriptions will be added as the card guide is completed.';
     const strategyPlaceholder = 'Tips and card combinations will be added as the strategy guide is developed.';
+    const classRepNumbers = new Set([1,2,15,16,29,30]);
+    const typeIconPaths = {
+      Student:'images/Assets/GameIcons/Types/StudentIcon-Large.png',
+      Speaker:'images/Assets/GameIcons/Types/SpeakerIcon-Large.png',
+      Staff:'images/Assets/GameIcons/Types/StaffIcon-Large.png',
+      Special:'images/Assets/GameIcons/Types/SpecialIcon-Large.png',
+      'Class Rep':'images/Assets/GameIcons/Types/ClassRepIcon-Large.png'
+    };
+    const abilityIconPaths = {
+      classRep:'images/Assets/GameIcons/Abilities/ClassRepAbility-Large.png',
+      influential:'images/Assets/GameIcons/Abilities/InfluentialAbility-Large.png',
+      voter:'images/Assets/GameIcons/Abilities/VoterAbility-Large.png'
+    };
+    function abilityIconFor(ability = '') {
+      if (/^\s*class rep ability\s*:/i.test(ability)) return abilityIconPaths.classRep;
+      if (/^\s*(campaign|influential) ability\s*:/i.test(ability)) return abilityIconPaths.influential;
+      if (/^\s*(tally|voter) ability\s*:/i.test(ability)) return abilityIconPaths.voter;
+      return '';
+    }
     function renderCombinations(detail) {
       const container = document.querySelector('.combination-content');
       const copy = document.createElement('p');
@@ -332,7 +357,7 @@
           label.textContent = entry.name.toUpperCase();
           button.append(image, label);
           button.addEventListener('click', () => {
-            if (activeType !== 'all' && !(details[number]?.types || []).includes(activeType)) showType('all');
+            if (activeType !== 'all' && !entryHasType(entries[number - 1], activeType)) showType('all');
             selectCharacter(number);
             document.getElementById('card-detail').scrollIntoView({ behavior:'smooth', block:'start' });
           });
@@ -352,28 +377,55 @@
       document.getElementById('detail-title-card').textContent = `#${id} | ${(detail.cardTitle || entry.name).toUpperCase()}`;
       document.getElementById('detail-title-character').textContent = detail.characterName || 'Placeholder';
       const typeTags = document.querySelector('.type-tags');
-      typeTags.replaceChildren(...(detail.types || ['Type information will be added.']).map(type => {
-        const tag = document.createElement('span');
-        tag.textContent = type.toUpperCase();
+      const cardTypes = [...(detail.types || ['Type information will be added.'])];
+      if (classRepNumbers.has(number)) cardTypes.unshift('Class Rep');
+      typeTags.replaceChildren(...cardTypes.map(type => {
+        const tag = document.createElement('button');
+        tag.type = 'button';
+        tag.className = 'type-filter-tag';
+        tag.dataset.type = type;
+        tag.setAttribute('aria-label', `Show ${type} cards`);
+        tag.setAttribute('aria-pressed', String(activeType === type));
+        tag.addEventListener('click', () => {
+          showType(type);
+          document.getElementById('character-select').scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+        const iconPath = typeIconPaths[type];
+        if (iconPath) {
+          const icon = document.createElement('img');
+          icon.src = iconPath;
+          icon.alt = '';
+          icon.setAttribute('aria-hidden', 'true');
+          tag.append(icon);
+        }
+        tag.append(document.createTextNode(type.toUpperCase()));
         return tag;
       }));
       document.getElementById('detail-interests').textContent = detail.interests ? `Interests include ${detail.interests}` : 'Interests will be added as the character guide is completed.';
       document.getElementById('detail-bio').textContent = detail.bio || 'Character biography will be added as the character guide is completed.';
       document.getElementById('detail-ability').textContent = detail.ability || abilityPlaceholder;
+      const abilityIcon = document.getElementById('detail-ability-icon');
+      const abilityIconPath = abilityIconFor(detail.ability || '');
+      abilityIcon.hidden = !abilityIconPath;
+      if (abilityIconPath) abilityIcon.src = abilityIconPath;
       document.getElementById('detail-strategy').textContent = detail.strategy || strategyPlaceholder;
       renderCombinations(detail);
       const category = activeType === 'all' ? 'All characters' : activeType;
       document.getElementById('selected-count').textContent = `${entry.name} selected · Card ${id} of 42 · ${category}`;
       positionCardNav();
     }
+    function entryHasType(entry, type) {
+      return type === 'Class Rep' ? classRepNumbers.has(entry.number) : (details[entry.number]?.types || []).includes(type);
+    }
     function getVisibleEntries(type = activeType) {
-      return type === 'all' ? entries : entries.filter(entry => (details[entry.number]?.types || []).includes(type));
+      return type === 'all' ? entries : entries.filter(entry => entryHasType(entry, type));
     }
     function showType(type) {
       activeType = type;
       const visibleEntries = getVisibleEntries(type);
       document.getElementById('type-title').textContent = type === 'all' ? 'ALL CHARACTERS · 01–42' : `${type.toUpperCase()} CARDS · ${visibleEntries.length}`;
       document.querySelectorAll('.type-tab').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.type === type)));
+      document.querySelectorAll('.type-filter-tag').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.type === type)));
       rail.setAttribute('aria-label', type === 'all' ? 'All characters' : `${type} characters`);
       rail.replaceChildren();
       visibleEntries.forEach(entry => {
@@ -391,6 +443,7 @@
       });
       rail.classList.toggle('is-centered', rail.scrollWidth <= rail.clientWidth);
       rail.scrollLeft = 0;
+      if (!visibleEntries.length) return;
       if (!visibleEntries.some(entry => entry.number === selected)) selectCharacter(visibleEntries[0].number);
       else selectCharacter(selected);
     }

@@ -38,7 +38,7 @@
     .wrap { width:min(1160px,calc(100% - 40px)); margin-inline:auto; }
     .topbar { position:sticky; top:0; z-index:20; background:var(--black); color:var(--white); border-bottom:4px solid var(--red); }
     .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
-    .brand { position:absolute; z-index:2; left:0; top:-8px; display:block; }
+    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
     .brand img { display:block; width:220px; height:auto; max-width:none; object-fit:initial; }
     .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(12px,2vw,25px); }
     .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
@@ -74,11 +74,13 @@
     .character-sprinkle { position:absolute; z-index:1; width:108px; height:140px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
     .hero-video { position:relative; }
     .hero-sprinkle-left,.hero-sprinkle-right { width:216px; height:280px; bottom:-65px; z-index:2; }
-    @supports (width:1cqw) {
-      .hero-sprinkle-left,.hero-sprinkle-right { width:clamp(72px,20cqw,216px); height:clamp(94px,26cqw,280px); bottom:clamp(-65px,-6cqw,-22px); }
-    }
     .hero-sprinkle-left { left:2.3%; transform:translateX(calc(-50% - 30px)); }
     .hero-sprinkle-right { right:2.8%; transform:translateX(calc(50% + 60px)); }
+    @supports (width:1cqw) {
+      .hero-sprinkle-left,.hero-sprinkle-right { width:clamp(72px,20cqw,216px); height:clamp(94px,26cqw,280px); bottom:clamp(-65px,-6cqw,-22px); }
+      .hero-sprinkle-left { transform:translateX(calc(-50% - 4.5cqw)); }
+      .hero-sprinkle-right { transform:translateX(calc(50% + 9cqw)); }
+    }
     .featured-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:15px; background:var(--white); border:3px solid var(--black); border-radius:18px; }
     .featured { display:block; padding:12px; color:var(--black); background:var(--white); text-align:center; text-decoration:none; }
     .featured:hover img,.featured:focus-visible img { box-shadow:0 0 0 3px var(--red); border-radius:14px; }
@@ -87,6 +89,13 @@
     .featured p { margin:0; color:var(--dark-gray); }
     .center { text-align:center; }
     .section-action { margin-top:26px; }
+    .download-promo { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:26px auto 0; padding:20px 24px; border:3px solid var(--black); border-radius:16px; background:var(--pink); }
+    .download-promo h3 { margin:0 0 8px; font:clamp(13px,1.7vw,18px)/1.7 "Press Start 2P",monospace; }
+    .download-promo p { display:block; }
+    .download-promo .promo-description { margin:8px 0 0; font-size:23px; }
+    .download-promo .promo-instructions { margin:3px 0 0; font-size:18px; }
+    .download-promo .button { display:inline-flex; flex:none; align-items:center; justify-content:center; min-height:50px; padding:12px 18px; color:var(--white); background:var(--red); border:3px solid var(--black); border-radius:12px; box-shadow:5px 5px 0 var(--black); text-decoration:none; font:8px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .download-promo .button:hover,.download-promo .button:focus-visible { color:var(--white); background:var(--black); }
     #featured-cards .section-action .button { display:flex; width:100%; min-height:76px; font-size:12px; }
     .shorts-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:760px; margin:auto; }
     .short-video { width:100%; aspect-ratio:9/16; max-height:680px; border:3px solid var(--black); border-radius:18px; background:var(--black); overflow:hidden; }
@@ -138,7 +147,7 @@
     .maker-logo { display:block; width:min(210px,58vw); height:auto; margin:0 auto 18px; }
     .hero-copy { position:relative; }
     .hero-copy::after { content:""; position:absolute; width:31px; height:31px; right:-9px; top:-14px; background:center/contain no-repeat url("images/Assets/Stars/4pointStarL.png"); }
-    @media(max-width:1000px) {
+    @media(max-width:1100px) {
       .nav { display:block; min-height:0; padding:16px 0 8px; }
       .navlinks { display:flex; width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:10px; margin:0; padding:0; text-align:right; }
       .navlinks .sale-nav { margin-left:0; }
@@ -152,8 +161,9 @@
       .hero-copy .subhead { margin:12px 0 15px; }
       .hero .countdown-card { max-width:430px; }
       .hero .button { max-width:430px; }
+      .download-promo { flex-direction:column; text-align:center; }
+      .download-promo .button { width:100%; }
       .featured img { width:162px; height:210px; }
-      .character-sprinkle { width:108px; height:140px; }
       .sale-block { grid-template-columns:1fr 1fr; grid-template-areas:"intro intro" "timer points" "art art"; }
       .sale-art-wrap { min-height:300px; }
       .sale-section-button { left:0; width:100%; }
@@ -167,7 +177,6 @@
     @media(max-width:560px) {
       body { font-size:20px; }
       .wrap { width:min(100% - 28px,1160px); }
-      .brand { top:-6px; }
       .brand img { width:220px; height:auto; }
       .navlinks { justify-content:flex-end; margin-left:0; padding:0; }
       .navlinks a { font-size:6px; }
@@ -201,7 +210,6 @@
       .sale-character-right { right:-5px; }
       .facts { gap:8px; }
       .facts span { font-size:7px; }
-      .character-sprinkle { width:54px; height:70px; }
       .discord-box { padding:26px 55px; }
       .discord-mascot { width:54px; height:70px; }
       .discord-mascot.left { left:-5px; }
@@ -222,7 +230,7 @@
     <nav class="nav wrap" aria-label="Main navigation">
         <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
       <div class="navlinks">
-        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a>
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a>
         <a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a>
         <a href="#videos">VIDEOS</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
       </div>
@@ -258,6 +266,14 @@
           <article class="step"><span class="step-num">2</span><h3>CAMPAIGN</h3><p>Play cards secretly, compare Influence, and use abilities to shift the election.</p></article>
           <article class="step"><span class="step-num">3</span><h3>TALLY THE VOTES</h3><p>Resolve the face-up cards. The player with the most votes becomes Class Rep.</p></article>
         </div>
+        <section class="download-promo" aria-labelledby="download-promo-title">
+          <div>
+            <h3 id="download-promo-title">WANT TO PLAY AT HOME?</h3>
+            <p class="promo-description">Try the Your Class Rep: The Card Game print and play! It contains the first 14 cards and a quick rules sheet.</p>
+            <p class="promo-instructions">(US Letter paper; 3 pages; print at 100%/Actual size)</p>
+          </div>
+          <a class="button" href="output/pdf/Your-Class-Rep-Free-Print-and-Play.pdf" download>DOWNLOAD THE PDF</a>
+        </section>
       </div>
     </section>
 
