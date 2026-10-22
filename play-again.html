@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanks for Playing | Your Class Rep</title>
+  <meta name="description" content="Thanks for playing Your Class Rep. Play again or visit the crowd sale to get the full game.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://yourclassrep.com/play-again.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#0d0d0d; --white:#f2f2f2; --gray:#d8d8d8; --red:#b44c4c; --pink:rgb(231,167,167); }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--black); background:var(--gray); font:24px "VT323",monospace; }
+    h1,h2,.pixel { font-family:"Press Start 2P",monospace; text-transform:uppercase; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
+    .topbar { position:sticky; top:0; z-index:2; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
+    .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:22px; }
+    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
+    .brand img { display:block; width:220px; height:auto; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:18px; }
+    .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
+    .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
+    .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); }
+    main { padding:42px 0 56px; }
+    .thank-you { position:relative; padding:clamp(24px,5vw,56px); border:3px solid var(--black); border-radius:22px; background:var(--white); text-align:center; }
+    .decoration-character { position:absolute; z-index:0; top:50%; width:108px; height:140px; transform:translateY(-50%); object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .decoration-character.left { left:0; }
+    .decoration-character.right { right:0; }
+    .thank-you-content { position:relative; z-index:1; }
+    .stars { display:flex; align-items:center; justify-content:center; gap:18px; }
+    .stars img { width:56px; height:60px; object-fit:contain; image-rendering:pixelated; }
+    h1 { margin:0; font-size:clamp(17px,3.3vw,32px); line-height:1.8; }
+    .thank-you-content > p { max-width:760px; margin:18px auto 24px; font-size:27px; }
+    .button { display:inline-flex; min-height:66px; align-items:center; justify-content:center; padding:16px 22px; color:var(--white); background:var(--red); border:3px solid var(--black); border-radius:13px; box-shadow:5px 5px 0 var(--black); text-decoration:none; font:9px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .button:hover,.button:focus-visible { background:var(--black); }
+    .button.primary { width:min(100%,710px); margin:20px auto 0; font-size:11px; }
+    .sale-panel { max-width:760px; margin:34px auto 0; padding:22px; color:var(--white); background:var(--black); border:3px solid var(--black); border-radius:16px; }
+    .sale-panel h2 { margin:0 0 15px; font-size:clamp(13px,2.3vw,20px); line-height:1.8; }
+    .sale-message { margin:0 0 13px; font:9px/1.8 "Press Start 2P",monospace; }
+    .countdown { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+    .count-unit { padding:12px 5px; color:var(--black); background:var(--white); border-radius:8px; }
+    .count-value { display:block; font:clamp(12px,2vw,20px)/1.8 "Press Start 2P",monospace; font-variant-numeric:tabular-nums; }
+    .count-label { display:block; margin-top:5px; font:7px/1.6 "Press Start 2P",monospace; }
+    .sale-panel p.note { margin:14px 0 0; color:#ddd; font-size:20px; }
+    .sale-panel .button { width:100%; margin-top:18px; }
+    footer { padding:26px 16px; color:var(--white); background:var(--black); border-top:4px solid var(--red); text-align:center; }
+    .maker-logo-link { display:block; width:min(210px,58vw); margin:0 auto 18px; }
+    .maker-logo { display:block; width:100%; height:auto; }
+    footer a { color:var(--white); }
+    .legal { display:block; max-width:900px; margin:18px auto 0; color:#c4c4c4; font-size:17px; }
+    @media(max-width:700px) {
+      .wrap { width:calc(100% - 28px); }
+      .nav { display:block; min-height:0; padding:16px 0 10px; }
+      .navlinks { flex-wrap:wrap; justify-content:flex-end; gap:10px; padding-top:58px; }
+      .navlinks a { font-size:6px; }
+      .brand img { width:170px; }
+      main { padding:24px 0 38px; }
+      .stars { gap:8px; }
+      .stars img { width:28px; height:30px; }
+      .thank-you-content > p { font-size:23px; }
+      .decoration-character { top:auto; bottom:5px; width:54px; height:70px; transform:none; }
+      .decoration-character.left { left:-9px; }
+      .decoration-character.right { right:-9px; }
+      .button.primary { width:calc(100% - 26px); }
+      .sale-panel { margin-top:24px; padding:15px 10px; }
+      .countdown { gap:5px; }
+      .count-label { font-size:5px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
+      <div class="navlinks">
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="play.html">PLAY</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
+      </div>
+    </nav>
+  </header>
+  <main class="wrap">
+    <section class="thank-you">
+      <img class="decoration-character left" src="images/Characters/11-PetF-Ch1.png" alt="" aria-hidden="true">
+      <img class="decoration-character right" src="images/Characters/11-PetF-Ch2.png" alt="" aria-hidden="true">
+      <div class="thank-you-content">
+        <div class="stars"><img src="images/Assets/RedStar.png" alt=""><h1>THANKS FOR PLAYING!</h1><img src="images/Assets/RedStar.png" alt=""></div>
+        <a class="button primary" href="play.html">PLAY AGAIN</a>
+        <p id="thanks-copy">Want to bring the full game to your table? Visit the crowd sale and help Your Class Rep launch.</p>
+        <section class="sale-panel" aria-live="polite">
+          <h2 id="sale-heading">THE CROWD SALE</h2>
+          <p class="sale-message" id="sale-message">LAUNCHES OCT 31</p>
+          <div class="countdown" id="sale-countdown" aria-label="Countdown to the Your Class Rep crowd sale">
+            <div class="count-unit"><span class="count-value" data-unit="days">0</span><span class="count-label">DAYS</span></div>
+            <div class="count-unit"><span class="count-value" data-unit="hours">00</span><span class="count-label">HOURS</span></div>
+            <div class="count-unit"><span class="count-value" data-unit="minutes">00</span><span class="count-label">MINUTES</span></div>
+            <div class="count-unit"><span class="count-value" data-unit="seconds">00</span><span class="count-label">SECONDS</span></div>
+          </div>
+          <p class="note" id="sale-note">Join the crowd sale and save on Your Class Rep. The more people join, the bigger the discount!</p>
+          <a class="button" id="sale-button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a class="maker-logo-link" href="https://www.lessthanpiart.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit LessThanPi Art"><img class="maker-logo" src="images/Assets/LessThanPiArtLogo-Large.png" alt="LessThanPi Art"></a>
+    <span>YOUR CLASS REP · GAMES, COMICS &amp; MORE</span><br><br><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a>
+    <small class="legal">© 2026 LessThanPi Art. Your Class Rep, including its name, characters, artwork, and game materials, is the property of LessThanPi Art. All rights reserved.</small>
+  </footer>
+  <script>
+    (() => {
+      // Keep these dates and messages in sync with the Home page countdown.
+      const start = new Date('2026-10-31T00:00:00-04:00').getTime();
+      const end = new Date('2026-11-22T00:00:00-05:00').getTime();
+      const fmt = value => String(value).padStart(2, '0');
+      function update() {
+        const now = Date.now();
+        let target = start;
+        let message = 'LAUNCHES OCT 31';
+        let button = 'VISIT THE CROWD SALE';
+        let heading = 'THE CROWD SALE';
+        let note = 'Join the crowd sale and save on Your Class Rep. The more people join, the bigger the discount!';
+        if (now >= end) {
+          target = now;
+          message = 'CROWD SALE ENDED';
+          button = 'VIEW THE GAME';
+          heading = 'THANKS FOR JOINING THE CLASS';
+          note = 'The crowd sale has ended. Visit to see the game and find out what comes next.';
+        } else if (now >= start) {
+          target = end;
+          message = 'SALE ENDS NOV 21';
+          button = 'JOIN THE CROWD SALE';
+          heading = 'THE CROWD SALE IS LIVE';
+          note = 'The crowd sale is live now. Join in and help bring Your Class Rep to your table.';
+        }
+        const remaining = Math.max(0, Math.floor((target - now) / 1000));
+        const values = {days:Math.floor(remaining / 86400),hours:Math.floor(remaining % 86400 / 3600),minutes:Math.floor(remaining % 3600 / 60),seconds:remaining % 60};
+        document.querySelectorAll('#sale-countdown [data-unit]').forEach(node => node.textContent = node.dataset.unit === 'days' ? String(values.days) : fmt(values[node.dataset.unit]));
+        document.getElementById('sale-message').textContent = message;
+        document.getElementById('sale-heading').textContent = heading;
+        document.getElementById('sale-note').textContent = note;
+        document.getElementById('sale-button').textContent = button;
+      }
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+</body>
+</html>

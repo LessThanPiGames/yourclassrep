@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play Your Class Rep | Your Class Rep</title>
+  <meta name="description" content="Play Your Class Rep against an easy, medium, or hard computer player using the first 14 cards.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://yourclassrep.com/play.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Your Class Rep">
+  <meta property="og:title" content="PLAY YOUR CLASS REP">
+  <meta property="og:description" content="Build your Classroom, play six Campaign turns, and face the computer in Your Class Rep.">
+  <meta property="og:url" content="https://yourclassrep.com/play.html">
+  <meta property="og:image" content="https://yourclassrep.com/images/Action%20Shots/TCG-YCR-ActionShots1.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/Assets/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/Assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#0d0d0d; --white:#f2f2f2; --red:#b44c4c; --pink:rgb(231,167,167); --gray:#d8d8d8; --green:#46784a; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:100px; }
+    body { margin:0; color:var(--black); background:var(--white); font:22px "VT323",monospace; }
+    button { font:inherit; }
+    h1,h2,h3,.pixel { font-family:"Press Start 2P",monospace; text-transform:uppercase; }
+    h1 { font-size:clamp(22px,4vw,40px); line-height:1.5; margin:0; }
+    h2 { font-size:clamp(17px,2.5vw,26px); line-height:1.65; margin:0; }
+    h3 { margin:0; font-size:11px; line-height:1.8; }
+    p { line-height:1.4; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
+    .topbar { position:sticky; top:0; z-index:20; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
+    .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:22px; }
+    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
+    .brand img { display:block; width:220px; height:auto; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.8vw,22px); }
+    .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
+    .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
+    .navlinks .sale-nav { padding:12px 14px; color:var(--white); background:var(--red); border:2px solid var(--white); }
+    .intro { display:none; }
+    .intro p { max-width:780px; margin:14px 0 0; font-size:26px; }
+    .intro-art { display:block; width:100%; max-width:260px; max-height:240px; margin:auto; object-fit:contain; image-rendering:pixelated; }
+    .quick-note { display:inline-block; margin-top:18px; padding:8px 12px; border:2px solid var(--black); border-radius:8px; background:var(--pink); font:8px/1.8 "Press Start 2P",monospace; }
+    main { padding-bottom:45px; }
+    .game-shell { min-height:340px; margin:12px auto 0; padding:clamp(18px,3.5vw,38px); border:3px solid var(--black); border-radius:20px; background:var(--white); }
+    .setup-panel { max-width:930px; margin:0 auto; text-align:center; }
+    .setup-panel > p { font-size:25px; }
+    .difficulty-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:24px 0; }
+    .difficulty-button { min-height:115px; padding:16px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:14px; text-align:left; cursor:pointer; }
+    .difficulty-button strong { display:block; margin-bottom:11px; font:10px/1.8 "Press Start 2P",monospace; }
+    .difficulty-button span { display:block; font-size:20px; line-height:1.15; }
+    .difficulty-button[aria-pressed="true"] { background:var(--pink); box-shadow:inset 0 0 0 2px var(--red); }
+    .action-button { display:inline-flex; min-height:54px; justify-content:center; align-items:center; gap:8px; padding:13px 18px; color:var(--white); background:var(--red); border:3px solid var(--black); border-radius:11px; box-shadow:5px 5px 0 var(--black); font:9px/1.8 "Press Start 2P",monospace; text-align:center; cursor:pointer; }
+    .action-button:hover,.action-button:focus-visible { background:var(--black); }
+    .action-button.secondary { color:var(--black); background:var(--white); box-shadow:none; }
+    .action-button.secondary:hover,.action-button.secondary:focus-visible { color:var(--white); background:var(--black); }
+    .action-button:disabled { opacity:.55; cursor:not-allowed; }
+    .game-header { display:flex; align-items:center; justify-content:space-between; gap:15px; margin-bottom:20px; }
+    .phase-kicker { display:block; margin-bottom:8px; color:#555; font:8px/1.8 "Press Start 2P",monospace; }
+    .game-header p { margin:8px 0 0; font-size:22px; }
+    .draft-header { align-items:center; gap:16px; margin-bottom:4px; }
+    .draft-header > div:first-child { min-width:0; flex:1; }
+    .draft-toolbar { display:flex; align-items:center; justify-content:flex-end; gap:8px; }
+    .draft-toolbar .action-button { min-height:42px; padding:9px 8px; font-size:6px; white-space:nowrap; }
+    .draft-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; margin:0 0 10px; }
+    .draft-filter { padding:9px 11px; color:var(--black); background:var(--white); border:2px solid var(--black); border-radius:8px; font:6px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .draft-filter:hover,.draft-filter:focus-visible,.draft-filter.active { color:var(--white); background:var(--red); }
+    .draft-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:12px; }
+    .draft-card { display:flex; flex-direction:column; align-items:center; gap:8px; min-width:0; padding:10px; color:var(--black); background:#fff; border:2px solid var(--black); border-radius:12px; text-align:center; cursor:pointer; }
+    .draft-card:hover:not(:disabled),.draft-card:focus-visible:not(:disabled) { outline:3px solid var(--red); outline-offset:1px; }
+    .draft-card:disabled { opacity:1; cursor:not-allowed; }
+    .draft-card img { display:block; flex:0 0 auto; width:78px; height:130px; object-fit:contain; image-rendering:pixelated; }
+    .draft-card[hidden] { display:none; }
+    .draft-card.picked { background:var(--pink); }
+    .draft-card.unavailable-rep { filter:brightness(.48) grayscale(.8); cursor:not-allowed; }
+    .draft-caption { min-height:28px; display:flex; align-items:center; justify-content:center; }
+    .draft-card strong { display:block; font:7px/1.7 "Press Start 2P",monospace; }
+    .draft-notice { min-height:24px; margin:6px 0 10px; font-size:20px; }
+    .draft-footer { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:20px; }
+    .draft-footer p { margin:0; }
+    .campaign-summary { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; margin:18px 0 24px; }
+    .campaign-side { padding:12px; border:2px solid var(--black); border-radius:12px; background:#fff; text-align:center; }
+    .campaign-side strong { display:block; font:8px/1.8 "Press Start 2P",monospace; }
+    .campaign-side span { display:block; margin-top:5px; font-size:20px; }
+    .campaign-vs { font:11px "Press Start 2P",monospace; }
+    .round-track { display:grid; grid-template-columns:repeat(6,1fr); gap:6px; margin:0 0 24px; }
+    .round-step { padding:8px 4px; border:2px solid var(--black); border-radius:7px; background:#fff; text-align:center; font:6px/1.8 "Press Start 2P",monospace; }
+    .round-step.current { color:var(--white); background:var(--red); }
+    .round-step.done { background:var(--pink); }
+    .play-prompt { min-height:0; margin:0; font-size:20px; }
+    .hand-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:9px; }
+    .hand-card { min-width:0; padding:7px; color:var(--black); background:#fff; border:2px solid var(--black); border-radius:10px; text-align:center; cursor:pointer; }
+    .hand-card img { display:block; flex:0 0 auto; width:78px; height:130px; margin:0 auto; object-fit:contain; image-rendering:pixelated; }
+    .hand-card strong { display:block; margin-top:6px; font:6px/1.7 "Press Start 2P",monospace; }
+    .hand-card small { display:block; font-size:18px; line-height:1.05; }
+    .hand-card:hover:not(:disabled),.hand-card:focus-visible:not(:disabled) { outline:3px solid var(--red); outline-offset:1px; }
+    .hand-card:disabled { opacity:.45; cursor:not-allowed; }
+    .hand-heading { margin:24px 0 12px; }
+    .board-scroll { overflow-x:auto; padding:3px 0 12px; }
+    .campaign-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+    .campaign-toolbar { display:flex; justify-content:flex-end; align-items:center; gap:8px; }
+    .campaign-toolbar .action-button { min-height:42px; padding:8px 10px; font-size:6px; white-space:nowrap; }
+    .six-column-board { min-width:780px; padding:8px; border:2px solid var(--black); border-radius:14px; background:#fff; }
+    .board-row { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); column-gap:8px; row-gap:3px; }
+    .match-column { min-width:0; padding:3px 5px; border:1px solid #777; border-radius:8px; background:var(--white); text-align:center; }
+    .outcome-row { align-items:center; }
+    .match-outcome { min-height:24px; display:grid; place-items:center; font:6px/1.6 "Press Start 2P",monospace; }
+    .board-side-label { padding:5px 0; font:6px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .match-slot { display:flex; min-height:160px; flex-direction:column; align-items:center; justify-content:center; gap:3px; padding:3px; border:2px solid var(--black); border-radius:7px; }
+    .match-slot img { display:block; flex:0 0 auto; width:78px; height:130px; object-fit:contain; image-rendering:pixelated; }
+    .match-slot small { font:6px/1.7 "Press Start 2P",monospace; }
+    .match-slot.face-down { background:var(--pink); }
+    .match-slot.loser { background:var(--pink); }
+    .match-slot.blank { min-height:160px; font-size:26px; }
+    .peek-card { width:100%; min-height:126px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:3px; color:var(--black); background:transparent; border:0; cursor:pointer; }
+    .peek-card .card-back { display:block; }
+    .peek-face { display:none; }
+    .peek-face img { max-width:100%; }
+    .peek-card:hover .card-back,.peek-card:focus-visible .card-back,.peek-card.peeked .card-back { display:none; }
+    .peek-card:hover .peek-face,.peek-card:focus-visible .peek-face,.peek-card.peeked .peek-face { display:block; }
+    .card-preview { position:fixed; z-index:10000; width:252px; height:408px; max-width:calc(100vw - 28px); max-height:calc(100vh - 28px); padding:6px; border:3px solid var(--black); border-radius:10px; background:var(--pink); box-shadow:4px 4px 0 var(--black); opacity:0; visibility:hidden; transform:scale(.96); transition:opacity .12s ease,transform .12s ease,visibility .12s; pointer-events:none; }
+    .card-preview.visible { opacity:1; visibility:visible; transform:scale(1); }
+    .card-preview img { display:block; width:100%; height:100%; object-fit:contain; image-rendering:pixelated; }
+    .board-divider { padding:7px; text-align:center; font:6px/1.8 "Press Start 2P",monospace; }
+    .card-points { font:7px/1.6 "Press Start 2P",monospace; }
+    .row-total { width:max-content; max-width:calc(100% - 16px); margin:7px auto; padding:8px 14px; border-radius:10px; font:8px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .cpu-total,.player-total { color:var(--white); background:var(--black); }
+    .tally-legend { display:flex; justify-content:space-between; gap:12px; margin:10px 0; font:6px/1.8 "Press Start 2P",monospace; }
+    .tally-abilities { margin-top:14px; padding:14px; border:2px solid var(--black); border-radius:10px; background:var(--pink); }
+    .tally-abilities strong { font:7px/1.8 "Press Start 2P",monospace; }
+    .turn-message { min-height:40px; margin:15px 0 0; padding:9px 12px; border-left:5px solid var(--red); background:var(--pink); font-size:21px; }
+    .match-result { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; margin:20px 0; padding:15px; border:2px solid var(--black); border-radius:14px; background:#fff; }
+    .match-card { min-width:0; text-align:center; }
+    .match-card img { display:block; width:78px; height:130px; margin:0 auto 8px; object-fit:contain; image-rendering:pixelated; }
+    .match-card strong { display:block; font:7px/1.8 "Press Start 2P",monospace; }
+    .match-card span { display:block; font-size:19px; }
+    .match-arrow { font:9px/1.8 "Press Start 2P",monospace; text-align:center; }
+    .result-notes { padding:14px 18px; border:2px solid var(--black); border-radius:10px; background:var(--pink); }
+    .result-notes h3 { margin-bottom:7px; }
+    .result-notes ul { margin:0; padding-left:22px; }
+    .result-notes li { margin:4px 0; }
+    .current-board { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0; }
+    .board-zone { padding:14px; border:2px solid var(--black); border-radius:12px; background:#fff; }
+    .board-zone h3 { display:flex; justify-content:space-between; gap:8px; margin-bottom:10px; }
+    .board-cards { display:flex; flex-wrap:wrap; gap:8px; min-height:58px; }
+    .board-card { display:grid; width:66px; min-height:58px; place-items:center; padding:5px; border:2px solid var(--black); border-radius:8px; background:var(--white); text-align:center; font:6px/1.6 "Press Start 2P",monospace; }
+    .board-card.face-down { color:var(--white); background:var(--black); }
+    .board-empty { color:#555; font-size:20px; }
+    .campaign-actions { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-top:20px; }
+    .review-box { margin-top:14px; padding:14px; border:2px dashed var(--black); border-radius:10px; background:#fff; }
+    .review-columns { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .review-columns ul { margin:8px 0 0; padding-left:20px; }
+    .review-toggle { font:7px/1.8 "Press Start 2P",monospace; }
+    .phase-action { margin-top:20px; text-align:right; }
+    .seventh-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
+    .seventh-card { display:grid; grid-template-columns:130px minmax(0,1fr); align-items:center; gap:16px; padding:16px; border:2px solid var(--black); border-radius:12px; background:#fff; }
+    .seventh-card img { display:block; width:78px; height:130px; margin:0 auto; object-fit:contain; image-rendering:pixelated; }
+    .seventh-card h3 { margin-bottom:8px; }
+    .seventh-card p { margin:0; }
+    .not-scored { display:inline-block; margin-top:10px; padding:5px 8px; background:var(--pink); border:1px solid var(--black); font:6px/1.8 "Press Start 2P",monospace; }
+    .tally-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+    .tally-side { padding:20px; border:3px solid var(--black); border-radius:14px; background:#fff; }
+    .tally-side.winner { background:var(--pink); }
+    .tally-side h3 { margin-bottom:12px; }
+    .vote-total { margin:6px 0; font:clamp(18px,3vw,30px)/1.8 "Press Start 2P",monospace; }
+    .tally-detail { margin:8px 0; font-size:21px; }
+    .final-call { margin:25px auto 0; font:clamp(12px,2vw,17px)/1.8 "Press Start 2P",monospace; text-align:center; }
+    .final-header { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:12px; margin-bottom:16px; }
+    .final-header > .action-button { justify-self:end; padding:9px 10px; font-size:6px; }
+    .result-title { display:flex; align-items:center; justify-content:center; gap:12px; margin:0; text-align:center; }
+    .result-title img { width:75px; height:80px; object-fit:contain; image-rendering:pixelated; }
+    .match-column.active-turn { outline:3px solid var(--red); outline-offset:1px; }
+    .history { margin-top:20px; padding:14px; border:2px solid var(--black); border-radius:10px; background:#fff; }
+    .history summary { font:7px/1.8 "Press Start 2P",monospace; cursor:pointer; }
+    .history li { margin:5px 0; }
+    footer { padding:28px 16px; color:var(--white); background:var(--black); border-top:4px solid var(--red); text-align:center; }
+    .maker-logo-link { display:block; width:min(210px,58vw); margin:0 auto 18px; }
+    .maker-logo { display:block; width:100%; height:auto; }
+    footer a { color:var(--white); }
+    .legal { display:block; max-width:900px; margin:18px auto 0; color:#c4c4c4; font-size:17px; }
+    @media(max-width:1100px) {
+      .nav { display:block; min-height:0; padding:16px 0 8px; }
+      .navlinks { width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:9px; padding:0; text-align:right; }
+      .navlinks .sale-nav { margin-left:0; }
+    }
+    @media(max-width:850px) {
+      .draft-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+      .hand-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+      .draft-header { align-items:flex-start; flex-direction:column; }
+      .draft-toolbar { width:100%; justify-content:flex-start; flex-wrap:wrap; }
+      .campaign-header { align-items:flex-start; flex-direction:column; }
+      .campaign-toolbar { width:100%; justify-content:flex-end; }
+      .intro { grid-template-columns:minmax(0,1fr) 180px; }
+      .brand img { width:195px; }
+    }
+    @media(max-width:600px) {
+      .wrap { width:calc(100% - 28px); }
+      .navlinks a { font-size:6px; }
+      .navlinks .sale-nav { padding:9px; }
+      .intro { grid-template-columns:minmax(0,1fr) 100px; gap:8px; padding:23px 0; }
+      .intro p { font-size:21px; }
+      .intro-art { max-height:155px; }
+      .quick-note { font-size:6px; }
+      .difficulty-grid { grid-template-columns:1fr; gap:8px; }
+      .difficulty-button { min-height:0; padding:12px; }
+      .difficulty-button strong { margin-bottom:4px; font-size:8px; }
+      .difficulty-button span { font-size:19px; }
+      .game-header { align-items:flex-start; }
+      .game-header .secondary { flex:none; padding:9px; font-size:6px; }
+      .draft-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .draft-card img { max-width:170px; }
+      .draft-toolbar { gap:5px; }
+      .draft-toolbar .action-button { padding:8px 5px; font-size:5px; }
+      .draft-footer { flex-direction:column; align-items:stretch; }
+      .draft-footer .action-button { width:100%; }
+      .hand-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .hand-card { display:block; text-align:center; }
+      .hand-card img { width:78px; height:130px; max-height:130px; }
+      .match-result { gap:7px; padding:8px; }
+      .match-card img { max-height:140px; }
+      .match-card strong { font-size:6px; }
+      .match-card span { font-size:17px; }
+      .match-arrow { font-size:7px; }
+      .seventh-card { grid-template-columns:90px minmax(0,1fr); gap:10px; padding:10px; }
+      .review-columns { grid-template-columns:1fr; }
+      .campaign-toolbar { flex-wrap:wrap; }
+      .campaign-toolbar .action-button { flex:1 1 auto; }
+      .final-header { grid-template-columns:1fr auto; grid-template-rows:auto auto; }
+      .final-balance { display:none; }
+      .final-header > .action-button { grid-column:2; grid-row:1; }
+      .result-title { grid-column:1 / -1; grid-row:2; gap:7px; }
+      .result-title { font-size:clamp(10px,3vw,15px); }
+      .result-title img { width:37.5px; height:40px; }
+      .phase-action { text-align:left; }
+      .phase-action .action-button { width:100%; }
+      .game-shell { padding:15px; }
+    }
+    @media(max-width:700px) {
+      .draft-scroll,.hand-scroll { max-width:100%; overflow-x:auto; padding:3px 0 10px; overscroll-behavior-inline:contain; scrollbar-color:var(--red) var(--gray); }
+      .draft-grid { width:max-content; grid-template-columns:repeat(7,112px); }
+      .hand-grid { width:max-content; grid-template-columns:repeat(7,100px); }
+      .draft-filters { display:grid; grid-template-columns:repeat(3,max-content); justify-content:center; padding:0 1px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
+      <div class="navlinks">
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="play.html" aria-current="page">PLAY</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
+      </div>
+    </nav>
+  </header>
+  <main class="wrap">
+    <section class="game-shell" id="game-stage" aria-live="polite" aria-label="Game area">
+      <div class="setup-panel">
+        <span class="phase-kicker">SINGLE PLAYER · FIRST 14 CARDS</span>
+        <h2>Pick a computer difficulty</h2>
+        <p>Choose an easy, medium, or hard computer, draft a seven-card Classroom with exactly one Class Rep, then play six secret Campaign matchups. Higher Influence wins each matchup unless an ability changes the result. Tally the face-up cards to see who wins the election.</p>
+        <div class="difficulty-grid" role="group" aria-label="Choose computer difficulty">
+          <button class="difficulty-button" type="button" data-difficulty="easy" aria-pressed="false"><strong>EASY</strong><span>Relaxed picks and simple matchups.</span></button>
+          <button class="difficulty-button" type="button" data-difficulty="medium" aria-pressed="true"><strong>MEDIUM</strong><span>Balanced drafting and more thoughtful plays.</span></button>
+          <button class="difficulty-button" type="button" data-difficulty="hard" aria-pressed="false"><strong>HARD</strong><span>Plans around the cards in both Classrooms.</span></button>
+        </div>
+        <button class="action-button" id="start-game" type="button">START A GAME</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a class="maker-logo-link" href="https://www.lessthanpiart.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit LessThanPi Art"><img class="maker-logo" src="images/Assets/LessThanPiArtLogo-Large.png" alt="LessThanPi Art"></a>
+    <span>YOUR CLASS REP · GAMES, COMICS &amp; MORE</span><br><br>
+    <a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a>
+    <small class="legal">© 2026 LessThanPi Art. Your Class Rep, including its name, characters, artwork, and game materials, is the property of LessThanPi Art. All rights reserved.</small>
+  </footer>
+  <script src="character-data.js"></script>
+  <script src="play.js"></script>
+</body>
+</html>

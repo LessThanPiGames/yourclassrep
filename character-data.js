@@ -213,7 +213,7 @@ window.CHARACTER_DETAILS = {
     ],
     "interests": "Discipline, poetry",
     "bio": "Vice Principal Grizz is huge, intimidating, and sounds like he gargles gravel, but beneath that gruff exterior is a big softie who wants every student to succeed. He enforces the rules while quietly fixing broken lockers and checking on kids who seem down. He may have an iron fist, but he also has a secret weakness for poetry.",
-    "ability": "Tally Ability: If there are less than 2[Student] cards face up on your side you gain +1[Vote]",
+    "ability": "Tally Ability: If there are 2 or fewer [Student] cards face up on your side, you gain +1[Vote]",
     "strategy": "The Principal is powerful when paired with other staff Cards",
     "combinations": [
       8,
@@ -230,7 +230,7 @@ window.CHARACTER_DETAILS = {
     ],
     "interests": "Rules, structure, hair gel, rare umbrellas",
     "bio": "Principal Stone’s shoes click like a metronome of doom, and her icy stare can silence an entire cafeteria. She loves rules, structure, perfectly styled hair, and rare umbrellas, but she cares deeply about her students and staff. When things get tough, she’s the first one in and the last one to leave, making sure the school runs like clockwork.",
-    "ability": "Tally Ability: If there are less than 2[Student] cards face up on your side you gain +1[Vote]",
+    "ability": "Tally Ability: If there are 2 or fewer [Student] cards face up on your side, you gain +1[Vote]",
     "strategy": "The Principal is powerful when paired with other staff Cards",
     "combinations": [
       7,
