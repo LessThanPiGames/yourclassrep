@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Play Your Class Rep | Your Class Rep</title>
-  <meta name="description" content="Play Your Class Rep against an easy, medium, or hard computer player using the first 14 cards.">
+  <meta name="description" content="Play Your Class Rep against a computer with the first 14 cards on Easy, first 28 on Medium, or all 42 cards on Hard.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://yourclassrep.com/play.html">
   <meta property="og:type" content="website">
@@ -47,11 +47,29 @@
     .game-shell { min-height:340px; margin:12px auto 0; padding:clamp(18px,3.5vw,38px); border:3px solid var(--black); border-radius:20px; background:var(--white); }
     .setup-panel { max-width:930px; margin:0 auto; text-align:center; }
     .setup-panel > p { font-size:25px; }
-    .difficulty-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:24px 0; }
-    .difficulty-button { min-height:115px; padding:16px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:14px; text-align:left; cursor:pointer; }
-    .difficulty-button strong { display:block; margin-bottom:11px; font:10px/1.8 "Press Start 2P",monospace; }
-    .difficulty-button span { display:block; font-size:20px; line-height:1.15; }
-    .difficulty-button[aria-pressed="true"] { background:var(--pink); box-shadow:inset 0 0 0 2px var(--red); }
+    .mode-title { display:flex; align-items:center; justify-content:center; gap:16px; }
+    .mode-title img { width:42px; height:42px; object-fit:contain; image-rendering:pixelated; }
+    .mode-choice-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:stretch; gap:14px; margin:24px 0; }
+    .difficulty-grid { display:grid; grid-template-rows:repeat(3,minmax(0,1fr)); gap:8px; }
+    .difficulty-button,.free-play-button { padding:14px 16px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:14px; text-align:left; cursor:pointer; }
+    .difficulty-button { position:relative; display:flex; min-height:80px; align-items:center; justify-content:space-between; gap:8px; overflow:visible; }
+    .level-choice-copy { position:relative; z-index:1; display:block; flex:1 1 auto; padding-right:30px; }
+    .level-choice-copy strong { display:block; margin-bottom:8px; font:10px/1.8 "Press Start 2P",monospace; }
+    .level-choice-copy > span,.free-choice-copy > span { display:block; font-size:20px; line-height:1.15; }
+    .mode-character { position:absolute; z-index:2; width:108px; height:140px; object-fit:contain; object-position:center bottom; image-rendering:pixelated; pointer-events:none; }
+    .level-character { right:3px; bottom:-8px; width:108px; height:140px; }
+    .difficulty-button[data-difficulty="medium"] .level-choice-copy { padding:0 0 0 74px; text-align:right; }
+    .difficulty-button[data-difficulty="medium"] .level-character { right:auto; left:3px; }
+    .free-play-button { position:relative; display:flex; min-height:0; align-items:center; justify-content:center; gap:12px; overflow:visible; text-align:center; }
+    .free-choice-copy { position:relative; z-index:1; display:block; flex:1 1 auto; padding:0 64px; }
+    .free-character:first-child { left:3px; bottom:0; }
+    .free-character:last-child { right:3px; bottom:0; }
+    .free-choice-copy strong { display:block; margin-bottom:16px; font:12px/1.8 "Press Start 2P",monospace; }
+    .free-play-button strong { display:block; font:12px/1.8 "Press Start 2P",monospace; }
+    .difficulty-button[aria-pressed="true"],.free-play-button[aria-pressed="true"] { background:var(--pink); box-shadow:inset 0 0 0 2px var(--red); }
+    .difficulty-button:disabled { opacity:.5; cursor:not-allowed; }
+    .difficulty-button:disabled[aria-pressed="true"] { background:var(--white); box-shadow:none; }
+    .mode-start-button { display:flex; width:100%; box-sizing:border-box; }
     .action-button { display:inline-flex; min-height:54px; justify-content:center; align-items:center; gap:8px; padding:13px 18px; color:var(--white); background:var(--red); border:3px solid var(--black); border-radius:11px; box-shadow:5px 5px 0 var(--black); font:9px/1.8 "Press Start 2P",monospace; text-align:center; cursor:pointer; }
     .action-button:hover,.action-button:focus-visible { background:var(--black); }
     .action-button.secondary { color:var(--black); background:var(--white); box-shadow:none; }
@@ -65,18 +83,22 @@
     .draft-toolbar { display:flex; align-items:center; justify-content:flex-end; gap:8px; }
     .draft-toolbar .action-button { min-height:42px; padding:9px 8px; font-size:6px; white-space:nowrap; }
     .draft-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; margin:0 0 10px; }
-    .draft-filter { padding:9px 11px; color:var(--black); background:var(--white); border:2px solid var(--black); border-radius:8px; font:6px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .draft-filter { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:7px 9px; color:var(--black); background:var(--white); border:2px solid var(--black); border-radius:8px; font:6px/1.6 "Press Start 2P",monospace; cursor:pointer; }
+    .draft-filter img { display:block; width:30px; height:32px; object-fit:contain; image-rendering:pixelated; }
+    .draft-filter span { display:block; }
     .draft-filter:hover,.draft-filter:focus-visible,.draft-filter.active { color:var(--white); background:var(--red); }
-    .draft-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:12px; }
-    .draft-card { display:flex; flex-direction:column; align-items:center; gap:8px; min-width:0; padding:10px; color:var(--black); background:#fff; border:2px solid var(--black); border-radius:12px; text-align:center; cursor:pointer; }
+    .draft-scroll { max-width:100%; overflow-x:auto; padding:3px 0 10px; overscroll-behavior-inline:contain; scrollbar-color:var(--red) var(--gray); }
+    .draft-grid { display:grid; width:max-content; grid-template-rows:repeat(2,auto); grid-auto-columns:112px; grid-auto-flow:column; gap:8px; margin-inline:auto; }
+    .draft-card { display:flex; width:112px; flex-direction:column; align-items:center; justify-content:flex-start; gap:5px; min-width:0; padding:8px; color:var(--black); background:#fff; border:2px solid var(--black); border-radius:10px; text-align:center; cursor:pointer; }
     .draft-card:hover:not(:disabled),.draft-card:focus-visible:not(:disabled) { outline:3px solid var(--red); outline-offset:1px; }
     .draft-card:disabled { opacity:1; cursor:not-allowed; }
+    .draft-card:disabled.classroom-full { opacity:.5; }
     .draft-card img { display:block; flex:0 0 auto; width:78px; height:130px; object-fit:contain; image-rendering:pixelated; }
     .draft-card[hidden] { display:none; }
     .draft-card.picked { background:var(--pink); }
     .draft-card.unavailable-rep { filter:brightness(.48) grayscale(.8); cursor:not-allowed; }
     .draft-caption { min-height:28px; display:flex; align-items:center; justify-content:center; }
-    .draft-card strong { display:block; font:7px/1.7 "Press Start 2P",monospace; }
+    .draft-card strong { display:block; font:7px/1.5 "Press Start 2P",monospace; overflow-wrap:anywhere; }
     .draft-notice { min-height:24px; margin:6px 0 10px; font-size:20px; }
     .draft-footer { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:20px; }
     .draft-footer p { margin:0; }
@@ -186,7 +208,6 @@
       .navlinks .sale-nav { margin-left:0; }
     }
     @media(max-width:850px) {
-      .draft-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
       .hand-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
       .draft-header { align-items:flex-start; flex-direction:column; }
       .draft-toolbar { width:100%; justify-content:flex-start; flex-wrap:wrap; }
@@ -203,14 +224,21 @@
       .intro p { font-size:21px; }
       .intro-art { max-height:155px; }
       .quick-note { font-size:6px; }
-      .difficulty-grid { grid-template-columns:1fr; gap:8px; }
-      .difficulty-button { min-height:0; padding:12px; }
-      .difficulty-button strong { margin-bottom:4px; font-size:8px; }
-      .difficulty-button span { font-size:19px; }
+      .mode-choice-layout { gap:8px; }
+      .difficulty-grid { grid-template-rows:repeat(3,minmax(0,1fr)); }
+      .difficulty-button,.free-play-button { padding:10px; }
+      .difficulty-button { min-height:82px; }
+      .level-choice-copy strong { margin-bottom:4px; font-size:8px; }
+      .level-choice-copy > span,.free-choice-copy > span { font-size:17px; }
+      .level-choice-copy { padding-right:62px; }
+      .difficulty-button[data-difficulty="medium"] .level-choice-copy { padding-left:62px; }
+      .free-choice-copy { padding:0 60px; }
+      .free-play-button { gap:6px; }
+      .free-choice-copy strong { margin-bottom:8px; font-size:9px; }
+      .mode-title { gap:8px; }
+      .mode-title img { width:30px; height:30px; }
       .game-header { align-items:flex-start; }
       .game-header .secondary { flex:none; padding:9px; font-size:6px; }
-      .draft-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .draft-card img { max-width:170px; }
       .draft-toolbar { gap:5px; }
       .draft-toolbar .action-button { padding:8px 5px; font-size:5px; }
       .draft-footer { flex-direction:column; align-items:stretch; }
@@ -230,6 +258,7 @@
       .final-header { grid-template-columns:1fr auto; grid-template-rows:auto auto; }
       .final-balance { display:none; }
       .final-header > .action-button { grid-column:2; grid-row:1; }
+      .final-actions { grid-column:2; grid-row:1; }
       .result-title { grid-column:1 / -1; grid-row:2; gap:7px; }
       .result-title { font-size:clamp(10px,3vw,15px); }
       .result-title img { width:37.5px; height:40px; }
@@ -237,9 +266,11 @@
       .phase-action .action-button { width:100%; }
       .game-shell { padding:15px; }
     }
+    .final-actions { display:flex; flex-direction:column; gap:8px; justify-self:end; }
+    .unlock-notice { margin:0 0 16px; padding:12px; border:2px solid var(--black); border-radius:10px; background:var(--pink); text-align:center; font:8px/1.8 "Press Start 2P",monospace; }
     @media(max-width:700px) {
       .draft-scroll,.hand-scroll { max-width:100%; overflow-x:auto; padding:3px 0 10px; overscroll-behavior-inline:contain; scrollbar-color:var(--red) var(--gray); }
-      .draft-grid { width:max-content; grid-template-columns:repeat(7,112px); }
+      .draft-grid { gap:7px; }
       .hand-grid { width:max-content; grid-template-columns:repeat(7,100px); }
       .draft-filters { display:grid; grid-template-columns:repeat(3,max-content); justify-content:center; padding:0 1px 8px; }
     }
@@ -257,15 +288,18 @@
   <main class="wrap">
     <section class="game-shell" id="game-stage" aria-live="polite" aria-label="Game area">
       <div class="setup-panel">
-        <span class="phase-kicker">SINGLE PLAYER · FIRST 14 CARDS</span>
-        <h2>Pick a computer difficulty</h2>
-        <p>Choose an easy, medium, or hard computer, draft a seven-card Classroom with exactly one Class Rep, then play six secret Campaign matchups. Higher Influence wins each matchup unless an ability changes the result. Tally the face-up cards to see who wins the election.</p>
-        <div class="difficulty-grid" role="group" aria-label="Choose computer difficulty">
-          <button class="difficulty-button" type="button" data-difficulty="easy" aria-pressed="false"><strong>EASY</strong><span>Relaxed picks and simple matchups.</span></button>
-          <button class="difficulty-button" type="button" data-difficulty="medium" aria-pressed="true"><strong>MEDIUM</strong><span>Balanced drafting and more thoughtful plays.</span></button>
-          <button class="difficulty-button" type="button" data-difficulty="hard" aria-pressed="false"><strong>HARD</strong><span>Plans around the cards in both Classrooms.</span></button>
+          <span class="phase-kicker">SINGLE PLAYER · CHOOSE YOUR CARD POOL</span>
+          <h2 class="mode-title"><img src="images/Assets/RedStar.png" alt="" aria-hidden="true">Choose how to play<img src="images/Assets/RedStar.png" alt="" aria-hidden="true"></h2>
+          <p>Each Classroom has 7 cards and exactly one Class Rep. Complete a game at your current level to unlock the next card pool, win or lose. Free Play uses your largest unlocked pool.</p>
+        <div class="mode-choice-layout">
+          <div class="difficulty-grid" role="group" aria-label="Choose computer difficulty">
+            <button class="difficulty-button" type="button" data-difficulty="easy" aria-pressed="true"><span class="level-choice-copy"><strong>EASY · 14 CARDS</strong><span>Cards 01–14. Unlocked.</span></span><img class="mode-character level-character" src="images/Characters/11-PetF-Ch2.png" alt="" aria-hidden="true"></button>
+            <button class="difficulty-button" type="button" data-difficulty="medium" aria-pressed="false" disabled><span class="level-choice-copy"><strong>MEDIUM · 28 CARDS</strong><span>Unlock by completing Easy.</span></span><img class="mode-character level-character" src="images/Characters/11-PetF-Ch1.png" alt="" aria-hidden="true"></button>
+            <button class="difficulty-button" type="button" data-difficulty="hard" aria-pressed="false" disabled><span class="level-choice-copy"><strong>HARD · 42 CARDS</strong><span>Unlock by completing Medium.</span></span><img class="mode-character level-character" src="images/Characters/12-PetM-Ch.png" alt="" aria-hidden="true"></button>
+          </div>
+          <button class="free-play-button" type="button" data-mode="free" aria-pressed="false"><img class="mode-character free-character" src="images/Characters/01-SpeechM-Ch.png" alt="" aria-hidden="true"><span class="free-choice-copy"><strong>FREE PLAY</strong><span>Build from your largest unlocked pool.</span></span><img class="mode-character free-character" src="images/Characters/02-SpeechF-Ch.png" alt="" aria-hidden="true"></button>
         </div>
-        <button class="action-button" id="start-game" type="button">START A GAME</button>
+        <button class="action-button mode-start-button" id="start-game" type="button">START EASY GAME</button>
       </div>
     </section>
   </main>

@@ -14,7 +14,7 @@
   <style>
     :root { --black:#0d0d0d; --white:#f2f2f2; --gray:#d8d8d8; --red:#b44c4c; --pink:rgb(231,167,167); }
     * { box-sizing:border-box; }
-    body { margin:0; color:var(--black); background:var(--gray); font:24px "VT323",monospace; }
+    body { margin:0; color:var(--black); background:var(--white); font:24px "VT323",monospace; }
     h1,h2,.pixel { font-family:"Press Start 2P",monospace; text-transform:uppercase; }
     .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
     .topbar { position:sticky; top:0; z-index:2; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
@@ -26,11 +26,37 @@
     .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
     .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); }
     main { padding:42px 0 56px; }
-    .thank-you { position:relative; padding:clamp(24px,5vw,56px); border:3px solid var(--black); border-radius:22px; background:var(--white); text-align:center; }
-    .decoration-character { position:absolute; z-index:0; top:50%; width:108px; height:140px; transform:translateY(-50%); object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .thank-you { position:relative; z-index:0; isolation:isolate; padding:clamp(24px,5vw,56px); border:3px solid var(--black); border-radius:22px; background:var(--gray); text-align:center; }
+    .decoration-character { position:absolute; z-index:0; top:50%; width:clamp(120px,22.5vw,270px); height:auto; transform:translateY(-50%); object-fit:contain; image-rendering:pixelated; pointer-events:none; }
     .decoration-character.left { left:0; }
     .decoration-character.right { right:0; }
-    .thank-you-content { position:relative; z-index:1; }
+    .thank-you-sparkles { position:absolute; z-index:1; inset:0; overflow:hidden; pointer-events:none; }
+    .thank-you-sparkles img { position:absolute; width:clamp(30px,6.25vw,75px); height:auto; object-fit:contain; image-rendering:pixelated; }
+    .thank-you-sparkles img:nth-child(1) { top:5%; left:23%; }
+    .thank-you-sparkles img:nth-child(2) { top:8%; right:23%; }
+    .thank-you-sparkles img:nth-child(3) { top:34%; left:7%; }
+    .thank-you-sparkles img:nth-child(4) { top:37%; right:7%; }
+    .thank-you-sparkles img:nth-child(5) { bottom:7%; left:20%; }
+    .thank-you-sparkles img:nth-child(6) { right:20%; bottom:8%; }
+    .thank-you-sparkles img:nth-child(7) { top:65%; left:3%; }
+    .thank-you-sparkles img:nth-child(8) { top:66%; right:3%; }
+    .thank-you-sparkles img:nth-child(9) { top:18%; left:5%; }
+    .thank-you-sparkles img:nth-child(10) { top:18%; right:5%; }
+    .thank-you-sparkles img:nth-child(11) { top:48%; left:18%; }
+    .thank-you-sparkles img:nth-child(12) { top:49%; right:18%; }
+    .thank-you-sparkles img:nth-child(13) { bottom:20%; left:8%; }
+    .thank-you-sparkles img:nth-child(14) { right:8%; bottom:20%; }
+    .thank-you-sparkles img:nth-child(15) { top:8%; left:13%; }
+    .thank-you-sparkles img:nth-child(16) { top:9%; right:13%; }
+    .thank-you-sparkles img:nth-child(17) { top:78%; left:14%; }
+    .thank-you-sparkles img:nth-child(18) { top:79%; right:14%; }
+    .thank-you-sparkles img:nth-child(19) { top:30%; left:2%; }
+    .thank-you-sparkles img:nth-child(20) { top:31%; right:2%; }
+    .thank-you-sparkles img:nth-child(21) { top:57%; left:10%; }
+    .thank-you-sparkles img:nth-child(22) { top:58%; right:10%; }
+    .thank-you-sparkles img:nth-child(23) { bottom:4%; left:6%; }
+    .thank-you-sparkles img:nth-child(24) { right:6%; bottom:5%; }
+    .thank-you-content { position:relative; z-index:2; }
     .stars { display:flex; align-items:center; justify-content:center; gap:18px; }
     .stars img { width:56px; height:60px; object-fit:contain; image-rendering:pixelated; }
     h1 { margin:0; font-size:clamp(17px,3.3vw,32px); line-height:1.8; }
@@ -62,9 +88,18 @@
       .stars { gap:8px; }
       .stars img { width:28px; height:30px; }
       .thank-you-content > p { font-size:23px; }
-      .decoration-character { top:auto; bottom:5px; width:54px; height:70px; transform:none; }
+      .decoration-character { top:auto; bottom:5px; width:clamp(90px,25vw,180px); height:auto; transform:none; }
       .decoration-character.left { left:-9px; }
       .decoration-character.right { right:-9px; }
+      .thank-you-sparkles img { width:clamp(24px,9vw,54px); }
+      .thank-you-sparkles img:nth-child(3) { left:2%; }
+      .thank-you-sparkles img:nth-child(4) { right:2%; }
+      .thank-you-sparkles img:nth-child(11) { left:5%; }
+      .thank-you-sparkles img:nth-child(12) { right:5%; }
+      .thank-you-sparkles img:nth-child(13) { left:3%; }
+      .thank-you-sparkles img:nth-child(14) { right:3%; }
+      .thank-you-sparkles img:nth-child(21) { left:4%; }
+      .thank-you-sparkles img:nth-child(22) { right:4%; }
       .button.primary { width:calc(100% - 26px); }
       .sale-panel { margin-top:24px; padding:15px 10px; }
       .countdown { gap:5px; }
@@ -83,12 +118,38 @@
   </header>
   <main class="wrap">
     <section class="thank-you">
+      <div class="thank-you-sparkles" aria-hidden="true">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarS.png" alt="">
+        <img src="images/Assets/Stars/5pointStarL.png" alt="">
+        <img src="images/Assets/Stars/4pointStarL.png" alt="">
+        <img src="images/Assets/Stars/4pointStarS.png" alt="">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarL.png" alt="">
+        <img src="images/Assets/Stars/5pointStarL.png" alt="">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarS.png" alt="">
+        <img src="images/Assets/Stars/5pointStarL.png" alt="">
+        <img src="images/Assets/Stars/4pointStarL.png" alt="">
+        <img src="images/Assets/Stars/4pointStarS.png" alt="">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarL.png" alt="">
+        <img src="images/Assets/Stars/5pointStarL.png" alt="">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarL.png" alt="">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/5pointStarL.png" alt="">
+        <img src="images/Assets/Stars/4pointStarS.png" alt="">
+        <img src="images/Assets/Stars/5pointStarS.png" alt="">
+        <img src="images/Assets/Stars/4pointStarL.png" alt="">
+      </div>
       <img class="decoration-character left" src="images/Characters/11-PetF-Ch1.png" alt="" aria-hidden="true">
       <img class="decoration-character right" src="images/Characters/11-PetF-Ch2.png" alt="" aria-hidden="true">
       <div class="thank-you-content">
         <div class="stars"><img src="images/Assets/RedStar.png" alt=""><h1>THANKS FOR PLAYING!</h1><img src="images/Assets/RedStar.png" alt=""></div>
         <a class="button primary" href="play.html">PLAY AGAIN</a>
-        <p id="thanks-copy">Want to bring the full game to your table? Visit the crowd sale and help Your Class Rep launch.</p>
+        <p id="thanks-copy">The game is even more fun when you play with a friend! LessThanPi Art is a small one-man development studio. If you enjoyed the game, please consider sharing this project. It helps more than you know!</p>
         <section class="sale-panel" aria-live="polite">
           <h2 id="sale-heading">THE CROWD SALE</h2>
           <p class="sale-message" id="sale-message">LAUNCHES OCT 31</p>
