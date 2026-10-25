@@ -33,12 +33,12 @@
     .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
     .topbar { position:sticky; top:0; z-index:20; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
     .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:22px; }
-    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
+    .brand { position:absolute; z-index:2; left:0; top:4px; display:block; }
     .brand img { display:block; width:220px; height:auto; }
-    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.8vw,22px); }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.6vw,20px); }
     .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
     .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
-    .navlinks .sale-nav { padding:12px 14px; color:var(--white); background:var(--red); border:2px solid var(--white); }
+    .navlinks .sale-nav { padding:12px 14px; color:var(--white); background:var(--red); border:2px solid var(--white); border-radius:8px; box-shadow:4px 4px 0 #4d4d4d; }
     .intro { display:none; }
     .intro p { max-width:780px; margin:14px 0 0; font-size:26px; }
     .intro-art { display:block; width:100%; max-width:260px; max-height:240px; margin:auto; object-fit:contain; image-rendering:pixelated; }
@@ -281,7 +281,7 @@
     <nav class="nav wrap" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
       <div class="navlinks">
-        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="play.html" aria-current="page">PLAY</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="media.html">MEDIA</a><a href="play.html" aria-current="page">PLAY</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
       </div>
     </nav>
   </header>

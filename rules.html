@@ -40,12 +40,12 @@
     .wrap { width:min(1160px,calc(100% - 40px)); margin-inline:auto; }
     .topbar { position:sticky; top:0; z-index:20; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
     .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
-    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
+    .brand { position:absolute; z-index:2; left:0; top:4px; display:block; }
     .brand img { display:block; width:220px; height:auto; }
-    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(12px,2vw,25px); }
-    .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.6vw,20px); }
+    .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
     .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
-    .navlinks .sale-nav { padding:13px 16px; background:var(--red); border:2px solid var(--white); box-shadow:4px 4px 0 var(--dark-gray); }
+    .navlinks .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); border-radius:8px; box-shadow:4px 4px 0 var(--dark-gray); }
     .page-intro { display:grid; grid-template-columns:minmax(0,2fr) minmax(220px,1fr); align-items:center; gap:20px; padding:30px 0 26px; text-align:left; }
     .page-title { display:flex; align-items:center; gap:18px; }
     .page-title::before,.page-title::after { content:""; flex:none; width:52px; height:56px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
@@ -210,6 +210,7 @@
         <a href="cards.html">CARDS</a>
         <a href="rules.html" aria-current="page">RULES</a>
         <a href="downloads.html">DOWNLOADS</a>
+        <a href="media.html">MEDIA</a>
         <a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a>
         <a href="play.html">PLAY</a>
         <a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>

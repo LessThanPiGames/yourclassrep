@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media | Your Class Rep</title>
+  <meta name="description" content="Watch Your Class Rep gameplay and browse photos of the physical card game in action.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://yourclassrep.com/media.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/Assets/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/Assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#0d0d0d; --white:#f2f2f2; --dark-gray:#4d4d4d; --red:#b44c4c; --pink:rgb(231,167,167); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:90px; }
+    body { margin:0; color:var(--black); background:var(--white); font:22px "VT323",monospace; }
+    h1,h2,h3,.pixel { font-family:"Press Start 2P",monospace; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(22px,3vw,38px); line-height:1.5; text-align:center; }
+    h2 { margin:0; font-size:clamp(15px,2vw,22px); line-height:1.7; text-align:center; }
+    h3 { margin:0; font-size:9px; line-height:1.8; }
+    p { line-height:1.35; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin-inline:auto; }
+    .topbar { position:sticky; top:0; z-index:20; color:var(--white); background:var(--black); border-bottom:4px solid var(--red); }
+    .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
+    .brand { position:absolute; z-index:2; left:0; top:4px; display:block; }
+    .brand img { display:block; width:220px; height:auto; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.6vw,20px); }
+    .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
+    .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
+    .navlinks .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); border-radius:8px; box-shadow:4px 4px 0 var(--dark-gray); }
+    .band { padding:48px 0; border-block:3px solid var(--black); }
+    .band-dark { color:var(--white); background:var(--black); }
+    .section-title { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:18px; }
+    .section-title::before,.section-title::after { content:""; flex:none; width:44px; height:48px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
+    .intro { max-width:760px; margin:0 auto 30px; text-align:center; font-size:24px; }
+    .main-video { width:min(100%,900px); aspect-ratio:16/9; margin:0 auto; overflow:hidden; border:4px solid var(--black); border-radius:18px; background:var(--black); }
+    .main-video iframe,.short-video iframe { display:block; width:100%; height:100%; border:0; }
+    .shorts-grid,.gallery { display:flex; gap:18px; max-width:100%; margin:auto; padding:4px 3px 15px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-color:var(--red) transparent; }
+    .shorts-grid::-webkit-scrollbar,.gallery::-webkit-scrollbar { height:14px; background:transparent; }
+    .shorts-grid::-webkit-scrollbar-track,.gallery::-webkit-scrollbar-track { background:transparent; }
+    .shorts-grid::-webkit-scrollbar-thumb,.gallery::-webkit-scrollbar-thumb { border-radius:8px; background:var(--red); }
+    .short-video { flex:0 0 clamp(220px,25vw,280px); width:auto; aspect-ratio:9/16; max-height:620px; overflow:hidden; border:3px solid var(--white); border-radius:16px; background:var(--black); scroll-snap-align:start; }
+    .gallery { gap:18px; }
+    .media-photo-trigger { display:block; flex:0 0 clamp(260px,28vw,340px); width:auto; padding:0; overflow:hidden; border:3px solid var(--white); border-radius:13px; background:var(--black); cursor:zoom-in; scroll-snap-align:start; }
+    .media-photo-trigger:focus-visible { outline:3px solid var(--red); outline-offset:3px; }
+    .media-photo { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center; transition:transform 180ms ease; }
+    .media-photo-trigger:hover .media-photo { transform:scale(1.025); }
+    .photo-dialog { width:fit-content; max-width:min(92vw,1120px); max-height:92vh; padding:12px; border:3px solid var(--black); border-radius:16px; color:var(--black); background:var(--white); }
+    .photo-dialog::backdrop { background:rgba(0,0,0,.82); }
+    .photo-dialog img { display:block; width:auto; max-width:min(88vw,1090px); max-height:78vh; margin:0 auto 14px; object-fit:contain; }
+    .photo-dialog-close { display:block; min-height:44px; margin:0 0 12px auto; padding:9px 14px; border:2px solid var(--black); border-radius:9px; color:var(--white); background:var(--red); font:8px "Press Start 2P",monospace; cursor:pointer; }
+    .photo-dialog-controls { display:flex; align-items:center; justify-content:center; gap:16px; }
+    .photo-dialog-controls button { display:grid; width:52px; height:48px; place-items:center; border:2px solid var(--black); border-radius:9px; color:var(--white); background:var(--red); font:15px "Press Start 2P",monospace; cursor:pointer; }
+    .photo-dialog-controls button:hover,.photo-dialog-controls button:focus-visible { background:var(--black); }
+    .photo-dialog-count { min-width:64px; text-align:center; font:7px/1.8 "Press Start 2P",monospace; }
+    .sale-promo { max-width:850px; margin:auto; text-align:center; }
+    .sale-promo > p { max-width:680px; margin:0 auto 20px; font-size:24px; }
+    .sale-promo .countdown-card { width:min(100%,480px); margin-inline:auto; padding:12px; color:var(--white); background:var(--red); border:3px solid var(--white); border-radius:14px; }
+    .sale-promo .countdown-title { margin:0 0 12px; font:9px/1.8 "Press Start 2P",monospace; }
+    .countdown { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
+    .count-unit { padding:10px 5px; color:var(--white); background:var(--black); }
+    .count-value { display:block; font:clamp(13px,2vw,20px)/1.7 "Press Start 2P",monospace; font-variant-numeric:tabular-nums; }
+    .count-label { display:block; margin-top:4px; font:6px "Press Start 2P",monospace; }
+    .sale-promo .button { width:min(100%,480px); margin-top:18px; border:3px solid var(--white); }
+    .button { display:inline-flex; min-height:52px; align-items:center; justify-content:center; padding:12px 18px; border:3px solid var(--black); border-radius:12px; color:var(--white); background:var(--red); box-shadow:5px 5px 0 var(--black); text-decoration:none; text-align:center; font:8px/1.8 "Press Start 2P",monospace; }
+    .button:hover,.button:focus-visible { color:var(--white); background:var(--black); }
+    footer { padding:26px 15px; border-top:4px solid var(--red); color:var(--white); background:var(--black); text-align:center; }
+    footer a { color:var(--white); }
+    .maker-logo-link { display:block; width:min(210px,58vw); margin:0 auto 18px; }
+    .maker-logo { display:block; width:100%; height:auto; }
+    .legal { display:block; max-width:900px; margin:20px auto 0; color:#c4c4c4; font-size:17px; }
+    .youtube-fallback { position:relative; display:flex; width:100%; height:100%; align-items:center; justify-content:center; overflow:hidden; color:var(--white); background:var(--black); text-decoration:none; text-align:center; }
+    .youtube-fallback img { position:absolute; width:52%; height:85%; object-fit:contain; opacity:.42; }
+    .youtube-fallback span { position:relative; padding:14px 18px; background:var(--red); border:3px solid var(--white); font:9px/1.8 "Press Start 2P",monospace; }
+    @media(max-width:1100px) {
+      .nav { display:block; min-height:0; padding:16px 0 8px; }
+      .navlinks { display:flex; width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:9px; text-align:right; }
+    }
+    @media(max-width:800px) {
+      .brand img { width:190px; }
+      .navlinks { gap:8px; }
+      .navlinks a { font-size:7px; }
+      .short-video { flex-basis:clamp(230px,36vw,290px); }
+      .media-photo-trigger { flex-basis:clamp(260px,42vw,340px); }
+      .section-title::before,.section-title::after { width:32px; height:36px; }
+    }
+    @media(max-width:560px) {
+      .wrap { width:min(100% - 28px,1160px); }
+      .band { padding:36px 0; }
+      .navlinks a { font-size:6px; }
+      .navlinks .sale-nav { padding:9px; }
+      .short-video { flex-basis:78vw; }
+      .media-photo-trigger { flex-basis:82vw; }
+      .section-title { gap:8px; }
+      .section-title::before,.section-title::after { width:25px; height:28px; }
+      .intro { font-size:21px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
+      <div class="navlinks">
+        <a href="index.html">HOME</a><a href="cards.html">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="media.html" aria-current="page">MEDIA</a><a href="play.html">PLAY</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="band">
+      <div class="wrap">
+        <h1>MEDIA</h1>
+        <p class="intro">Watch the game in action and take a closer look at Your Class Rep on the table.</p>
+        <div class="main-video"><iframe data-youtube-id="1VZW6BRRT9M" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="Your Class Rep gameplay video" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+    </section>
+    <section class="band band-dark">
+      <div class="wrap">
+        <div class="section-title"><h2>SHORT VIDEOS</h2></div>
+        <p class="intro">Quick moments from the game and the people making it.</p>
+        <div class="shorts-grid">
+          <div class="short-video"><iframe data-youtube-id="dXkFr5CicBQ" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/dXkFr5CicBQ" title="Playing Your Class Rep" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="short-video"><iframe data-youtube-id="D9mlF4GlQIM" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/D9mlF4GlQIM" title="Designing the Your Class Rep cards" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="short-video"><iframe data-youtube-id="k26adduy6rU" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/k26adduy6rU" title="Your Class Rep short video 3" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="short-video"><iframe data-youtube-id="Wltlar7St5Q" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/Wltlar7St5Q" title="Your Class Rep short video 4" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="short-video"><iframe data-youtube-id="qe1t9p8dubI" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/qe1t9p8dubI" title="Your Class Rep short video 5" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="short-video"><iframe data-youtube-id="f3qplOXjgfo" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/f3qplOXjgfo" title="Your Class Rep short video 6" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap">
+        <div class="section-title"><h2>PHOTO GALLERY</h2></div>
+        <p class="intro">A closer look at cards, classrooms, and play in progress. Select a photo to expand it.</p>
+        <div class="gallery">
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 1"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots1.png" alt="Your Class Rep cards on the table during a game, photo 1" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 2"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots2.png" alt="Your Class Rep cards on the table during a game, photo 2" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 3"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots3.png" alt="Your Class Rep cards on the table during a game, photo 3" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 4"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots4.png" alt="Your Class Rep cards on the table during a game, photo 4" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 5"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots5.png" alt="Your Class Rep cards on the table during a game, photo 5" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 6"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots6.png" alt="Your Class Rep cards on the table during a game, photo 6" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 7"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots7.png" alt="Your Class Rep cards on the table during a game, photo 7" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 8"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots8.png" alt="Your Class Rep cards on the table during a game, photo 8" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: Your Class Rep tabletop 9"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-ActionShots9.png" alt="Your Class Rep cards on the table during a game, photo 9" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: building a classroom"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-Build2.png" alt="A player holding cards while building a classroom" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: campaign round"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-Campaign2.png" alt="Players revealing campaign cards" loading="lazy"></button>
+          <button class="media-photo-trigger" type="button" aria-label="Open photo: tallying votes"><img class="media-photo" src="images/Action%20Shots/TCG-YCR-Tally4.png" alt="Players tallying votes with face-up cards" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+    <section class="band band-dark" id="media-crowd-sale">
+      <div class="wrap sale-promo">
+        <div class="section-title"><h2 id="media-sale-heading">THE CROWD SALE</h2></div>
+        <p>Join the crowd sale and save on Your Class Rep. The more people join, the bigger the discount!</p>
+        <div class="countdown-card" aria-live="polite">
+          <p class="countdown-title" id="media-sale-message">LAUNCHES OCT 31</p>
+          <div class="countdown" id="media-countdown" aria-label="Countdown to the crowd sale">
+            <div class="count-unit"><span class="count-value" data-unit="days">--</span><span class="count-label">DAYS</span></div>
+            <div class="count-unit"><span class="count-value" data-unit="hours">--</span><span class="count-label">HOURS</span></div>
+            <div class="count-unit"><span class="count-value" data-unit="minutes">--</span><span class="count-label">MIN</span></div>
+            <div class="count-unit"><span class="count-value" data-unit="seconds">--</span><span class="count-label">SEC</span></div>
+          </div>
+        </div>
+        <a class="button" id="media-sale-button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
+      </div>
+    </section>
+  </main>
+  <dialog class="photo-dialog" id="media-photo-dialog" aria-label="Expanded photo">
+    <button class="photo-dialog-close" type="button" aria-label="Close image preview">CLOSE</button>
+    <img id="media-photo-large" alt="">
+    <div class="photo-dialog-controls" aria-label="Photo navigation">
+      <button id="media-photo-previous" type="button" aria-label="Previous photo">←</button>
+      <span class="photo-dialog-count" id="media-photo-count" aria-live="polite"></span>
+      <button id="media-photo-next" type="button" aria-label="Next photo">→</button>
+    </div>
+  </dialog>
+  <footer><a class="maker-logo-link" href="https://www.lessthanpiart.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit LessThanPi Art"><img class="maker-logo" src="images/Assets/LessThanPiArtLogo-Large.png" alt="LessThanPi Art"></a><span>YOUR CLASS REP · GAMES, COMICS &amp; MORE</span><br><br><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">JOIN THE DISCORD</a><small class="legal">© 2026 LessThanPi Art. Your Class Rep, including its name, characters, artwork, and game materials, is the property of LessThanPi Art. All rights reserved.</small></footer>
+  <script>
+    const mediaDialog = document.getElementById('media-photo-dialog');
+    const largeMediaPhoto = document.getElementById('media-photo-large');
+    const mediaPhotoTriggers = [...document.querySelectorAll('.media-photo-trigger')];
+    const mediaPhotoCount = document.getElementById('media-photo-count');
+    let activePhotoIndex = 0;
+    function showMediaPhoto(index) {
+      activePhotoIndex = (index + mediaPhotoTriggers.length) % mediaPhotoTriggers.length;
+      const photo = mediaPhotoTriggers[activePhotoIndex].querySelector('img');
+      largeMediaPhoto.src = photo.currentSrc || photo.src;
+      largeMediaPhoto.alt = photo.alt;
+      mediaPhotoCount.textContent = `${activePhotoIndex + 1} / ${mediaPhotoTriggers.length}`;
+    }
+    mediaPhotoTriggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => {
+        showMediaPhoto(index);
+        mediaDialog.showModal();
+      });
+    });
+    document.getElementById('media-photo-previous').addEventListener('click', () => showMediaPhoto(activePhotoIndex - 1));
+    document.getElementById('media-photo-next').addEventListener('click', () => showMediaPhoto(activePhotoIndex + 1));
+    document.querySelector('.photo-dialog-close').addEventListener('click', () => mediaDialog.close());
+    mediaDialog.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') showMediaPhoto(activePhotoIndex - 1);
+      if (event.key === 'ArrowRight') showMediaPhoto(activePhotoIndex + 1);
+    });
+    mediaDialog.addEventListener('click', event => {
+      if (event.target === mediaDialog) mediaDialog.close();
+    });
+    (() => {
+      const start = new Date('2026-10-31T00:00:00-04:00').getTime();
+      const end = new Date('2026-11-22T00:00:00-05:00').getTime();
+      const pad = value => String(value).padStart(2, '0');
+      function updateMediaCountdown() {
+        const now = Date.now();
+        let target = start;
+        let message = 'LAUNCHES OCT 31';
+        let button = 'VISIT THE CROWD SALE';
+        let heading = 'THE CROWD SALE';
+        if (now >= end) {
+          target = now;
+          message = 'CROWD SALE ENDED';
+          button = 'VIEW THE GAME';
+          heading = 'THANKS FOR JOINING THE CLASS';
+        } else if (now >= start) {
+          target = end;
+          message = 'SALE ENDS NOV 21';
+          button = 'JOIN THE CROWD SALE';
+          heading = 'THE CROWD SALE IS LIVE';
+        }
+        const remaining = Math.max(0, Math.floor((target - now) / 1000));
+        const values = { days: Math.floor(remaining / 86400), hours: Math.floor(remaining % 86400 / 3600), minutes: Math.floor(remaining % 3600 / 60), seconds: remaining % 60 };
+        document.querySelectorAll('#media-countdown [data-unit]').forEach(node => {
+          node.textContent = node.dataset.unit === 'days' ? String(values.days) : pad(values[node.dataset.unit]);
+        });
+        document.getElementById('media-sale-message').textContent = message;
+        document.getElementById('media-sale-button').textContent = button;
+        document.getElementById('media-sale-heading').textContent = heading;
+      }
+      updateMediaCountdown();
+      setInterval(updateMediaCountdown, 1000);
+    })();
+    if (location.protocol === 'file:') {
+      document.querySelectorAll('iframe[data-youtube-id]').forEach(frame => {
+        const id = frame.dataset.youtubeId;
+        const path = frame.dataset.youtubeKind === 'shorts' ? `shorts/${id}` : `watch?v=${id}`;
+        const link = document.createElement('a');
+        link.className = 'youtube-fallback'; link.href = `https://www.youtube.com/${path}`;
+        link.target = '_blank'; link.rel = 'noopener';
+        link.innerHTML = '<span>PLAY ON YOUTUBE</span>';
+        frame.replaceWith(link);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -274,7 +274,7 @@
           return `<button class="difficulty-button" type="button" data-difficulty="${level}" aria-pressed="${gameMode === 'level' && difficulty === level}" ${isLocked ? 'disabled' : ''}><span class="level-choice-copy"><strong>${label} · ${poolSizes[level]} CARDS</strong><span>Cards 01–${String(poolSizes[level]).padStart(2,'0')}. ${detail}</span></span><img class="mode-character level-character" src="images/Characters/${character}" alt="" aria-hidden="true"></button>`;
         }).join('')}
       </div>
-      <button class="free-play-button" type="button" data-mode="free" aria-pressed="${gameMode === 'free'}"><img class="mode-character free-character" src="images/Characters/01-SpeechM-Ch.png" alt="" aria-hidden="true"><span class="free-choice-copy"><strong>FREE PLAY</strong><span>Build from your largest unlocked pool: ${poolSizes[difficultyOrder[maxUnlockedIndex]]} cards.</span></span><img class="mode-character free-character" src="images/Characters/02-SpeechF-Ch.png" alt="" aria-hidden="true"></button>
+      <button class="free-play-button" type="button" data-mode="free" aria-pressed="${gameMode === 'free'}"><img class="mode-character free-character" src="images/Characters/01-SpeechM-Ch.png" alt="" aria-hidden="true"><span class="free-choice-copy"><strong>FREE PLAY</strong><span>Build your 7-card Classroom to face a random computer deck (${poolSizes[difficultyOrder[maxUnlockedIndex]]}-card pool).</span></span><img class="mode-character free-character" src="images/Characters/02-SpeechF-Ch.png" alt="" aria-hidden="true"></button>
     </div>`;
     stage.innerHTML = `<div class="setup-panel">
       <span class="phase-kicker">SINGLE PLAYER · ${gameMode === 'free' ? 'FREE PLAY' : `${poolSizes[difficulty]} CARD POOL`}</span>

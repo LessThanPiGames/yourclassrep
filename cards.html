@@ -39,12 +39,12 @@
     .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
     .topbar { position:sticky; top:0; z-index:10; background:var(--black); color:var(--white); border-bottom:4px solid var(--red); }
     .nav { position:relative; min-height:76px; display:flex; align-items:center; justify-content:flex-end; gap:22px; }
-    .brand { position:absolute; z-index:2; left:0; top:0; display:block; }
+    .brand { position:absolute; z-index:2; left:0; top:4px; display:block; }
     .brand img { display:block; width:220px; height:auto; max-width:none; object-fit:initial; }
-    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(11px,2vw,24px); }
-    .navlinks a { color:var(--white); text-decoration:none; font:9px "Press Start 2P",monospace; }
+    .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.6vw,20px); }
+    .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
     .navlinks a:hover { color:#ff8b8b; }
-    .navlinks .sale-nav { padding:13px 16px; background:var(--red); border:2px solid var(--white); }
+    .navlinks .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); border-radius:8px; box-shadow:4px 4px 0 var(--dark-gray); }
     .page-head { display:grid; grid-template-columns:minmax(0,2fr) minmax(270px,1fr); align-items:center; gap:15px; padding:30px 0 26px; text-align:left; }
     .page-head p { max-width:740px; margin:15px 0 0; font-size:24px; }
     .page-head-portrait { position:relative; display:flex; min-height:290px; align-items:center; justify-content:center; }
@@ -204,7 +204,7 @@
   <header class="topbar">
     <nav class="nav wrap" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Your Class Rep home"><img src="images/Assets/YourClassRepLogo-Large.png" alt="Your Class Rep"></a>
-      <div class="navlinks"><a href="index.html">HOME</a><a href="cards.html" aria-current="page">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="play.html">PLAY</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a></div>
+      <div class="navlinks"><a href="index.html">HOME</a><a href="cards.html" aria-current="page">CARDS</a><a href="rules.html">RULES</a><a href="downloads.html">DOWNLOADS</a><a href="media.html">MEDIA</a><a href="play.html">PLAY</a><a href="https://discord.gg/mZXwqtUXw4" target="_blank" rel="noopener noreferrer">DISCORD</a><a class="sale-nav" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">CROWD SALE</a></div>
     </nav>
   </header>
   <main>
