@@ -176,12 +176,12 @@ window.CHARACTER_DETAILS = {
   },
   "11": {
     "cardTitle": "Teacher’s Pet",
-    "characterName": "Pip and Nibbs",
+    "characterName": "Pipp and Nibbs",
     "types": [
       "Special"
     ],
     "interests": "Studying, note taking, tests, snacks, naps",
-    "bio": "Pip is a studious girl hamster who seems determined to do school just like the kids: she attends class, takes notes, does her homework, and somehow aces her tests. Her companion Nibbs is a boy hamster with a much simpler routine: snack, nap, repeat. Together, these very different little pets have become beloved members of the Little Middle school community.",
+    "bio": "Pipp is a studious girl hamster who seems determined to do school just like the kids: she attends class, takes notes, does her homework, and somehow aces her tests. Her companion Nibbs is a boy hamster with a much simpler routine: snack, nap, repeat. Together, these very different little pets have become beloved members of the Little Middle school community.",
     "strategy": "Teacher’s Pet is powerful in combinations with two Staff Cards!",
     "combinations": [
       22,
@@ -318,13 +318,13 @@ window.CHARACTER_DETAILS = {
   },
   "23": {
     "cardTitle": "Music Teacher",
-    "characterName": "Mrs. Delgado",
+    "characterName": "Señora Delgado",
     "types": [
       "Staff",
       "Special"
     ],
     "interests": "Maracas, dancing the samba, correcting pitch",
-    "bio": "Mrs. Delgado brings warmth and rhythm to every choir session, guiding students patiently while encouraging them to give their best. She loves maracas and dancing the samba, and she believes every student has a voice worth hearing. Under her direction, concert nights feel electric."
+    "bio": "Señora Delgado brings warmth and rhythm to every choir session, guiding students patiently while encouraging them to give their best. She loves maracas and dancing the samba, and she believes every student has a voice worth hearing. Under her direction, concert nights feel electric."
   },
   "24": {
     "cardTitle": "Music Teacher",
@@ -434,12 +434,12 @@ window.CHARACTER_DETAILS = {
   },
   "35": {
     "cardTitle": "Mascot",
-    "characterName": "Pip",
+    "characterName": "Pipp",
     "types": [
       "Special"
     ],
     "interests": "School spirit, dramatic entrances, confusing people",
-    "bio": "Pip is a student hidden inside a hamster mascot costume inspired by the school’s studious pet hamster. Nobody knows who’s inside the suit, but the silent performer brings school spirit with dramatic entrances and unpredictable antics."
+    "bio": "Pipp is a student hidden inside a hamster mascot costume inspired by the school’s studious pet hamster. Nobody knows who’s inside the suit, but the silent performer brings school spirit with dramatic entrances and unpredictable antics."
   },
   "36": {
     "cardTitle": "Mascot",
@@ -447,8 +447,8 @@ window.CHARACTER_DETAILS = {
     "types": [
       "Special"
     ],
-    "interests": "Snacks, dancing, copying Pip",
-    "bio": "Nibbs is a student in a hamster mascot costume inspired by the school’s sleepy pet, though this performer has energy to spare. He bounces, dances, and enthusiastically copies Pip’s antics, turning assemblies and pep rallies into lively shows."
+    "interests": "Snacks, dancing, copying Pipp",
+    "bio": "Nibbs is a student in a hamster mascot costume inspired by the school’s sleepy pet, though this performer has energy to spare. He bounces, dances, and enthusiastically copies Pipp’s antics, turning assemblies and pep rallies into lively shows."
   },
   "37": {
     "cardTitle": "Skater Kid",

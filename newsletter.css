@@ -58,19 +58,34 @@
 }
 
 .newsletter-form .formkit-submit {
+  display: flex !important;
   min-height: 54px;
+  align-items: center;
+  justify-content: center;
   padding: 12px !important;
   color: var(--white) !important;
   background: var(--red) !important;
   border: 3px solid var(--black) !important;
   border-radius: 12px !important;
   box-shadow: 5px 5px 0 var(--black) !important;
-  font: 9px "Press Start 2P", monospace !important;
+  font: 10px/1.8 "Press Start 2P", monospace !important;
   cursor: pointer;
+}
+
+.newsletter-form .formkit-submit span {
+  color: inherit !important;
+  font: inherit !important;
 }
 
 .newsletter-form .formkit-submit:hover,
 .newsletter-form .formkit-submit:focus-visible { background: var(--black) !important; }
-.newsletter-form .formkit-guarantee { color: var(--black) !important; font: 18px "VT323", monospace !important; }
+.newsletter-form .formkit-guarantee {
+  display: block !important;
+  clear: both;
+  position: relative;
+  margin: 12px 0 0 !important;
+  color: var(--black) !important;
+  font: 18px/1.35 "VT323", monospace !important;
+}
 .newsletter-form .formkit-powered-by-convertkit-container { margin: 8px 0 0 !important; }
 .newsletter-form .formkit-powered-by-convertkit { color: var(--black); font: 14px "VT323", monospace; }

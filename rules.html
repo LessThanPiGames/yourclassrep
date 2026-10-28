@@ -46,14 +46,15 @@
     .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
     .navlinks a:hover,.navlinks a:focus-visible { color:#ff8b8b; }
     .navlinks .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); border-radius:8px; box-shadow:4px 4px 0 var(--dark-gray); }
-    .page-intro { display:grid; grid-template-columns:minmax(0,2fr) minmax(220px,1fr); align-items:center; gap:20px; padding:30px 0 26px; text-align:left; }
-    .page-title { display:flex; align-items:center; gap:18px; }
+    .page-intro { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); align-items:center; gap:30px; padding:30px 0 42px; text-align:left; }
+    .page-title { display:flex; align-items:center; justify-content:center; gap:18px; text-align:center; }
     .page-title::before,.page-title::after { content:""; flex:none; width:52px; height:56px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
-    .page-intro-copy p { max-width:740px; margin:15px 0 0; font-size:25px; }
-    .page-head-portrait { position:relative; display:flex; min-height:280px; align-items:center; justify-content:center; }
-    .page-head-art { width:216px; height:280px; object-fit:contain; image-rendering:pixelated; }
-    .character-speech { position:absolute; top:0; right:80px; width:170px; padding:12px 10px; border:3px solid var(--black); border-radius:16px; background:#fff; font:8px/1.7 "Press Start 2P",monospace; text-align:center; }
-    .character-speech::after { content:""; position:absolute; left:18px; bottom:-10px; width:14px; height:14px; border-right:3px solid var(--black); border-bottom:3px solid var(--black); background:#fff; transform:skewY(45deg); }
+    .page-intro-copy p { max-width:740px; margin:15px auto 0; font-size:25px; text-align:center; }
+    .rules-video { position:relative; container-type:inline-size; width:100%; aspect-ratio:16/9; border:4px solid var(--black); border-radius:18px; background:var(--black); }
+    .rules-video iframe { display:block; width:100%; height:100%; border:0; border-radius:14px; }
+    .rules-video-character { position:absolute; z-index:2; bottom:-52px; width:162px; height:210px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .rules-video-character.left { left:-64px; }
+    .rules-video-character.right { right:-64px; }
     .section-title { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:22px; text-align:center; }
     .section-title::before,.section-title::after { content:""; flex:none; width:52px; height:56px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
     .contents { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 auto 30px; padding:16px; background:var(--red); border:3px solid var(--black); border-radius:16px; }
@@ -61,6 +62,7 @@
     .contents a:hover,.contents a:focus-visible { color:var(--black); background:var(--white); }
     .download-promo { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:0 auto 30px; padding:20px 24px; border:3px solid var(--black); border-radius:16px; background:var(--pink); }
     .download-promo h2 { margin:0 0 8px; font-size:clamp(13px,1.7vw,18px); }
+    .limited-time-label { display:block; margin-bottom:5px; color:var(--red); font-style:normal; }
     .download-promo p { display:block; }
     .download-promo .promo-description { margin:8px 0 0; font-size:23px; }
     .download-promo .promo-instructions { margin:3px 0 0; font-size:18px; }
@@ -148,10 +150,10 @@
     }
     @media(max-width:800px) {
       .navlinks a { font-size:7px; }
-      .page-intro { grid-template-columns:minmax(0,1.8fr) minmax(170px,1fr); gap:10px; }
-      .page-head-art { width:170px; height:220px; }
-      .page-head-portrait { min-height:225px; }
-      .character-speech { right:48px; width:150px; font-size:7px; }
+      .page-intro { grid-template-columns:1fr; gap:24px; }
+      .rules-video-character { bottom:-28px; width:108px; height:140px; }
+      .rules-video-character.left { left:-36px; }
+      .rules-video-character.right { right:-36px; }
       .join-box { padding-inline:170px; }
       .join-character { width:162px; height:210px; }
       .join-sparkle { width:30px; height:32px; }
@@ -161,13 +163,9 @@
       .wrap { width:calc(100% - 28px); }
       .navlinks a { font-size:6px; }
       .navlinks .sale-nav { padding:9px; }
-      .page-intro { grid-template-columns:minmax(0,1.65fr) minmax(105px,.8fr); gap:4px; padding:25px 0 18px; }
+      .page-intro { gap:18px; padding:25px 0 32px; }
       .page-intro h1 { font-size:clamp(17px,5vw,25px); }
       .page-intro-copy p { margin-top:10px; font-size:20px; }
-      .page-head-art { width:40vw; max-width:142px; height:auto; }
-      .page-head-portrait { min-height:clamp(160px,52vw,205px); }
-      .character-speech { top:0; right:auto; left:50%; width:min(160px,46vw); padding:8px 6px; font-size:6px; transform:translateX(-50%); }
-      .character-speech::after { left:calc(50% - 7px); }
       .section-title { gap:8px; }
       .section-title::before,.section-title::after { width:32px; height:38px; }
       .page-title { gap:8px; }
@@ -198,6 +196,7 @@
       .class-rep-characters .rule-character.right { right:7px; }
       .keywords { grid-template-columns:1fr; }
     }
+    .topbar .brand img { width:166px; transition:none; }
   </style>
   <link rel="stylesheet" href="newsletter.css">
 </head>
@@ -222,11 +221,12 @@
     <header class="page-intro wrap">
       <div class="page-intro-copy">
         <h1 class="page-title">HOW TO PLAY</h1>
-        <p>Build a Classroom, compete in six Campaign turns, and earn the most Votes during the Tally Phase. The player with the most Votes becomes <strong>YOUR CLASS REP!</strong></p>
+        <p>Build a Classroom, play six Campaign turns, and win the election with the most Votes.</p>
       </div>
-      <div class="page-head-portrait">
-        <img class="page-head-art" src="images/Characters/04-NerdM-Ch.png" alt="Nerd Kid">
-        <span class="character-speech">LET’S LEARN HOW TO PLAY!</span>
+      <div class="rules-video">
+        <iframe data-youtube-id="1VZW6BRRT9M" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="How to play Your Class Rep" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <img class="rules-video-character left" src="images/Characters/04-NerdM-Ch.png" alt="" aria-hidden="true">
+        <img class="rules-video-character right" src="images/Characters/03-NerdF-Ch.png" alt="" aria-hidden="true">
       </div>
     </header>
 
@@ -242,7 +242,7 @@
     <div class="play-options wrap">
       <section class="download-promo" aria-labelledby="print-play-title">
         <div>
-          <h2 id="print-play-title">WANT TO PLAY AT HOME?</h2>
+          <h2 id="print-play-title">PLAY AT HOME</h2>
           <p class="promo-description">Print the first 14 cards and a quick rules sheet for Your Class Rep: The Card Game.</p>
           <p class="promo-instructions">US Letter · 3 pages · Print at 100% / Actual Size</p>
         </div>
@@ -250,9 +250,8 @@
       </section>
       <section class="download-promo" aria-labelledby="computer-play-title">
         <div>
-          <h2 id="computer-play-title">WANT TO PLAY THE COMPUTER?</h2>
-          <p class="promo-description">Build a Classroom and play six Campaign turns against an easy, medium, or hard computer.</p>
-          <p class="promo-instructions">Choose a difficulty and see how your choices change the election.</p>
+          <h2 id="computer-play-title"><span class="limited-time-label">*LIMITED TIME*</span>PLAY IN BROWSER</h2>
+          <p class="promo-description">For a limited time, play three fixed card sets against the computer and unlock the next set after each game, win or lose!</p>
         </div>
         <a class="button" href="play.html">PLAY THE COMPUTER</a>
       </section>
@@ -272,8 +271,7 @@
           <li>Include exactly 1 Class Rep card.</li>
           <li>Choose the other 6 cards from any combination of non-Class Rep cards.</li>
         </ul>
-        <p>Place all available cards face-up in front of the players. The player who won the most recent game of Your Class Rep chooses first. If the most recent game ended in a tie, or neither player has played before, the youngest player chooses first. Take turns choosing cards until each player has a complete Classroom. Keep your selected cards in your hand.</p>
-        <p>You may ask to review your opponent’s selected cards at any time during the Classroom-building phase.</p>
+        <p>Place all available cards face-up in front of the players. The player who won the most recent game of Your Class Rep chooses first. If the most recent game ended in a tie, or neither player has played before, the youngest player chooses first. Take turns choosing cards until each player has a complete Classroom. Keep your selected cards face up on the table in front of you until you and your opponent have each built a complete Classroom.</p>
       </div>
 
       <div class="phase-step" id="campaign-phase">
@@ -328,9 +326,9 @@
       <h3 style="margin-top:24px">Card Types</h3>
       <ul class="type-list">
         <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/StudentIcon-Large.png" alt="" aria-hidden="true">Student</strong><br>Usually has low Influence but is your main source of Votes.</li>
-        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/SpeakerIcon-Large.png" alt="" aria-hidden="true">Speaker</strong><br>Can affect Influence or Votes through an ability.</li>
+        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/SpeakerIcon-Large.png" alt="" aria-hidden="true">Speaker</strong><br>Will often affect Influence or Votes through an ability.</li>
         <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/StaffIcon-Large.png" alt="" aria-hidden="true">Staff</strong><br>Often has high Influence but provides no Votes.</li>
-        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/SpecialIcon-Large.png" alt="" aria-hidden="true">Special</strong><br>Has unique abilities and effects.</li>
+        <li><strong class="icon-heading"><img class="game-icon large" src="images/Assets/GameIcons/Types/SpecialIcon-Large.png" alt="" aria-hidden="true">Special</strong><br>Usually has a unique ability or effect.</li>
       </ul>
     </section>
 

@@ -43,7 +43,7 @@
     .home-page .brand { left:calc(16.6667% - 5.6667px); transform:translateX(-50%); transition:left 220ms ease,transform 220ms ease; }
     .home-page .brand img { width:clamp(220px,34vw,440px); transition:width 220ms ease; }
     .home-page .topbar.is-scrolled .brand { left:0; transform:none; }
-    .home-page .topbar.is-scrolled .brand img { width:220px; }
+    .home-page .topbar.is-scrolled .brand img { width:166px; }
     .navlinks { display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.6vw,20px); }
     .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
     .navlinks a:hover { color:#ff8b8b; }
@@ -52,7 +52,7 @@
     .hero-copy { padding:12px 0; }
     .hero-copy .subhead { margin:18px 0 24px; font-size:27px; }
     .hero-video { position:relative; container-type:inline-size; width:100%; aspect-ratio:16/9; border:4px solid var(--black); border-radius:18px; background:#222; }
-    .hero-video iframe,.short-video iframe { display:block; width:100%; height:100%; border:0; }
+    .hero-video iframe,.short-video iframe { display:block; width:100%; height:100%; border:0; border-radius:14px; }
     .countdown-card { padding:15px; background:var(--red); color:var(--white); border:3px solid var(--black); border-radius:14px; box-shadow:5px 5px 0 var(--black); }
     .countdown-title { margin:0 0 11px; font:8px "Press Start 2P",monospace; line-height:1.8; }
     .hero .countdown-title { margin-bottom:14px; font-size:10px; text-align:center; }
@@ -72,7 +72,7 @@
     .section-title::before,.section-title::after { content:""; flex:none; width:75px; height:80px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
     .section-intro { max-width:720px; margin:0 auto 30px; text-align:center; font-size:25px; }
     .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .step { min-height:180px; padding:20px; border:3px solid var(--black); border-radius:16px; background:var(--white); }
+    .step { min-height:180px; padding:20px; border:3px solid var(--black); border-radius:16px; color:var(--black); background:var(--white); }
     .step-num { display:grid; place-items:center; width:34px; height:34px; margin-bottom:15px; color:var(--white); background:var(--black); border-radius:50%; font:11px "Press Start 2P",monospace; }
     .step-photo-trigger { display:block; width:100%; margin:14px 0; padding:0; border:0; border-radius:12px; background:transparent; cursor:zoom-in; }
     .step-photo-trigger:focus-visible { outline:3px solid var(--red); outline-offset:3px; }
@@ -103,6 +103,7 @@
     .section-action { margin-top:26px; }
     .download-promo { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:26px auto 0; padding:20px 24px; border:3px solid var(--black); border-radius:16px; background:var(--pink); }
     .download-promo h3 { margin:0 0 8px; font:clamp(13px,1.7vw,18px)/1.7 "Press Start 2P",monospace; }
+    .download-promo .limited-time-label { display:block; margin-bottom:5px; color:var(--red); }
     .download-promo p { display:block; }
     .download-promo .promo-description { margin:8px 0 0; font-size:23px; }
     .download-promo .button { display:inline-flex; flex:none; align-items:center; justify-content:center; min-height:50px; padding:12px 18px; color:var(--white); background:var(--red); border:3px solid var(--black); border-radius:12px; box-shadow:5px 5px 0 var(--black); text-decoration:none; font:8px/1.8 "Press Start 2P",monospace; text-align:center; }
@@ -111,7 +112,7 @@
     .play-options .download-promo { min-width:0; flex-direction:column; align-items:stretch; justify-content:space-between; gap:12px; margin:0; }
     .play-options .promo-description { font-size:21px; }
     .play-options .button { width:100%; }
-    #featured-cards .section-action .button { display:flex; width:100%; min-height:76px; font-size:12px; }
+    #featured-cards .section-action .button,#how-it-works .section-action .button { display:flex; width:100%; min-height:76px; font-size:12px; }
     .shorts-grid { display:flex; gap:18px; max-width:100%; margin:auto; padding:4px 3px 15px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; }
     .short-video { flex:0 0 clamp(220px,27vw,300px); width:auto; aspect-ratio:9/16; max-height:620px; border:3px solid var(--black); border-radius:18px; background:var(--black); overflow:hidden; scroll-snap-align:start; }
     #videos .shorts-grid { width:min(100%,936px); max-width:936px; justify-content:center; }
@@ -167,7 +168,9 @@
     .maker-logo { display:block; width:100%; height:auto; margin:0; }
     .hero-copy { position:relative; }
     .hero-copy::after { content:""; position:absolute; width:31px; height:31px; right:-9px; top:-14px; background:center/contain no-repeat url("images/Assets/Stars/4pointStarL.png"); }
+    .hero-copy .subhead { text-align:center; }
     @media(min-width:1101px) {
+      .hero-copy { transform:translateY(-22px); }
       .home-page .hero-copy::before { content:""; display:block; height:clamp(80px,9.2vw,118px); }
     }
     @media(max-width:1100px) {
@@ -254,6 +257,8 @@
       .discord-sparkle.r4 { right:28px; }
       .discord-sparkle.r5 { right:38px; }
     }
+      .brand img { transition:width 220ms ease; }
+    .topbar.is-scrolled .brand img { width:166px; }
   </style>
   <link rel="stylesheet" href="newsletter.css">
 </head>
@@ -290,7 +295,7 @@
       </section>
     </div>
 
-    <section class="band band-paper" id="how-it-works">
+    <section class="band band-dark" id="how-it-works">
       <div class="wrap">
         <div class="section-title"><h2>HOW IT WORKS</h2></div>
         <div class="steps">
@@ -298,20 +303,27 @@
           <article class="step"><span class="step-num">2</span><h3>CAMPAIGN</h3><button class="step-photo-trigger" type="button" aria-label="View larger photo: players holding cards during a campaign"><img class="step-photo" src="images/Action%20Shots/TCG-YCR-Campaign2.png" alt="Players holding Your Class Rep cards as they compare their campaign picks." loading="lazy"></button><p>Play cards secretly, compare Influence, and use abilities to shift the election.</p></article>
           <article class="step"><span class="step-num">3</span><h3>TALLY THE VOTES</h3><button class="step-photo-trigger" type="button" aria-label="View larger photo: cards being tallied"><img class="step-photo" src="images/Action%20Shots/TCG-YCR-Tally4.png" alt="A close-up of a player tallying votes with Your Class Rep cards." loading="lazy"></button><p>Resolve the face-up cards. The player with the most votes becomes Class Rep.</p></article>
         </div>
+        <div class="center section-action"><a class="button" href="rules.html">SEE THE FULL RULES</a></div>
+      </div>
+    </section>
+
+    <section class="band band-paper" id="experience-the-game">
+      <div class="wrap">
+        <div class="section-title"><h2>EXPERIENCE THE GAME</h2></div>
         <div class="play-options">
           <section class="download-promo" aria-labelledby="print-play-title">
             <div>
-              <h3 id="print-play-title">WANT TO PLAY AT HOME?</h3>
-              <p class="promo-description">Print the first 14 cards and a quick rules sheet for Your Class Rep: The Card Game.</p>
+              <h3 id="print-play-title">PLAY AT HOME</h3>
+              <p class="promo-description">Color Michael and his friends one pixel at a time, or try the free print-and-play game at home! Grab your pencils and scissors, then bring your Classroom to life!</p>
             </div>
-            <a class="button" href="output/pdf/Your-Class-Rep-Free-Print-and-Play.pdf" download>DOWNLOAD THE PDF</a>
+            <a class="button" href="downloads.html">EXPLORE DOWNLOADS</a>
           </section>
           <section class="download-promo" aria-labelledby="computer-play-title">
             <div>
-              <h3 id="computer-play-title">WANT TO PLAY THE COMPUTER?</h3>
-              <p class="promo-description">Build a Classroom and play six Campaign turns against an easy, medium, or hard computer.</p>
+              <h3 id="computer-play-title"><span class="limited-time-label">*LIMITED TIME*</span>PLAY IN BROWSER</h3>
+              <p class="promo-description">Play three fixed card sets against the computer. Complete each game to unlock the next set, win or lose.</p>
             </div>
-            <a class="button" href="play.html">PLAY THE COMPUTER</a>
+            <a class="button" href="play.html">PLAY IN BROWSER</a>
           </section>
         </div>
       </div>
@@ -327,7 +339,7 @@
           <a class="featured" href="cards.html?card=13#card-detail"><img src="images/Characters/13-PrincM-Ch.png" alt="Principal character art"><h3>PRINCIPAL</h3></a>
           <a class="featured" href="cards.html?card=11#card-detail"><img src="images/Characters/11-PetF-Ch.png" alt="Teacher's Pet character art"><h3>TEACHER'S PET</h3></a>
         </div>
-        <div class="center section-action"><a class="button" href="cards.html">EXPLORE THE CARDS</a></div>
+        <div class="center section-action"><a class="button" href="cards.html">BROWSE ALL 42 CARDS</a></div>
       </div>
     </section>
 
@@ -340,7 +352,7 @@
           <div class="short-video"><iframe data-youtube-id="D9mlF4GlQIM" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/D9mlF4GlQIM" title="Designing the Your Class Rep cards" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
           <div class="short-video"><iframe data-youtube-id="qe1t9p8dubI" data-youtube-kind="shorts" src="https://www.youtube-nocookie.com/embed/qe1t9p8dubI" title="Your Class Rep short video" loading="lazy" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
-        <div class="center section-action"><a class="button" href="media.html">MORE PHOTOS &amp; VIDEOS</a></div>
+        <div class="center section-action"><a class="button" href="media.html">MORE VIDEOS &amp; PHOTOS</a></div>
       </div>
     </section>
 

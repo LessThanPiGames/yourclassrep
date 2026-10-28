@@ -45,19 +45,26 @@
     .navlinks a { color:var(--white); text-decoration:none; font:8px "Press Start 2P",monospace; }
     .navlinks a:hover { color:#ff8b8b; }
     .navlinks .sale-nav { padding:12px 14px; background:var(--red); border:2px solid var(--white); border-radius:8px; box-shadow:4px 4px 0 var(--dark-gray); }
-    .page-head { display:grid; grid-template-columns:minmax(0,2fr) minmax(270px,1fr); align-items:center; gap:15px; padding:30px 0 26px; text-align:left; }
-    .page-head p { max-width:740px; margin:15px 0 0; font-size:24px; }
+    .page-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); align-items:center; gap:30px; padding:30px 0 42px; text-align:left; }
+    .page-head > div:first-child { text-align:center; }
+    .page-head p { max-width:740px; margin:15px auto 0; font-size:24px; text-align:center; }
     .page-head-portrait { position:relative; display:flex; min-height:290px; align-items:center; justify-content:center; }
     .page-head-art { width:216px; height:280px; object-fit:contain; image-rendering:pixelated; }
     .character-speech { position:absolute; top:-10px; right:95px; width:160px; padding:12px 10px; border:3px solid var(--black); border-radius:16px; background:#fff; font:8px/1.7 "Press Start 2P",monospace; text-align:center; }
     .character-speech::after { content:""; position:absolute; left:18px; bottom:-10px; width:14px; height:14px; border-right:3px solid var(--black); border-bottom:3px solid var(--black); background:#fff; transform:skewY(45deg); }
+    .page-head-portrait.page-head-video-wrap { min-height:0; }
+    .page-head-video { position:relative; width:100%; aspect-ratio:16/9; border:4px solid var(--black); border-radius:18px; background:var(--black); }
+    .page-head-video iframe { display:block; width:100%; height:100%; border:0; border-radius:14px; }
+    .page-head-video-character { position:absolute; z-index:2; bottom:-52px; width:162px; height:210px; object-fit:contain; image-rendering:pixelated; pointer-events:none; }
+    .page-head-video-character.left { left:-94px; }
+    .page-head-video-character.right { right:-74px; }
     .band { padding:35px 0; border-block:3px solid var(--black); }
     #card-detail { color:var(--white); background:var(--black); }
     #card-detail .detail { color:var(--black); }
     .section-title { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:22px; text-align:center; }
     .section-title h2 { font-size:clamp(18px,2.7vw,28px); }
     .section-title::before,.section-title::after { content:""; flex:none; width:75px; height:80px; background:center/contain no-repeat url("images/Assets/RedStar.png"); }
-    .page-heading { display:flex; align-items:center; justify-content:flex-start; gap:24px; }
+    .page-heading { display:flex; align-items:center; justify-content:center; gap:24px; }
     .page-heading img { width:50px; height:75px; object-fit:contain; image-rendering:pixelated; }
     .type-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
     .type-tab { display:inline-flex; min-height:44px; align-items:center; gap:8px; padding:6px 12px; color:var(--black); background:var(--white); border:3px solid var(--black); border-radius:10px; font:8px/1.6 "Press Start 2P",monospace; cursor:pointer; }
@@ -140,6 +147,10 @@
     @media(max-width:800px) {
       .brand img { width:220px; }
       .navlinks a { font-size:7px; }
+      .page-head { grid-template-columns:1fr; gap:24px; }
+      .page-head-video-character { bottom:-28px; width:108px; height:140px; }
+      .page-head-video-character.left { left:-66px; }
+      .page-head-video-character.right { right:-46px; }
       .detail { padding:22px; }
       .detail-visual { width:34%; margin-right:20px; }
       #detail-name,.card-types { width:calc(100% - 34% - 20px); margin-left:calc(34% + 20px); }
@@ -176,6 +187,7 @@
       .detail-copy h2 { font-size:14px; }
       .page-head { grid-template-columns:1fr; gap:8px; padding:29px 0 23px; }
       .page-head-portrait { min-height:clamp(210px,70vw,245px); align-items:flex-end; }
+      .page-head-portrait.page-head-video-wrap { min-height:0; }
       .page-head-art { width:40vw; max-width:160px; height:auto; }
       .character-speech { top:0; right:auto; left:50%; width:min(160px,55vw); padding:6px 7px; font-size:5px; transform:translateX(-50%); }
       .character-speech::after { left:calc(50% - 7px); }
@@ -197,6 +209,7 @@
       .card-nav { z-index:25; visibility:hidden; opacity:0; pointer-events:none; transition:opacity .15s ease; }
       .card-nav.is-section-visible { visibility:visible; opacity:1; pointer-events:auto; }
     }
+    .topbar .brand img { width:166px; transition:none; }
   </style>
   <link rel="stylesheet" href="newsletter.css">
 </head>
@@ -211,7 +224,13 @@
     <section class="page-head wrap">
       <div><div class="page-heading"><img src="images/Assets/TinyCardBack-Large-L.png" alt=""><h1>THE CARDS</h1><img src="images/Assets/TinyCardBack-Large-R.png" alt=""></div>
       <p>Meet the students, staff, and special characters in Your Class Rep. Filter by card type, then select a character to see their card.</p></div>
-      <div class="page-head-portrait"><img class="page-head-art" src="images/Characters/02-SpeechF-Ch.png" alt="Speech Kid 2"><span class="character-speech">WHO WILL YOU PLAY?</span></div>
+      <div class="page-head-portrait page-head-video-wrap">
+        <div class="page-head-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="How to play Your Class Rep" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <img class="page-head-video-character left" src="images/Characters/01-SpeechM-Ch.png" alt="" aria-hidden="true">
+          <img class="page-head-video-character right" src="images/Characters/02-SpeechF-Ch.png" alt="" aria-hidden="true">
+        </div>
+      </div>
     </section>
     <section class="band" id="character-select" aria-label="Filter characters by type">
       <div class="wrap">

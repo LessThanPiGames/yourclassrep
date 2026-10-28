@@ -71,6 +71,11 @@
   const progressionKey = 'yourClassRepUnlockedDifficulty';
   const difficultyOrder = ['easy','medium','hard'];
   const poolSizes = {easy:14,medium:28,hard:42};
+  const levelSets = {
+    easy:{set:1,start:1,end:14},
+    medium:{set:2,start:15,end:28},
+    hard:{set:3,start:29,end:42}
+  };
   let difficulty = 'easy';
   let gameMode = 'level';
   let state = null;
@@ -200,10 +205,12 @@
 
     let winner = modifiedResult;
     let unresolved = false;
+    let decisiveIntents = [];
     if (intents.length) {
       const distinctResults = new Set(intents.map(intent => intent.result));
       if (distinctResults.size === 1) {
         winner = intents[0].result;
+        decisiveIntents = intents;
       } else {
         let prioritized = [...intents];
         const playerRep = prioritized.some(intent => intent.side === 'player' && intent.card.isRep);
@@ -217,7 +224,10 @@
           else unresolved = true;
         }
         const priorityResults = new Set(prioritized.map(intent => intent.result));
-        if (priorityResults.size === 1) winner = prioritized[0].result;
+        if (priorityResults.size === 1) {
+          winner = prioritized[0].result;
+          decisiveIntents = prioritized;
+        }
         else unresolved = true;
         if (unresolved) {
           winner = 'tie';
@@ -231,7 +241,8 @@
     }
     if (winner === 'tie' && !unresolved) notes.push('The matchup is tied. Both cards stay face-up.');
     else if (!unresolved) notes.push(`${winner === 'player' ? playerCard.title : cpuCard.title} wins the matchup; the losing card turns face-down.`);
-    return { winner, unresolved, playerInfluence, cpuInfluence, notes };
+    const abilityCards = [...new Map(decisiveIntents.filter(intent => intent.result === winner).map(intent => [intent.card.number,intent.card])).values()];
+    return { winner, unresolved, playerInfluence, cpuInfluence, abilityCards, notes };
   }
 
   function matchupUtility(candidate, opponent) {
@@ -269,17 +280,18 @@
         ${difficultyOrder.map((level,index) => {
           const label = level.toUpperCase();
           const isLocked = index > maxUnlockedIndex;
-          const detail = isLocked ? `Unlock by completing ${difficultyOrder[index - 1][0].toUpperCase()}${difficultyOrder[index - 1].slice(1)}.` : 'Unlocked.';
+          const detail = isLocked ? `Cards ${String(levelSets[level].start).padStart(2,'0')}–${String(levelSets[level].end).padStart(2,'0')}. Unlock by completing ${difficultyOrder[index - 1][0].toUpperCase()}${difficultyOrder[index - 1].slice(1)}.` : `Cards ${String(levelSets[level].start).padStart(2,'0')}–${String(levelSets[level].end).padStart(2,'0')}. Unlocked.`;
           const character = level === 'easy' ? '11-PetF-Ch2.png' : level === 'medium' ? '11-PetF-Ch1.png' : '12-PetM-Ch.png';
-          return `<button class="difficulty-button" type="button" data-difficulty="${level}" aria-pressed="${gameMode === 'level' && difficulty === level}" ${isLocked ? 'disabled' : ''}><span class="level-choice-copy"><strong>${label} · ${poolSizes[level]} CARDS</strong><span>Cards 01–${String(poolSizes[level]).padStart(2,'0')}. ${detail}</span></span><img class="mode-character level-character" src="images/Characters/${character}" alt="" aria-hidden="true"></button>`;
+          return `<button class="difficulty-button" type="button" data-difficulty="${level}" aria-pressed="${gameMode === 'level' && difficulty === level}" ${isLocked ? 'disabled' : ''}><span class="level-choice-copy"><strong>${label} · SET ${levelSets[level].set}</strong><span>${detail}</span></span><img class="mode-character level-character" src="images/Characters/${character}" alt="" aria-hidden="true"></button>`;
         }).join('')}
       </div>
-      <button class="free-play-button" type="button" data-mode="free" aria-pressed="${gameMode === 'free'}"><img class="mode-character free-character" src="images/Characters/01-SpeechM-Ch.png" alt="" aria-hidden="true"><span class="free-choice-copy"><strong>FREE PLAY</strong><span>Build your 7-card Classroom to face a random computer deck (${poolSizes[difficultyOrder[maxUnlockedIndex]]}-card pool).</span></span><img class="mode-character free-character" src="images/Characters/02-SpeechF-Ch.png" alt="" aria-hidden="true"></button>
+      <button class="free-play-button" type="button" data-mode="free" aria-pressed="${gameMode === 'free'}"><img class="mode-character free-character" src="images/Characters/01-SpeechM-Ch.png" alt="" aria-hidden="true"><span class="free-choice-copy"><strong>FREE PLAY</strong><span>Build and edit your 7-card Classroom, then face a random computer deck (${poolSizes[difficultyOrder[maxUnlockedIndex]]}-card pool).</span></span><img class="mode-character free-character" src="images/Characters/02-SpeechF-Ch.png" alt="" aria-hidden="true"></button>
     </div>`;
     stage.innerHTML = `<div class="setup-panel">
-      <span class="phase-kicker">SINGLE PLAYER · ${gameMode === 'free' ? 'FREE PLAY' : `${poolSizes[difficulty]} CARD POOL`}</span>
+      <span class="phase-kicker">SINGLE PLAYER · ${gameMode === 'free' ? 'FREE PLAY' : `${difficulty.toUpperCase()} · SET ${levelSets[difficulty].set}`}</span>
       <h2 class="mode-title"><img src="images/Assets/RedStar.png" alt="" aria-hidden="true">Choose how to play<img src="images/Assets/RedStar.png" alt="" aria-hidden="true"></h2>
-      <p>Each Classroom has 7 cards and exactly one Class Rep. Complete a game at your current level to unlock the next card pool, win or lose. Free Play uses your largest unlocked pool.</p>
+      <p class="limited-time-note">*LIMITED TIME* BROWSER PLAY IS A TEMPORARY PREVIEW</p>
+      <p>Standard Play gives you and the computer a premade Classroom. In Free Play, build and edit a 7-card Classroom from your largest unlocked pool to face a random computer Classroom. Each Classroom needs one Class Rep. Higher Influence wins Campaign matchups unless an ability says otherwise; at Tally, face-up Votes and abilities decide the election. <a href="rules.html">Read the rules for details</a>.</p>
       ${modeLayout}
       <button class="action-button mode-start-button" id="start-game" type="button">${gameMode === 'free' ? 'BUILD YOUR CLASSROOM' : `START ${difficulty.toUpperCase()} GAME`}</button>
     </div>`;
@@ -302,15 +314,15 @@
   }
 
   function beginGame() {
-    const cardPool = CATALOG.slice(0, poolSizes[difficulty]);
+    const {start,end} = levelSets[difficulty];
+    const cardPool = CATALOG.filter(card => card.number >= start && card.number <= end);
     state = {
-      phase:'draft',
+      phase:'campaign',
       mode:'level',
       difficulty,
       catalog:cardPool,
-      available:cardPool.map(card => card.number),
-      playerDeck:[],
-      cpuDeck:[],
+      playerDeck:cardPool.filter(card => card.number % 2 === 1),
+      cpuDeck:cardPool.filter(card => card.number % 2 === 0),
       playerUsed:[],
       cpuUsed:[],
       playerFaceUp:[],
@@ -320,10 +332,10 @@
       keepLastVisible:false,
       round:1,
       busy:false,
-      reviewDraftOpen:false,
-      draftFilter:'All Cards'
+      reviewOpen:false
     };
-    renderDraft();
+    resetCampaignState();
+    renderCampaign();
   }
 
   function beginFreeBuild() {
@@ -526,13 +538,38 @@
     return `<div class="review-box"><div class="review-columns"><div><strong>Your Classroom</strong>${list(state.playerDeck)}</div><div><strong>Computer Classroom</strong>${list(state.cpuDeck)}</div></div></div>`;
   }
 
+  function campaignTurnExplanation(turn) {
+    const headline = turn.winner === 'player' ? 'You Win' : turn.winner === 'cpu' ? 'CPU Wins' : 'You Tie';
+    let reason;
+    if (turn.unresolved) {
+      reason = 'the abilities conflicted at equal priority';
+    } else if (turn.abilityCards?.length === 1) {
+      const title = turn.abilityCards[0].title;
+      const possessive = /s$/i.test(title) ? `${title}’` : `${title}’s`;
+      reason = `of ${possessive} ability`;
+    } else if (turn.abilityCards?.length > 1) {
+      const names = turn.abilityCards.map(card => card.title);
+      const joined = names.length === 2 ? `${names[0]} and ${names[1]}` : `${names.slice(0,-1).join(', ')}, and ${names.at(-1)}`;
+      reason = `of the abilities of ${joined}`;
+    } else if (turn.playerInfluence === turn.cpuInfluence) {
+      reason = `both cards have ${turn.playerInfluence} Influence`;
+    } else {
+      const winningInfluence = turn.winner === 'player' ? turn.playerInfluence : turn.cpuInfluence;
+      const losingInfluence = turn.winner === 'player' ? turn.cpuInfluence : turn.playerInfluence;
+      reason = `${winningInfluence} Influence is greater than ${losingInfluence} Influence`;
+    }
+    return `<p class="campaign-explanation${turn.winner === 'cpu' ? ' loss' : ''}" role="status"><strong>${headline}</strong> because ${reason}.</p>`;
+  }
+
   function renderCampaign() {
     if (!state || state.phase !== 'campaign') return;
     const playerRemaining = state.playerDeck.filter(card => !state.playerUsed.includes(card.number));
     const pending = state.busy ? 'The computer is choosing…' : '';
+    const latestTurn = state.history.at(-1);
     stage.innerHTML = `<div class="campaign-header"><h2>CAMPAIGN</h2><div class="campaign-toolbar">${state.round <= 6 ? `<button class="action-button secondary review-toggle" type="button" data-review>${state.reviewOpen ? 'HIDE CLASSROOMS' : 'REVIEW CLASSROOMS'}</button>` : '<button class="action-button" type="button" data-tally>GO TO TALLY</button>'}<button class="action-button secondary" type="button" data-new-game>NEW GAME</button></div></div>
       ${pending ? `<p class="play-prompt" role="status">${pending}</p>` : ''}
       ${campaignBoard()}
+      ${latestTurn ? campaignTurnExplanation(latestTurn) : ''}
       ${state.round <= 6 ? `<div class="hand-scroll"><div class="hand-grid">${playerRemaining.map(card => `<button class="hand-card" type="button" data-play-card="${card.number}" ${state.busy ? 'disabled' : ''} aria-label="Play ${html(card.title)}, card ${card.id}">${cardImage(card)}</button>`).join('')}</div></div>` : ''}
       ${state.reviewOpen ? reviewLists() : ''}`;
     stage.querySelector('[data-new-game]').addEventListener('click', confirmNewGame);
@@ -646,7 +683,7 @@
     if (completedIndex !== unlockedIndex || completedIndex >= difficultyOrder.length - 1) return '';
     const nextLevel = difficultyOrder[completedIndex + 1];
     saveHighestUnlockedDifficulty(nextLevel);
-    return `${nextLevel.toUpperCase()} UNLOCKED · ${poolSizes[nextLevel]} CARDS`;
+    return `${nextLevel.toUpperCase()} · SET ${levelSets[nextLevel].set} UNLOCKED`;
   }
 
   function renderFinal() {

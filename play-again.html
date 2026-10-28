@@ -81,14 +81,14 @@
     @media(max-width:700px) {
       .wrap { width:calc(100% - 28px); }
       .nav { display:block; min-height:0; padding:16px 0 10px; }
-      .navlinks { flex-wrap:wrap; justify-content:flex-end; gap:10px; padding-top:58px; }
+      .navlinks { width:100%; flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:10px; padding-top:0; text-align:right; }
       .navlinks a { font-size:6px; }
       .brand img { width:170px; }
       main { padding:24px 0 38px; }
       .stars { gap:8px; }
       .stars img { width:28px; height:30px; }
       .thank-you-content > p { font-size:23px; }
-      .decoration-character { top:auto; bottom:5px; width:clamp(90px,25vw,180px); height:auto; transform:none; }
+      .decoration-character { top:auto; bottom:5px; z-index:3; width:108px; height:auto; transform:none; }
       .decoration-character.left { left:-9px; }
       .decoration-character.right { right:-9px; }
       .thank-you-sparkles img { width:clamp(24px,9vw,54px); }
@@ -105,6 +105,10 @@
       .countdown { gap:5px; }
       .count-label { font-size:5px; }
     }
+    @media(max-width:400px) {
+      .decoration-character { width:54px; }
+    }
+    .topbar .brand img { width:166px; transition:none; }
   </style>
 </head>
 <body>

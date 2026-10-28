@@ -54,6 +54,20 @@
     .download-card { display:grid; grid-template-columns:minmax(260px, .9fr) minmax(0,1.1fr); align-items:center; gap:32px; margin:0 auto 52px; padding:clamp(22px,4vw,42px); border:3px solid var(--black); border-radius:20px; background:var(--white); }
     .download-preview { display:flex; justify-content:center; align-items:center; gap:16px; }
     .download-preview img { width:min(42%,170px); height:auto; border:3px solid var(--black); border-radius:9px; }
+    .color-number-section { margin:0 auto 52px; padding:clamp(22px,4vw,42px); border:3px solid var(--black); border-radius:20px; background:var(--white); }
+    .color-number-intro { max-width:780px; margin:0 auto 28px; text-align:center; }
+    .color-number-intro p { margin:12px 0 0; font-size:24px; }
+    .color-number-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; }
+    .color-number-card { display:flex; min-width:0; flex-direction:column; align-items:center; gap:6px; padding:12px; border:2px solid var(--black); border-radius:14px; background:var(--pink); text-align:center; }
+    .color-number-preview { display:flex; width:100%; height:220px; flex:none; align-items:center; justify-content:center; overflow:hidden; padding:0; border:2px solid var(--black); border-radius:12px; background:var(--white); }
+    .color-number-preview img { display:block; flex:none; width:120%; height:120%; object-fit:cover; object-position:center; border:0; border-radius:0; background:transparent; image-rendering:pixelated; }
+    .color-number-card:nth-child(2) .color-number-preview { align-items:flex-start; }
+    .color-number-card:nth-child(2) .color-number-preview img { object-position:center top; }
+    .color-number-card:nth-child(3) .color-number-preview { justify-content:flex-end; }
+    .color-number-card:nth-child(3) .color-number-preview img { object-position:right center; }
+    .color-number-card h3 { display:flex; align-items:center; justify-content:center; min-height:0; font-size:9px; }
+    .color-number-card .character-subtitle { display:flex; align-items:center; justify-content:center; min-height:0; margin:0; font-size:18px; line-height:1.2; }
+    .color-number-card .button { width:100%; min-height:46px; padding:10px 6px; font-size:7px; box-shadow:4px 4px 0 var(--black); }
     .download-copy h2 { margin-bottom:16px; }
     .download-copy p { margin:10px 0; font-size:24px; }
     .download-copy ul { margin:14px 0 22px; padding-left:25px; }
@@ -84,6 +98,7 @@
       .page-title::before,.page-title::after { width:34px; height:38px; }
       .download-card { grid-template-columns:1fr; gap:24px; }
       .download-preview img { width:min(36%,170px); }
+      .color-number-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .join-box { padding:28px 78px; }
       .join-character { width:72px; height:94px; }
       .join-character.left { left:0; }
@@ -99,6 +114,9 @@
       .intro-art { flex-direction:column; gap:4px; }
       .intro-art img { width:55px; border-width:2px; }
       .download-card { padding:19px; margin-bottom:36px; }
+      .color-number-section { padding:18px; margin-bottom:36px; }
+      .color-number-grid { display:flex; overflow-x:auto; padding:2px 5px 14px; scroll-snap-type:x mandatory; }
+      .color-number-card { flex:0 0 180px; scroll-snap-align:start; }
       .download-actions { flex-direction:column; align-items:stretch; }
       .secondary-link { text-align:center; }
       .join-band { padding:40px 0; }
@@ -107,6 +125,7 @@
       .join-title { gap:8px; }
       .join-title::before,.join-title::after { width:32px; height:38px; }
     }
+    .topbar .brand img { width:166px; transition:none; }
   </style>
   <link rel="stylesheet" href="newsletter.css">
 </head>
@@ -139,6 +158,56 @@
       </div>
     </header>
 
+    <section class="color-number-section wrap" aria-labelledby="color-number-title">
+      <div class="color-number-intro">
+        <h2 id="color-number-title">COLOR BY NUMBERS</h2>
+        <p>Become a pixel artist! These one-sheet printables feature students from Your Class Rep, plus Pipp, Nibbs, and Scurry. Share your creations online with #YourClassRep!</p>
+      </div>
+      <div class="color-number-grid">
+        <article class="color-number-card">
+          <div class="color-number-preview" aria-label="Character art details: Michael and Naomi">
+            <img src="images/Color-by-Number/SpeechCBN.png" alt="Speech Kids color-by-number preview">
+          </div>
+          <h3>Speech Kids</h3>
+          <p class="character-subtitle">Michael &amp; Naomi</p>
+          <a class="button" href="output/pdf/Your-Class-Rep-Color-by-Number-Speech-Kids-01-02.pdf" download>DOWNLOAD PDF</a>
+        </article>
+        <article class="color-number-card">
+          <div class="color-number-preview" aria-label="Character art details: Tabitha and Felix">
+            <img src="images/Color-by-Number/NerdyCBN.png" alt="Nerdy Kids color-by-number preview">
+          </div>
+          <h3>Nerdy Kids</h3>
+          <p class="character-subtitle">Tabitha &amp; Felix</p>
+          <a class="button" href="output/pdf/Your-Class-Rep-Color-by-Number-Nerdy-Kids-03-04.pdf" download>DOWNLOAD PDF</a>
+        </article>
+        <article class="color-number-card">
+          <div class="color-number-preview" aria-label="Character art details: Chill and Breezy">
+            <img src="images/Color-by-Number/CoolCBN.png" alt="Cool Kids color-by-number preview">
+          </div>
+          <h3>Cool Kids</h3>
+          <p class="character-subtitle">Chill &amp; Breezy</p>
+          <a class="button" href="output/pdf/Your-Class-Rep-Color-by-Number-Cool-Kids-05-06.pdf" download>DOWNLOAD PDF</a>
+        </article>
+        <article class="color-number-card">
+          <div class="color-number-preview" aria-label="Character art details: Faceoff and Dani">
+            <img src="images/Color-by-Number/SportyCBN.png" alt="Sporty Kids color-by-number preview">
+          </div>
+          <h3>Sporty Kids</h3>
+          <p class="character-subtitle">Faceoff &amp; Dani</p>
+          <a class="button" href="output/pdf/Your-Class-Rep-Color-by-Number-Sporty-Kids-09-10.pdf" download>DOWNLOAD PDF</a>
+        </article>
+        <article class="color-number-card">
+          <div class="color-number-preview" aria-label="Character art details: Pipp, Nibbs, and Scurry">
+            <img src="images/Color-by-Number/PetCBN.png" alt="Teacher’s Pets color-by-number preview">
+          </div>
+          <h3>Teacher’s Pets</h3>
+          <p class="character-subtitle">Pipp, Nibbs &amp; Scurry</p>
+          <a class="button" href="output/pdf/Your-Class-Rep-Color-by-Number-Teachers-Pets.pdf" download>DOWNLOAD PDF</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
     <section class="download-card wrap" aria-labelledby="print-play-title">
       <div class="download-preview" aria-hidden="true">
         <img src="images/Cards/01-SpeechM.png" alt="">
@@ -158,7 +227,6 @@
         </div>
       </div>
     </section>
-  </main>
 
   <section class="join-band" aria-labelledby="join-class-title">
     <div class="wrap join-box">
