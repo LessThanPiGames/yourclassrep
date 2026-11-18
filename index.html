@@ -291,7 +291,7 @@
           </div>
           <a class="button" id="home-sale-button" href="https://www.thegamecrafter.com/crowdsale/your-class-rep:-the-card-game" target="_blank" rel="noopener noreferrer">VISIT THE CROWD SALE</a>
         </div>
-        <div class="hero-video"><iframe data-youtube-id="1VZW6BRRT9M" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/1VZW6BRRT9M" title="Your Class Rep gameplay" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><img class="character-sprinkle hero-sprinkle-left" src="images/Characters/06-CoolF-Ch.png" alt="" aria-hidden="true"><img class="character-sprinkle hero-sprinkle-right" src="images/Characters/05-CoolM-Ch.png" alt="" aria-hidden="true"></div>
+        <div class="hero-video"><iframe data-youtube-id="Tuj8p--WLW8" data-youtube-kind="watch" src="https://www.youtube-nocookie.com/embed/Tuj8p--WLW8" title="How to play Your Class Rep" loading="eager" referrerpolicy="origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><img class="character-sprinkle hero-sprinkle-left" src="images/Characters/06-CoolF-Ch.png" alt="" aria-hidden="true"><img class="character-sprinkle hero-sprinkle-right" src="images/Characters/05-CoolM-Ch.png" alt="" aria-hidden="true"></div>
       </section>
     </div>
 
@@ -424,7 +424,7 @@
     (() => {
       // Explicit offsets preserve the sale's Eastern Time window across visitor time zones and DST.
       const start = new Date('2026-10-31T00:00:00-04:00').getTime();
-      const end = new Date('2026-11-22T00:00:00-05:00').getTime(); // midnight after Nov 21, inclusive through 11:59 PM ET
+      const end = new Date('2026-11-21T00:00:00-05:00').getTime(); // midnight after Nov 20, inclusive through 11:59 PM ET
       const fmt = value => String(value).padStart(2, '0');
       const groups = [
         { box: 'home-countdown', message: 'home-sale-message', button: 'home-sale-button' },
@@ -443,7 +443,7 @@
           heading = 'THANKS FOR JOINING THE CLASS';
         } else if (now >= start) {
           target = end;
-          message = 'SALE ENDS NOV 21';
+          message = 'SALE ENDS NOV 20';
           button = 'JOIN THE CROWD SALE';
           heading = 'THE CROWD SALE IS LIVE';
         }

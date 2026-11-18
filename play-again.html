@@ -178,7 +178,7 @@
     (() => {
       // Keep these dates and messages in sync with the Home page countdown.
       const start = new Date('2026-10-31T00:00:00-04:00').getTime();
-      const end = new Date('2026-11-22T00:00:00-05:00').getTime();
+      const end = new Date('2026-11-21T00:00:00-05:00').getTime();
       const fmt = value => String(value).padStart(2, '0');
       function update() {
         const now = Date.now();
@@ -195,7 +195,7 @@
           note = 'The crowd sale has ended. Visit to see the game and find out what comes next.';
         } else if (now >= start) {
           target = end;
-          message = 'SALE ENDS NOV 21';
+          message = 'SALE ENDS NOV 20';
           button = 'JOIN THE CROWD SALE';
           heading = 'THE CROWD SALE IS LIVE';
           note = 'The crowd sale is live now. Join in and help bring Your Class Rep to your table.';
